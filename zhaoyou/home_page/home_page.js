@@ -43,7 +43,7 @@ class HomePage {
     //汽油价格指导
     this.gasolineOilData = {
       "data":[
-        {"data_time":"09-16", "oil_name":"普通柴油 0#", "oil_type":"柴油","ascription":"中国海油","address":"上海", "price":"1", "weight":"50", "percentage":"0.93"},
+       {"data_time":"09-16", "oil_name":"普通柴油 0#", "oil_type":"柴油","ascription":"中国海油","address":"上海", "price":"1", "weight":"50", "percentage":"0.93"},
         {"data_time":"09-16", "oil_name":"普通柴油 0#", "oil_type":"柴油","ascription":"中国海油","address":"上海", "price":"2", "weight":"50", "percentage":"0.93"},
         {"data_time":"09-16", "oil_name":"普通柴油 0#", "oil_type":"柴油","ascription":"中国海油","address":"上海", "price":"3", "weight":"50", "percentage":"0.93"},
         {"data_time":"09-16", "oil_name":"普通柴油 0#", "oil_type":"柴油","ascription":"中国海油","address":"上海", "price":"3", "weight":"50", "percentage":"0.93"},
@@ -166,7 +166,7 @@ class HomePage {
     //昨日成交量
     $("#oil").find(".bold").html(this.volumeYesterday);
     //用户交互需求提交
-    $(document).on("click", "submitBtn", function() {
+    $(document).on("click", "#submitBtn", function() {
       currentObj.submitBtnFunc();
     });
   }
@@ -187,7 +187,7 @@ class HomePage {
     let typeSelect = $("#type_select").val();
     let req = $("#req").val();
     let phonoNumber = $("#phono_number").val();
-    alert();
+    window.location.href = "../commissioned_procurement_requirements/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
   }
 
   //height价格变动

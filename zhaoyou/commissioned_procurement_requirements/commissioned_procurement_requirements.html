@@ -9,82 +9,21 @@
     <title>找油网 专注石油撮合交易与服务!</title>
     <link rel="stylesheet" type="text/css" href="commissioned_procurement_requirements.css">
     <script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="commissioned_procurement_requirements.js"></script>
+    <script>
+      let commissioned = new CommissionedProcurement();
+      $(document).ready(function() {
+         commissioned.commissionedFillData();
+         commissioned.initEvent();
+      });
+    </script>
   </head>
   <body style="min-width: 1200px;">
     <div class="w1000">
       <div class="trust_box clearfix">
         <div class="trust_left">
           <h2>您的委托采购需求</h2>
-          <div class="textarea">
-            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content"></textarea>
-          </div>
-          <div class="list">
-            <div class="form">
-              <h2>您的联系方式<span class="red">( * 为必填项 )</span></h2>
-              <dl class="clearfix">
-                <dt><span class="red">*</span> 姓氏：</dt>
-                <dd>
-                  <input type="text" class="text" name="mm" value="" maxlength="20">
-                  <div class="fail" style="display: none" id="contact_name_fail">
-                    <i class="icon_tip"></i>联系人不能为空
-                  </div>
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt><span class="red">* </span>性别：</dt>
-                <dd padding="">
-                  <input type="radio" value="男" name="sex" checked="checked" style="margin-right:30px;margin-left:20px;">男   
-                  <input type="radio" value="女" name="sex" style="margin-right:30px;margin-left:60px;">女
-                  <div class="fail" style="display: none" id="contact_name_fail">
-                    <i class="icon_tip"></i>性别不能为空
-                  </div>
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt><span class="red">*</span> 手机或电话：</dt>
-                <dd>
-                  <input type="text" class="text" name="p" value="" maxlength="15">
-                  <div class="fail" style="display: none" id="contact_mobile_fail">
-                    <i class="icon_tip"></i>手机或电话不能为空
-                  </div>
-                </dd>
-              </dl>
-	            <dl class="clearfix">
-                <dt><span class="red">*</span> 地区：</dt>
-                <dd>
-                  <input type="text" class="text" name="region" value="" maxlength="15">
-                  <div class="fail" style="display: none" id="contact_mobile_fail">
-                    <i class="icon_tip"></i>地区不能为空
-                  </div>
-                </dd>
-              </dl>
-	            <dl class="clearfix">
-                <dt><span class="red">*</span> 油品类型：</dt>
-                <dd>
-                  <input type="text" class="text" name="region" value="" maxlength="15">
-                  <div class="fail" style="display: none" id="contact_mobile_fail">
-                    <i class="icon_tip"></i>油品类型不能为空
-                  </div>
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt><span class="red"></span>公司名称：</dt>
-                <dd>
-                  <input type="text" class="text" name="cn" placeholder="非必填项">
-                  <div class="fail" style="display: none" id="customer_name_fail">
-                    <i class="icon_tip"></i>公司名称不能为空
-                  </div>
-                </dd>
-              </dl>
-              <dl class="clearfix">
-                <dt>&nbsp;</dt>
-                <dd>
-                  <input type="submit" class="btn1" value="确认">
-                  <span></span>
-                </dd>
-              </dl>
-            </div>
-          </div>
+          <div id = "commissioned_content"></div>
         </div>
         <div class="trust_right">
           <div class="top">
