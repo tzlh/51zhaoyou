@@ -1,0 +1,9 @@
+table th,table th{
+  text-align: center;
+}
+table .form-group {
+  margin: 0;
+}
+.panel-footer{
+  background: #337ab7;
+}

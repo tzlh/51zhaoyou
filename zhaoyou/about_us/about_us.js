@@ -35,7 +35,7 @@ class AboutUs {
           <img src="../../img/back_video.png">
           <span id="play"><img src="../../img/video_btn.png"></span>
           <video id="video1" style="display:none;" controls="controls">
-             <source src="video/video.mp4" type="video/mp4">
+             <source src="http://www.51zhaoyou.com/51/Resources/Home/images/CompanyIntroduction/video.mp4" type="video/mp4">
           </video>
           <span class="close" onclick="close()">×</span>
           </div>

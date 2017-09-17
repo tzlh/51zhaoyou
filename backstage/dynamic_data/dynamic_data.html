@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel = "stylesheet" href = "../../plugin/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
+    <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
+    <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
+    <link rel="stylesheet" type="text/css" href="dynamic_data.css"/>
+    <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>  
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
+    <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src="dynamic_data.js" type="text/javascript" charset="utf-8"></script>    
+		<title></title>
+    <script type="text/javascript">
+			$(document).ready(function() {
+			  //日历插件
+        widget_datepicker_init();
+			});
+		</script>
+	</head>
+	<body>
+    <div class = "panel panel-default panel-primary" id = "indexData">
+      <div class = "panel-heading text-left" id = "indexTitle">动态数据</div>
+      <div class = "panel-body table-responsive material_entry_pd0">
+        <table  class = "table contact_management_mt20" id = "">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>类型</th>
+              <th>价格</th>
+              <th>记录时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <select class = "form-control cfName" id = "">
+                  <option value = "1">黄金期货</option>
+                  <option value = "2">美元汇率</option>
+                  <option value = "3">brent</option>
+                  <option value = "4">WTI</option>
+                </select>
+              </td>
+              <td> 
+                <div class="form-group">
+                  <input type="text" class="form-control" value = "3300">
+                </div>
+              </td>
+              <td>
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </td>
+             <td>
+                <button class = "btn btn-primary">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+              </td> 
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>
+                <select class = "form-control cfName" id = "">
+                  <option class = "">--请选择--</option>
+                  <option value = "1">黄金期货</option>
+                  <option value = "2">美元汇率</option>
+                  <option value = "3">brent</option>
+                  <option value = "4">WTI</option>
+                </select>
+              </td>
+              <td> 
+                <div class="form-group">
+                  <input type="text" class="form-control">
+                </div>
+              </td>
+              <td>
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </td>
+             <td>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-remove"></span>
+               </button>
+                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
+                 <span class = "glyphicon glyphicon-remove"></span>-->
+              </td> 
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+                <select class = "form-control cfName" id = "">
+                  <option class = "">--请选择--</option>
+                  <option value = "1">黄金期货</option>
+                  <option value = "2">美元汇率</option>
+                  <option value = "3">brent</option>
+                  <option value = "4">WTI</option>
+                </select>
+              </td>
+              <td> 
+                <div class="form-group">
+                  <input type="text" class="form-control">
+                </div>
+              </td>
+              <td>
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </td>
+             <td>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-remove"></span>
+               </button>
+                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
+                 <span class = "glyphicon glyphicon-remove"></span>-->
+              </td> 
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>
+                <select class = "form-control cfName" id = "">
+                  <option class = "">--请选择--</option>
+                  <option value = "1">黄金期货</option>
+                  <option value = "2">美元汇率</option>
+                  <option value = "3">brent</option>
+                  <option value = "4">WTI</option>
+                </select>
+              </td>
+              <td> 
+                <div class="form-group">
+                  <input type="text" class="form-control">
+                </div>
+              </td>
+              <td>
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </td>
+             <td>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-remove"></span>
+               </button>
+                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
+                 <span class = "glyphicon glyphicon-remove"></span>-->
+              </td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer bg-primary">&nbsp;</div>
+    </div>
+	</body>
+</html>

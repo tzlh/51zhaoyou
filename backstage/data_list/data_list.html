@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel = "stylesheet" href = "../../plugin/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
+    <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
+    <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
+    <link rel="stylesheet" type="text/css" href="dynamic_data.css"/>
+    <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>  
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
+    <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src="dynamic_data.js" type="text/javascript" charset="utf-8"></script>    
+		<title></title>
+    <script type="text/javascript">
+			$(document).ready(function() {
+			  //日历插件
+        widget_datepicker_init();
+			});
+		</script>
+	</head>
+	<body>
+    <div class = "panel panel-default panel-primary" id = "indexData">
+      <div class = "panel-heading text-left" id = "indexTitle">动态数据</div>
+      <div class = "panel-body table-responsive material_entry_pd0">
+        <table  class = "table contact_management_mt20" id = "">
+          <thead>
+            <tr>
+              <th>订单号</th>
+              <th>数据类型</th>
+              <th>油品类型</th>
+              <th>级别</th>
+              <th>标号</th>
+              <th>厂商</th>
+              <th>地区</th>
+              <th>记录时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>20175555555555</td>
+              <td>找油</td>
+              <td>汽油</td>
+              <td>普柴</td>
+              <td>0#</td> 
+              <td>中国石化</td>
+              <td>上海</td>
+              <td>2017-05-05</td>
+              <td>
+                <span class = "glyphicon glyphicon-info-sign"></span>
+                <span class = "glyphicon glyphicon-edit"></span>
+                <span class = "glyphicon glyphicon-remove-sign"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>20175555555555</td>
+              <td>找油</td>
+              <td>汽油</td>
+              <td>普柴</td>
+              <td>0#</td> 
+              <td>中国石化</td>
+              <td>上海</td>
+              <td>2017-05-05</td>
+              <td>
+                <span class = "glyphicon glyphicon-info-sign"></span>
+                <span class = "glyphicon glyphicon-edit"></span>
+                <span class = "glyphicon glyphicon-remove-sign"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>20175555555555</td>
+              <td>找油</td>
+              <td>汽油</td>
+              <td>普柴</td>
+              <td>0#</td> 
+              <td>中国石化</td>
+              <td>上海</td>
+              <td>2017-05-05</td>
+              <td>
+                <span class = "glyphicon glyphicon-info-sign"></span>
+                <span class = "glyphicon glyphicon-edit"></span>
+                <span class = "glyphicon glyphicon-remove-sign"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>20175555555555</td>
+              <td>找油</td>
+              <td>汽油</td>
+              <td>普柴</td>
+              <td>0#</td> 
+              <td>中国石化</td>
+              <td>上海</td>
+              <td>2017-05-05</td>
+              <td>
+                <span class = "glyphicon glyphicon-info-sign"></span>
+                <span class = "glyphicon glyphicon-edit"></span>
+                <span class = "glyphicon glyphicon-remove-sign"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer bg-primary">&nbsp;</div>
+    </div>
+	</body>
+</html>
