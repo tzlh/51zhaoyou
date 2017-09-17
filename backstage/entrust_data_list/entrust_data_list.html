@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel = "stylesheet" href = "../../plugin/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
+    <link rel="stylesheet" type="text/css" href="entrust_data_list.css"/>
+    <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src="entrust_data_list.js" type="text/javascript" charset="utf-8"></script>    
+		<title></title>
+    <script type="text/javascript">
+      let entrustDataList = new EntrustDataList();
+			$(document).ready(function() {
+        entrustDataList.clearRawData();
+        entrustDataList.fillVariableData();
+	      entrustDataList.initEvent();	
+
+			});
+		</script>
+	</head>
+	<body>
+    <div class = "panel panel-default panel-primary" id = "indexData">
+      <div class = "panel-heading text-left" id = "indexTitle">数据列表</div>
+      <div class = "panel-body table-responsive">
+        <table  class = "table" id = "">
+          <thead>
+            <tr>
+              <th>用户</th>
+              <th>姓名</th>
+              <th>sex</th>
+              <th>地区</th>
+              <th>手机号</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id = "entrust_content">
+            <tr>
+              <td>zhangsan</td>
+              <td>张三</td>
+              <td>男</td>
+              <td>东湾</td> 
+              <td>15911111111</td>
+              <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+            </tr>
+            <tr>
+              <td>zhangsan</td>
+              <td>张三</td>
+              <td>男</td>
+              <td>东湾</td> 
+              <td>15911111111</td>
+              <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+            </tr> 
+            <tr>
+              <td>zhangsan</td>
+              <td>张三</td>
+              <td>男</td>
+              <td>东湾</td> 
+              <td>15911111111</td>
+              <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer bg-primary entrust_bg">&nbsp;</div>
+    </div>
+	</body>
+</html>
