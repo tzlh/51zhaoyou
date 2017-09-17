@@ -1,0 +1,28 @@
+table th,table td{
+  text-align: center;
+}
+table .form-group {
+  margin: 0;
+}
+.panel-footer{
+  background: #337ab7;
+}
+.panel-body{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+table tbody td:nth-child(1){
+  border-left: 0!important;
+}
+table thead th:nth-child(1){
+  border-left: 0!important;
+}
+table tbody td:nth-child(9){
+  border-right: 0!important;
+}
+table thead th:nth-child(9){
+  border-right: 0!important;
+}
+.table-bordered{
+  border:0;
+}
