@@ -1,0 +1,16 @@
+@charset "utf-8";
+.entrust_ml15{margin-left:15px;}
+.entrust_bg{background-color: #337ab7 !important;}
+table th,table td {text-align: center;}
+table tbody td:nth-child(1){
+  border-left: 0!important;
+}
+table thead th:nth-child(1){
+  border-left: 0!important;
+}
+table tbody td:nth-child(6){
+  border-right: 0!important;
+}
+table thead th:nth-child(6){
+  border-right: 0!important;
+}
