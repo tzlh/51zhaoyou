@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel = "stylesheet" href = "../../plugin/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
+    <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
+    <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
+    <link rel="stylesheet" type="text/css" href="user_list.css"/>
+    <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>  
+    <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
+    <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src="user_list.js" type="text/javascript" charset="utf-8"></script>    
+		<title></title>
+    <script type="text/javascript">
+			$(document).ready(function() {
+			  //日历插件
+        widget_datepicker_init();
+			});
+		</script>
+	</head>
+	<body>
+    <div class = "panel panel-default panel-primary" id = "indexData">
+      <div class = "panel-heading text-left" id = "indexTitle">价格变动</div>
+      <div class = "panel-body table-responsive material_entry_pd0">
+        <table  class = "table contact_management_mt20" id = "">
+          <tbody>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">用户名</div>
+                    <input type="text" class="form-control" value = "admin">
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <input type="password" class="form-control" value = "123456">
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td> 
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <select class = "form-control cfName" id = "">
+                    <option value = "1">正常</option>
+                    <option value = "2">异常</option>
+                  </select>
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <button class = "btn btn-success" style = "margin-right: 15px;">
+                 <span class = "glyphicon glyphicon-info-sign"></span>
+               </button>
+                <button class = "btn btn-primary">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+              </td> 
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">用户名</div>
+                    <input type="text" class="form-control" value = "admin">
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <input type="password" class="form-control" value = "123456">
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td> 
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <select class = "form-control cfName" id = "">
+                    <option value = "1">正常</option>
+                    <option value = "2">异常</option>
+                  </select>
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <button class = "btn btn-success" style = "margin-right: 15px;">
+                 <span class = "glyphicon glyphicon-info-sign"></span>
+               </button>
+                <button class = "btn btn-primary">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+              </td> 
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">用户名</div>
+                    <input type="text" class="form-control" value = "admin">
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <input type="password" class="form-control" value = "123456">
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td> 
+                <div class="input-group">
+                  <div class="input-group-addon">密码</div>
+                  <select class = "form-control cfName" id = "">
+                    <option value = "1">正常</option>
+                    <option value = "2">异常</option>
+                  </select>
+                  <span class="input-group-btn modifyFormulaName">
+                    <button class="btn btn-primary" type="button">
+                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <button class = "btn btn-success" style = "margin-right: 15px;">
+                 <span class = "glyphicon glyphicon-info-sign"></span>
+               </button>
+                <button class = "btn btn-primary">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+              </td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer bg-primary">&nbsp;</div>
+    </div>
+	</body>
+</html>
