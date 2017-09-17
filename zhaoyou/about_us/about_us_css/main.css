@@ -69,7 +69,7 @@
 }
 #oil_header .nav li.on a{ color:#d8522e;}
 #oil_header .logo {
-    background: rgba(0, 0, 0, 0)  url(../../images/logo.png) no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0)  url(../../../img/logo.png) no-repeat scroll 0 0;
     float: left;
     height: 50px;
     width: 130px;
@@ -535,7 +535,7 @@ background:white\9\0;
 .backGray{ margin:10px 0 0 0;}
 #company .postA{ width:100%; left:0; top:50%;}
 #company{ width:100%; height:auto;}
-.backImg{ width:100%; background:url(../../images/CompanyIntroduction/backImg.jpg) no-repeat; background-size:100%;}
+.backImg{ width:100%; background:url(../../../img/backImg.jpg) no-repeat; background-size:100%;}
 .backImg img{ width:100%;}
 .imgNine.cultureImg{ margin:0 auto; text-align:center;}
 .imgNine.cultureImg img{ width:auto;}
@@ -706,7 +706,7 @@ background:white\9\0;
 	 top:34px;z-index:5;  text-align:center;}
  .close{ font-size: 24px; position: absolute; cursor: pointer; width: 100px; height: 100px; text-align: right; right: 10%; top: 13%; color:#fff; display: none;z-index: 11;}
 .yd_nav ul li {
-	background: url(../../images/CompanyIntroduction/c_icon.png) no-repeat;
+	background: url(../../../img/c_icon.png) no-repeat;
 	margin-bottom: 20px;
 }
 .yd_nav ul li a{ width:100%; height:145px; display: inline-block;}
