@@ -23,6 +23,7 @@
       let buyInfo = new BuyInfo();
       $(document).ready(function() {
         buyInfo.clearRawData();
+        buyInfo.serverDataCover();
         buyInfo.buyInfoFillData();
         buyInfo.initEvent();
       });
@@ -46,10 +47,10 @@
                     <li><i>类型:</i>
                       <select class="xl" name="type" id = "buy_type">
                         <option selected="selected" value="">请选择</option>
-                        <option value="柴油">柴油</option>
-                        <option value="汽油">汽油</option>
-                        <option value="煤油">煤油</option>
-                        <option value="燃料油">燃料油</option>
+                        <option value="1">柴油</option>
+                        <option value="0">汽油</option>
+                        <option value="2">煤油</option>
+                        <option value="3">燃料油</option>
                       </select>
                     </li>
                     <li><i>厂家：</i>

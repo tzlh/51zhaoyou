@@ -10,14 +10,14 @@
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
     <script src="entrust_data_list.js" type="text/javascript" charset="utf-8"></script>    
-		<title></title>
+		<title>需求数据列表</title>
     <script type="text/javascript">
       let entrustDataList = new EntrustDataList();
 			$(document).ready(function() {
         entrustDataList.clearRawData();
+        entrustDataList.serverDataCover();
         entrustDataList.fillVariableData();
 	      entrustDataList.initEvent();	
-
 			});
 		</script>
 	</head>

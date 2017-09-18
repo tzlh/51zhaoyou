@@ -17,15 +17,21 @@
     <script src="price_change.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
+      let priceChange = new PriceChange();
 			$(document).ready(function() {
 			  //日历插件
         widget_datepicker_init();
+        priceChange.clearRawData();
+        priceChange.serverDataCover();
+        priceChange.fillVariableData();
+        priceChange.initEvent();
+
 			});
 		</script>
 	</head>
 	<body>
     <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left" id = "indexTitle">价格变动</div>
+      <div class = "panel-heading text-left clearfix" id = "indexTitle">价格变动<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
       <div class = "panel-body table-responsive material_entry_pd0">
         <table  class = "table contact_management_mt20" id = "">
           <thead>
@@ -36,51 +42,49 @@
               <th>记录时间</th>
               <th>操作</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
+            <tr id = "add_tr_table">
               <td></td>
               <td>
-                <select class = "form-control cfName" id = "">
-                  <option value = "1">汽油</option>
-                  <option value = "2">柴油</option>
-                  <option value = "3">石油</option>
+                <select class = "form-control cfName" id = "type_all">
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option>
                 </select>
               </td>
               <td> 
                 <div class="form-group">
-                  <input type="text" class="form-control" value = "3300">
+                  <input type="text" class="form-control" id = "price_weight"  value = "">
                 </div>
               </td>
               <td>
                 <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <input type="text" class="form-control widget_datepicker establish_datetime" id = "data_time">
                   <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
                 </div>
               </td>
-             <td>
-                <button class = "btn btn-primary">
+             <td style = "text-align:center">
+                <button class = "btn btn-primary" id = "add_price">
                  <span class = "glyphicon glyphicon-floppy-disk"></span>
                </button>
               </td> 
             </tr>
+          </thead>
+          <tbody id = "price_content">
             <tr>
               <td>1</td>
               <td>
-                <select class = "form-control cfName" id = "">
-                  <option value = "1">汽油</option>
-                  <option value = "2">柴油</option>
-                  <option value = "3">石油</option>
+                <select class = "form-control cfName">
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option>
                 </select>
               </td>
               <td> 
                 <div class="form-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control price_type" value = "">
                 </div>
               </td>
               <td>
                 <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <input type="text" class="form-control widget_datepicker establish_datetime tima_val">
                   <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
                 </div>
               </td>
@@ -91,17 +95,14 @@
                 <button class = "btn">
                  <span class = "glyphicon glyphicon-remove"></span>
                </button>
-                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
-                 <span class = "glyphicon glyphicon-remove"></span>-->
               </td> 
             </tr>
             <tr>
               <td>2</td>
               <td>
                 <select class = "form-control cfName" id = "">
-                  <option value = "1">汽油</option>
-                  <option value = "2">柴油</option>
-                  <option value = "3">石油</option>
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option>
                 </select>
               </td>
               <td> 
@@ -122,8 +123,6 @@
                 <button class = "btn">
                  <span class = "glyphicon glyphicon-remove"></span>
                </button>
-                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
-                 <span class = "glyphicon glyphicon-remove"></span>-->
               </td> 
             </tr>
             <tr>
@@ -153,8 +152,6 @@
                 <button class = "btn">
                  <span class = "glyphicon glyphicon-remove"></span>
                </button>
-                 <!--<span class = "glyphicon glyphicon-floppy-disk"></span>
-                 <span class = "glyphicon glyphicon-remove"></span>-->
               </td> 
             </tr>
           </tbody>
