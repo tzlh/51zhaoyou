@@ -6,7 +6,7 @@
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
     <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
     <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
-    <link rel="stylesheet" type="text/css" href="price_change.css"/>
+    <link rel="stylesheet" type="text/css" href="../price_change/price_change.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
@@ -14,18 +14,19 @@
     <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
-    <script src="price_change.js" type="text/javascript" charset="utf-8"></script>    
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>  
+    <script src="../price_change/price_change.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
       let priceChange = new PriceChange();
 			$(document).ready(function() {
+		    check_login();	  
 			  //日历插件
         widget_datepicker_init();
         priceChange.clearRawData();
         priceChange.serverDataCover();
         priceChange.fillVariableData();
         priceChange.initEvent();
-
 			});
 		</script>
 	</head>
@@ -43,29 +44,7 @@
               <th>操作</th>
             </tr>
             <tr id = "add_tr_table">
-              <td></td>
-              <td>
-                <select class = "form-control cfName" id = "type_all">
-                  <option value = "0">汽油</option>
-                  <option value = "1">柴油</option>
-                </select>
-              </td>
-              <td> 
-                <div class="form-group">
-                  <input type="text" class="form-control" id = "price_weight"  value = "">
-                </div>
-              </td>
-              <td>
-                <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime" id = "data_time">
-                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
-                </div>
-              </td>
-             <td style = "text-align:center">
-                <button class = "btn btn-primary" id = "add_price">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-              </td> 
+
             </tr>
           </thead>
           <tbody id = "price_content">

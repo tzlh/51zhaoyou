@@ -17,15 +17,20 @@
     <script src="dynamic_data.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
+      let priceChange = new PriceChange();
 			$(document).ready(function() {
 			  //日历插件
         widget_datepicker_init();
+        priceChange.clearRawData();
+        priceChange.serverDataCover();
+        priceChange.fillVariableData();
+        priceChange.initEvent();
 			});
 		</script>
 	</head>
 	<body>
     <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left" id = "indexTitle">动态数据</div>
+      <div class = "panel-heading text-left clearfix" id = "indexTitle">动态数据<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
       <div class = "panel-body table-responsive material_entry_pd0">
         <table  class = "table contact_management_mt20" id = "">
           <thead>
@@ -36,71 +41,45 @@
               <th>记录时间</th>
               <th>操作</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td>
-                <select class = "form-control cfName" id = "">
-                  <option value = "1">黄金期货</option>
-                  <option value = "2">美元汇率</option>
-                  <option value = "3">brent</option>
-                  <option value = "4">WTI</option>
-                </select>
-              </td>
-              <td> 
-                <div class="form-group">
-                  <input type="text" class="form-control" value = "3300">
-                </div>
-              </td>
-              <td>
-                <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
-                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
-                </div>
-              </td>
-             <td>
-                <button class = "btn btn-primary">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-              </td> 
+            <tr id = "add_tr_table">
+
             </tr>
+          </thead>
+          <tbody id = "price_content">
             <tr>
               <td>1</td>
               <td>
-                <select class = "form-control cfName" id = "">
-                  <option class = "">--请选择--</option>
-                  <option value = "1">黄金期货</option>
-                  <option value = "2">美元汇率</option>
-                  <option value = "3">brent</option>
-                  <option value = "4">WTI</option>
+                <select class = "form-control cfName">
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option> 
                 </select>
               </td>
               <td> 
                 <div class="form-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control price_type" value = "">
                 </div>
               </td>
               <td>
                 <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
+                  <input type="text" class="form-control widget_datepicker establish_datetime tima_val">
                   <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
                 </div>
               </td>
              <td>
-                 <span class = "glyphicon glyphicon-floppy-disk" style = "margin-right: 15px;"></span>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
                  <span class = "glyphicon glyphicon-remove"></span>
+               </button>
               </td> 
             </tr>
             <tr>
               <td>2</td>
               <td>
                 <select class = "form-control cfName" id = "">
-                  <option class = "">--请选择--</option>
-                  <option value = "1">黄金期货</option>
-                  <option value = "2">美元汇率</option>
-                  <option value = "3">brent</option>
-                  <option value = "4">WTI</option>
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option> 
                 </select>
               </td>
               <td> 
@@ -115,19 +94,20 @@
                 </div>
               </td>
              <td>
-               <span class = "glyphicon glyphicon-floppy-disk" style = "margin-right: 15px;"></span>
-               <span class = "glyphicon glyphicon-remove"></span>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-remove"></span>
+               </button>
               </td> 
             </tr>
             <tr>
               <td>3</td>
               <td>
                 <select class = "form-control cfName" id = "">
-                  <option class = "">--请选择--</option>
-                  <option value = "1">黄金期货</option>
-                  <option value = "2">美元汇率</option>
-                  <option value = "3">brent</option>
-                  <option value = "4">WTI</option>
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option> 
                 </select>
               </td>
               <td> 
@@ -142,8 +122,12 @@
                 </div>
               </td>
              <td>
-               <span class = "glyphicon glyphicon-floppy-disk" style = "margin-right: 15px;"></span>
-               <span class = "glyphicon glyphicon-remove"></span>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+                <button class = "btn">
+                 <span class = "glyphicon glyphicon-remove"></span>
+               </button>
               </td> 
             </tr>
           </tbody>

@@ -1,6 +1,8 @@
 "use strict"; 
 class EntrustDataList {
   constructor() {
+    this.sexVal = ["女","男"];
+    this.oilType = ["汽油","柴油","煤油","燃料油"];
     //列表
     this.entrustData = {
       "data":[
@@ -18,7 +20,45 @@ class EntrustDataList {
   clearRawData() {
     $("#entrust_content").html(`<tr><td colspan="6" align="center">没数据</td></tr>`);
   }
+  //数据库数据覆盖
+  serverDataCover() {
+    this.entrustData = {};
+    //获取
+    let Url = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeDemand";
+    let Get = ajax_assistant(Url, "", false, true, false);
+    //获取用户
+    let nameUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
+    let nameGet = ajax_assistant(nameUrl, "", false, true, false);
+console.log(nameGet);
+console.log(Get);
+    //仓库
+    if ("1" == Get.status) {
+      if ("0" == Get.count) {
+        this.entrustData = {};
+      } else {
+        let tmpArr = new Array();
+        let result = JSON.parse(Get.result);    
+console.log(result);
+        for (let i = 0; i < result.length; i++) {
+          tmpArr[i] = {"name":result[i].name, "sex":this.sexVal[result[i].sex], "adrress":result[i].area, "phone":result[i].phone_number, "uuid":result[i].uuid};
+          if ("1" == nameGet.status) {
+            if ("0" != nameGet.count) {
+              let resultName = JSON.parse(nameGet.result); 
+              for (let j = 0; j < resultName.length; j++) {
+                if(resultName[j].user_uuid == result[i].user_uuid) {
+                  tmpArr[i]["user"] = resultName[j].nick_name;
+                }
+              }
+            }
+          }
+        }
+        this.entrustData["data"] = tmpArr;
+      }
+    } else {
+      alert("需求数据获取失败");
+    }
 
+  }
   //填充覆盖数据
   fillVariableData() {
     //查询列表
@@ -56,10 +96,37 @@ class EntrustDataList {
   
   entrustInfoModal(obj) {
     let uuid = obj.attr("uuid");
-    //let deleteUrl = PROJECT_PATH + "lego/lego_fjTrade?servletName=removeWarehousePotMaterialType";
-    //let deleteGet = ajax_assistant(deleteUrl, data, false, true, false);
-    //if ("1" != deleteGet.status) {}
-    let infoData = [{"user":"zhangsan", "name":"张三", "sex":"男", "type":"油类", "adrress":"济南", "phone":"15944444444", "uuid":"001"}];
+    let infoData ="";
+    let userName = "";
+    let dataTime = "";
+    let data = {
+      "uuid":uuid
+    };
+    let infoUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeDemand";
+    let infoGet = ajax_assistant(infoUrl, data, false, true, false);
+    //获取用户
+    let nameUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
+    let nameGet = ajax_assistant(nameUrl, "", false, true, false);
+
+      console.log(nameGet);
+    if ("1" == infoGet.status) {
+      infoData = JSON.parse(infoGet.result); 
+      dataTime = infoData[0].record_datetime;
+      dataTime = dataTime.substring(0, dataTime.indexOf(' '));
+      console.log(infoData);
+      if ("1" == nameGet.status) {
+        if ("0" != nameGet.count) {
+          let resultName = JSON.parse(nameGet.result); 
+      console.log(resultName);
+          for (let i = 0; i < resultName.length; i++) {
+            if(resultName[i].user_uuid == infoData[0].user_uuid) {
+              userName = resultName[i].nick_name;
+            }
+          }
+        }
+      }
+      console.log(userName);
+    }
     let Html = 
       `<div class = "modal fade bs-example-modal-sm custom_modal" id = "entrust_info_modle" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel">
         <div class = "modal-dialog  modal-lg" role = "document">
@@ -73,19 +140,19 @@ class EntrustDataList {
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">用户名</span>
-                    <input type="text" class="form-control" value = "${infoData[0].user}">
+                    <input type="text" class="form-control" value = "${userName}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">姓名</span>
-                    <input type="text" class="form-control" value = "${infoData[0].name}">
+                    <input type="text" class="form-control" value = "${infoData[0].name}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">性别</span>
-                    <input type="text" class="form-control" value = "${infoData[0].sex}">
+                    <input type="text" class="form-control" value = "${this.sexVal[infoData[0].sex]}" disabled = "disabled">
                   </div>
                 </div>
               </div>
@@ -93,19 +160,19 @@ class EntrustDataList {
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">联系方式</span>
-                    <input type="text" class="form-control" value = "${infoData[0].phone}">
+                    <input type="text" class="form-control" value = "${infoData[0].phone_number}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">地区</span>
-                    <input type="text" class="form-control" value = "${infoData[0].adrress}">
+                    <input type="text" class="form-control" value = "${infoData[0].area}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">油品类型</span>
-                    <input type="text" class="form-control" value = "${infoData[0].type}">
+                    <input type="text" class="form-control" value = "${this.oilType[infoData[0].oil_type]}" disabled = "disabled">
                   </div>
                 </div>
               </div>
@@ -113,19 +180,19 @@ class EntrustDataList {
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">公司名称</span>
-                    <input type="text" class="form-control" value = "${infoData[0].user}">
+                    <input type="text" class="form-control" value = "${infoData[0].company_name}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">内容</span>
-                    <input type="text" class="form-control" value = "${infoData[0].user}">
+                    <input type="text" class="form-control" value = "${infoData[0].content}" disabled = "disabled">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">记录时间</span>
-                    <input type="text" class="form-control" value = "${infoData[0].user}">
+                    <input type="text" class="form-control" value = "${dataTime}" disabled = "disabled">
                   </div>
                 </div>
               </div>
@@ -172,23 +239,14 @@ class EntrustDataList {
     let data = {
       "uuid":uuid
     };
-    //let deleteUrl = PROJECT_PATH + "lego/lego_fjTrade?servletName=removeWarehousePotMaterialType";
-    //let deleteGet = ajax_assistant(deleteUrl, data, false, true, false);
-    //if ("1" != deleteGet.status) {
-    if ("001" != uuid) {
+    let deleteUrl = PROJECT_PATH + "lego/lego_51zy?servletName=removeTradeDemand";
+    let deleteGet = ajax_assistant(deleteUrl, data, false, true, false);
+    if ("1" != deleteGet.status) {
       alert("删除列表失败");
     } else {    
     // 更新页面数据
       this.clearRawData();
-      //this.serverDataCover();
-      this.entrustData = {
-        "data":[
-          {"user":"zhangsan", "name":"张三", "sex":"男", "adrress":"济南", "phone":"15944444444", "uuid":"001"},
-          {"user":"zhangsan", "name":"张三", "sex":"男", "adrress":"济南", "phone":"15944444444", "uuid":"001"},
-          {"user":"zhangsan", "name":"张三", "sex":"男", "adrress":"济南", "phone":"15944444444", "uuid":"001"},
-          {"user":"zhangsan", "name":"张三", "sex":"男", "adrress":"济南", "phone":"15944444444", "uuid":"001"},
-          {"user":"zhangsan", "name":"张三", "sex":"男", "adrress":"济南", "phone":"15944444444", "uuid":"001"}]
-      };     
+      this.serverDataCover();
       this.fillVariableData();
     }
     $("#entrust_delete_modle").modal("hide");

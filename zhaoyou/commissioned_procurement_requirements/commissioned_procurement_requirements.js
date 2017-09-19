@@ -3,18 +3,18 @@ class CommissionedProcurement {
   constructor() {
     this.urlLocation = document.location.toString().split("?")[1].split("&");
   }
+
   //覆盖
   commissionedFillData () {
     console.log(this.urlLocation);
     let city = this.urlLocation[0].split("=")[1];
     let type = this.urlLocation[1].split("=")[1];
-    let phoneNumber = this.urlLocation[2].split("=")[1];
+    let req = this.urlLocation[2].split("=")[1];
+    let phoneNumber = this.urlLocation[3].split("=")[1];
     if ("0" == this.urlLocation[0].split("=")[1]) {
       city = "";
     } 
-    if ("0" == this.urlLocation[1].split("=")[1]) {
-      type = "";
-    }
+
    console.log(phoneNumber); 
     let commissionedHtml = 
       `<div class="textarea">
@@ -35,8 +35,8 @@ class CommissionedProcurement {
               <dl class="clearfix">
                 <dt><span class="red">* </span>性别：</dt>
                 <dd padding="">
-                  <input type="radio" value="男" class = "sex_val" name="sex" checked="checked" style="margin-right:30px;margin-left:20px;">男   
-                  <input type="radio" value="女" class = "sex_val" name="sex" style="margin-right:30px;margin-left:60px;">女
+                  <input type="radio" value="1" class = "sex_val" name="sex" checked="checked" style="margin-right:30px;margin-left:20px;">男   
+                  <input type="radio" value="0" class = "sex_val" name="sex" style="margin-right:30px;margin-left:60px;">女
                   <div class="fail" style="display: none" id="contact_name_fail">
                     <i class="icon_tip"></i>性别不能为空
                   </div>
@@ -63,7 +63,26 @@ class CommissionedProcurement {
 	            <dl class="clearfix">
                 <dt><span class="red">*</span> 油品类型：</dt>
                 <dd>
-                  <input type="text" class="text" id = "type_fail" value="${type}" maxlength="15">
+                  <select class="text" id = "type_fail" value="${type}" style = "width:262px;height:36px">`;
+                    if ("" == type) {
+                      commissionedHtml += `<option  value = "" selected = "selected">请选择油品</option>`;              
+                    } else if ("0" == type) {
+                      commissionedHtml += `<option  value = "0" selected = "selected">汽油</option>`;              
+                    } else if ("1" == type) {
+                      commissionedHtml += `<option  value = "1" selected = "selected">柴油</option>`;              
+                    } else if ("2" == type) {
+                      commissionedHtml += `<option  value = "2" selected = "selected">煤油</option>`;              
+                    } else if ("3" == type) {
+                      commissionedHtml += `<option  value = "3" selected = "selected">燃料油</option>`;              
+                    }
+                      commissionedHtml += ` 
+                        <option  value = "">请选择油品</option>
+                        <option value="1">柴油</option>
+                        <option value="2">煤油</option>
+                        <option value="0">汽油</option> 
+                        <option value="3">燃料油</option> `;
+                    commissionedHtml +=
+                  `</select>
                   <div class="fail" style="display: none" id="contact_mobile_fail">
                     <i class="icon_tip"></i>油品类型不能为空
                   </div>
@@ -81,7 +100,7 @@ class CommissionedProcurement {
               <dl class="clearfix">
                 <dt>&nbsp;</dt>
                 <dd>
-                  <input type="submit" class="btn1" id = "true_btn" value="确认">
+                  <input type="button" class="btn1" id = "true_btn" value="确认">
                   <span></span>
                 </dd>
               </dl>
@@ -103,7 +122,12 @@ class CommissionedProcurement {
     let phoneNumber = $("#phone_number").val();
     let regionBtn = $("#region").val();
     let typeFail = $("#type_fail").val();
+    let CN = $("#cn").val();
     let txtTrustContent = $("#txt_trust_content").val();
+    if ("" == txtTrustContent) {
+      alert("需求不能为空");
+      return;
+    }
     if (null == nameBtn.match(/^[\u4e00-\u9fffa0-9a-zA-Z]{1,32}$/)) {
       alert("请输入正确的姓氏！");
       return;
@@ -120,8 +144,36 @@ class CommissionedProcurement {
       alert("请输入油品类型！");
       return;
     } 
-    let data = {
-    
+    let Url = PROJECT_PATH + "lego/lego_user?servletName=getUserSecurityByUser";
+    let Get = ajax_assistant(Url, "", false, true, false);
+    console.log(Get);
+    let userUuid = "";
+    if("1" == Get.status) {
+      let result = JSON.parse(Get.result); 
+      userUuid = result[0].uuid;
+      let data = {
+        "user_uuid":userUuid,
+        "name":nameBtn,
+        "sex":sexValBtn,
+        "phone_number":phoneNumber,
+        "area":regionBtn,
+        "oil_type":typeFail,
+        "company_name":CN,
+        "content":txtTrustContent,
+        "record_datetime":"2017-04-05 00:00:00"
+      }
+      let commissioneUrl = PROJECT_PATH + "lego/lego_51zy?servletName=addTradeDemand";
+      let commissionGet = ajax_assistant(commissioneUrl, data, false, true, false);
+    console.log(commissionGet);
+      if("1" == commissionGet.status) {
+        window.location.href = "../help/help.html";
+        alert("您的需求已提交成功"); 
+      } else {
+        alert("添加失败");
+      }
+    } else {
+      alert("请先登录");
     }
+
   }
 }
