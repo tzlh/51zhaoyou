@@ -6,7 +6,6 @@ class DataList {
     this.data_type = ["找油","现货"];
     this.oil_type = ["汽油","柴油","煤油","燃料油"];
     this.level = ["普柴","轻燃","国III","国Iv","国V"];
-    this.code = ["0#","5#","10#","92#","93#","95#"];
     this.outputId = outputId;
     this.data = [
       {"order_number": "12345678910", "data_type": "找油", "oil_type": "汽油", "level": "普柴","code": "0#", "manufactor_name": "中国石化","address": "上海","record_datetime": "2017-05-06","uuid": "111"},
@@ -129,7 +128,7 @@ class DataList {
       if (null == remark) {
         remark = "";
       } else {
-        remark = result[0].remark;
+        remark = remark;
       }
       this.detailData = {"order_number": result[0].order_number, "data_type": result[0].data_type, "oil_type": result[0].oil_type, "level": result[0].level,"code": result[0].code, "manufactor_name": result[0].manufactor_name,"address":result[0].area,"price":  result[0].price, "quantity": result[0].quantity,"warehouse": result[0].warehouse,"trader_name": result[0].trader_name,"trader_phonenumber": result[0].trader_phonenumber,"record_datetime": record_datetime,"remark": remark};
     } else {
@@ -949,7 +948,7 @@ class DataList {
     if ("" != remark) {
       modifyTradeOilDataParam["remark"] = remark;
     } else {
-      modifyTradeOilDataParam["remark"] = "set_null";
+      modifyTradeOilDataParam["remark"] = set_null;
     }
     let modifyTradeOilDataData = ajax_assistant(modifyTradeOilDataUrl, modifyTradeOilDataParam, false, true, false);
     console.log(modifyTradeOilDataData);
