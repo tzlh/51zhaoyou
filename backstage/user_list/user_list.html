@@ -20,148 +20,16 @@
 			$(document).ready(function() {
 			  //日历插件
         widget_datepicker_init();
+        let userListArea = new UserList("#userListOutput");
+        userListArea.output();
+        userListArea.clearRawData();
+        userListArea.getUserSecurityByUser();
+        userListArea.fillVariableData();
+        userListArea.initEvent();
 			});
 		</script>
 	</head>
 	<body>
-    <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left" id = "indexTitle">价格变动</div>
-      <div class = "panel-body table-responsive material_entry_pd0">
-        <table  class = "table contact_management_mt20" id = "">
-          <tbody>
-            <tr>
-              <td>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon">用户名</div>
-                    <input type="text" class="form-control" value = "admin">
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <input type="password" class="form-control" value = "123456">
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td> 
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <select class = "form-control cfName" id = "">
-                    <option value = "1">正常</option>
-                    <option value = "2">异常</option>
-                  </select>
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td>
-                <button class = "btn btn-success" style = "margin-right: 15px;">
-                 <span class = "glyphicon glyphicon-info-sign"></span>
-               </button>
-                <button class = "btn btn-primary">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-              </td> 
-            </tr>
-            <tr>
-              <td>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon">用户名</div>
-                    <input type="text" class="form-control" value = "admin">
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <input type="password" class="form-control" value = "123456">
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td> 
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <select class = "form-control cfName" id = "">
-                    <option value = "1">正常</option>
-                    <option value = "2">异常</option>
-                  </select>
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td>
-                <button class = "btn btn-success" style = "margin-right: 15px;">
-                 <span class = "glyphicon glyphicon-info-sign"></span>
-               </button>
-                <button class = "btn btn-primary">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-              </td> 
-            </tr>
-            <tr>
-              <td>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon">用户名</div>
-                    <input type="text" class="form-control" value = "admin">
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <input type="password" class="form-control" value = "123456">
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td> 
-                <div class="input-group">
-                  <div class="input-group-addon">密码</div>
-                  <select class = "form-control cfName" id = "">
-                    <option value = "1">正常</option>
-                    <option value = "2">异常</option>
-                  </select>
-                  <span class="input-group-btn modifyFormulaName">
-                    <button class="btn btn-primary" type="button">
-                      <span class="glyphicon glyphicon-floppy-disk"></span>
-                    </button>
-                  </span>
-                </div>
-              </td>
-              <td>
-                <button class = "btn btn-success" style = "margin-right: 15px;">
-                 <span class = "glyphicon glyphicon-info-sign"></span>
-               </button>
-                <button class = "btn btn-primary">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-              </td> 
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="panel-footer bg-primary">&nbsp;</div>
-    </div>
+    <div class = "panel panel-default panel-primary" id = "userListOutput"></div>
 	</body>
 </html>

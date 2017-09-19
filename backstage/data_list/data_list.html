@@ -18,10 +18,14 @@
 		<title></title>
     <script>
       $(document).ready(function() {
+        //日历插件
+        widget_datepicker_init();
         let dataListArea = new DataList("#dataListOutput");
         dataListArea.output();
         dataListArea.clearRawData();
+        dataListArea.getTradeOilData();
         dataListArea.fillVariableData();
+        dataListArea.initEvent();
       });
     </script>
 	</head>
