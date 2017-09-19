@@ -120,7 +120,6 @@ function header_output(output_id) {
     '      <div class = "panel panel-primary header_radius header_mb0">'+
     '        <div class = "panel-heading clearfix header_radius">'+
     '          <div class="pull-left ">'+
-    '            <img src = "../../img/fjerp_logo_white.png" width = "24" class = "header_mr15">'+
     '            <span class="header_line">系统管理</span>'+
     '          </div>'+
     '          <div class = "pull-right">'+

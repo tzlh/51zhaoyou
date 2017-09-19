@@ -152,7 +152,7 @@ console.log(result);
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">性别</span>
-                    <input type="text" class="form-control" value = "${infoData[0].sex}" disabled = "disabled">
+                    <input type="text" class="form-control" value = "${this.sexVal[infoData[0].sex]}" disabled = "disabled">
                   </div>
                 </div>
               </div>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!-- saved from url=(0052)http://www.51zhaoyou.com/51/Member/updates_user.html -->
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>找油网 专注石油撮合交易与服务!</title>
     <link rel="shortcut icon" type="image/ico" href="http://www.51zhaoyou.com/51/Resources/Home/img/favicon.png">
+
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes,target-densitydpi=device-dpi">
     <meta name="baidu-site-verification" content="NKckbIDgU4">
     <meta name="description" content="找油网(51Zhaoyou.com),为油品供应商提供交易渠道及后续服务，为采购商找到便宜优质的油品货源，在这期间的一切交易服务行为都是免费的 。">
@@ -15,12 +17,32 @@
     <script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
     <script src = "../../js/toolkit.js"></script>
     <script src = "../../js/configure.js"></script>
-    <script type="text/javascript" src="member_account.js"></script>
+    <script src = "member_submit.js"></script>
+    <style>
+      .control-groupc select {
+         BORDER: #cccccc 1px solid;
+         PADDING: 4px 6px;
+         LINE-HEIGHT: 30px;
+         BACKGROUND-COLOR: #ffffff;
+         width: 198px;
+         DISPLAY: inline-block;
+         FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif;
+         height: 40px;
+         COLOR: #555555;
+         MARGIN-LEFT: 0px;
+         FONT-SIZE: 14px;
+         VERTICAL-ALIGN: middle;
+         border-radius: 0 4px 4px 0;
+         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+         transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+         padding-left: 10px;
+      } 
+    </style>
     <script>
-      let memberAccount = new MemberAccount();
+      let memberSubmit = new MemberSubmit();
       $(document).ready(function() {
-        memberAccount.accountFillData();
-        memberAccount.initEvent();
+        memberSubmit.fillData();
+        memberSubmit.initEvent();
       });
     </script>
   </head>
@@ -46,40 +68,40 @@
             </div>
             <div class="sell_r">
               <div class="sell_r_con">
-                <div class="sname">我的账户
-                </div>
-                <div class="acc_con">
-                  <div class="acc_con_l">
-                    <!--登录 start-->
-                    <div id="login2">
-                      <div class="control-groupc">
-                        <em>昵称：</em><span class="icon-userc"><img src="../../img/user.jpg"></span><input type="text" id="user_name" value="">
-                      </div>
-                      <div class="control-groupc">
-                        <em>性别：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="sex" value="">
-                      </div>
-                      <div class="control-groupc">
-                        <em>手机号：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="user_phone" value="">
-                      </div>
-                      <div class="clear"></div>
-                      <div class="control-groupc">
-                        <em>邮箱：</em><span class="icon-userc"><img src="../../img/email.jpg"></span><input type="text" id="email" value="">
-                      </div>
-                      <div class="control-groupc">
-                        <em>微信：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="weixin" value="">
-                      </div>                                                 
-                      <div class="control-groupc">
-                        <em>QQ：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="qq" value="">
-                      </div>
-                      <div class="control-groupc">
-                        <em>地址：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="address2" value="">
-                      </div>
-                      <div class="login-btn">
-                        <input id="login-btn" value="修改" type="button" name="sub">
-                      </div>
-                    </div>	
-                    <!--登录 end-->
+                  <div class="sname">
+                      我的账户
                   </div>
+                  <div class="acc_con">
+                    <div class="acc_con_l">
+                      <!--登录 start-->
+                      <div id="login2">
+                            
+                        <div class="control-group">
+                          <em>昵称：</em><span class="icon-user"><img src="../../img/user.jpg"></span><input type="text" name="user_name" id="user" value="">
+                        </div>
+                        <div class="radio_con">
+                          <em>性别：</em><input type="radio" name="sex" value="男">男<input type="radio" name="sex" value="女">女
+                        </div>
+                        <div class="control-group">
+                          <em>手机号：</em><span class="tel_he">13678827520</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="control-group">
+                          <em>邮箱：</em><span class="icon-user"><img src="../../img/email.jpg"></span><input type="text" name="email" value="">
+                        </div>
+                        <div class="control-group">
+                          <em>微信：</em><span class="tel_he"></span>
+                        </div>                                                 
+                        <div class="control-group">
+                          <em>地址：</em><span class="icon-user"><img src="../../img/oil.jpg"></span><input type="text" name="address2" id="add" value="">
+                        </div>
+                        <div class="login-btn">
+                          <input id="login-btn" value="提交" type="submit" name="submit">
+                        </div>
+                      </div>	
+                      <!--登录 end-->
+                  </div>
+                 
                 </div>
               </div>
             </div>

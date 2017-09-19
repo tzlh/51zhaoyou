@@ -6,7 +6,7 @@
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
     <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
     <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
-    <link rel="stylesheet" type="text/css" href="dynamic_data.css"/>
+    <link rel="stylesheet" type="text/css" href="../price_change/price_change.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
@@ -14,7 +14,7 @@
     <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
-    <script src="dynamic_data.js" type="text/javascript" charset="utf-8"></script>    
+    <script src="../price_change/price_change.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
       let priceChange = new PriceChange();
@@ -30,7 +30,7 @@
 	</head>
 	<body>
     <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left clearfix" id = "indexTitle">动态数据<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
+      <div class = "panel-heading text-left clearfix" id = "indexTitle">价格变动<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
       <div class = "panel-body table-responsive material_entry_pd0">
         <table  class = "table contact_management_mt20" id = "">
           <thead>
@@ -51,7 +51,7 @@
               <td>
                 <select class = "form-control cfName">
                   <option value = "0">汽油</option>
-                  <option value = "1">柴油</option> 
+                  <option value = "1">柴油</option>
                 </select>
               </td>
               <td> 
@@ -79,7 +79,7 @@
               <td>
                 <select class = "form-control cfName" id = "">
                   <option value = "0">汽油</option>
-                  <option value = "1">柴油</option> 
+                  <option value = "1">柴油</option>
                 </select>
               </td>
               <td> 
@@ -106,8 +106,9 @@
               <td>3</td>
               <td>
                 <select class = "form-control cfName" id = "">
-                  <option value = "0">汽油</option>
-                  <option value = "1">柴油</option> 
+                  <option value = "1">汽油</option>
+                  <option value = "2">柴油</option>
+                  <option value = "3">石油</option>
                 </select>
               </td>
               <td> 

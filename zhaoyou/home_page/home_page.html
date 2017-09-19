@@ -23,17 +23,19 @@
     <title>找油网 专注石油撮合交易与服务</title>
     <script>
     let homePage = new HomePage();
-    $(document).ready(function(){
+    $(document).ready(function() {
+      homePage.dieselServerData();
       //柴油价格
       homePage.dieselOilFillVariableData();
+      homePage.gasolineServerData();
       //汽油价格
       homePage.gasolineOilFillVariableData();
       //清空油品推荐数据
       homePage.clearRawData();
+      homePage.oilServerData();
       //油品推荐覆盖
       homePage.oilFillVariableData();
       homePage.initEvent();
-
     });
     </script>
   </head>

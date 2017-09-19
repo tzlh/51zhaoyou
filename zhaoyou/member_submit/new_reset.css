@@ -1,0 +1,21 @@
+/*格式化样式以及公用样式*/
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,address,big,cite,code,del,em,font,img,ins,small,strong,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,input,menu{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0;}
+a img,fieldset,img{border:0;}
+img{vertical-align:middle;}
+address,caption,cite,code,dfn,em,i,strong,th,var{font-style:normal;font-weight:normal;}
+ul,menu{list-style:none;}
+:focus{outline:0}
+em{font-style:normal; font-size:14px;text-align:right; float:left; height:35px; line-height:35px; width:85px;}
+span{font-weight:normal;}
+mark{background:none;}
+h1,h2,h3,h4,h5,h6,b{font-weight:normal;}
+/*去掉苹果的默认UI来渲染按钮*/
+input[type="submit"],input[type="reset"],input[type="button"],button{ -webkit-appearance:none;}
+a{ color:#fff; text-decoration:none;}
+a:hover{ color:#ef642b; text-decoration:none;}
+/*p{ color:#ef642b;}*/
+
+dl{ width:auto; height:30px; line-height:30px;}
+dl dt{ font-weight:bold;}
+dl dt dd{ font-size:12px;}

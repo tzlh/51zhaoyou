@@ -91,6 +91,9 @@ class PriceChange {
 
   initEvent () {
     let currentObj = this;
+    $(document).on("click", "#add_plus", function() {
+      currentObj.addShow($(this));
+    }); 
     //添加模态框
     $(document).on("click", "#add_price", function() {
       currentObj.addData($(this));
@@ -105,7 +108,31 @@ class PriceChange {
       currentObj.deleteData($(this));
     }); 
   }
-
+  addShow() {
+    $("#add_tr_table").html(`<td></td>
+              <td>
+                <select class = "form-control cfName" id = "type_all">
+                  <option value = "0">汽油</option>
+                  <option value = "1">柴油</option> 
+                </select>
+              </td>
+              <td> 
+                <div class="form-group">
+                  <input type="text" class="form-control" id = "price_weight"  value = "">
+                </div>
+              </td>
+              <td>
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control widget_datepicker establish_datetime" id = "data_time">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                </div>
+              </td>
+             <td style = "text-align:center">
+                <button class = "btn btn-primary" id = "add_price">
+                 <span class = "glyphicon glyphicon-floppy-disk"></span>
+               </button>
+              </td>`);
+  }
   addData () {
     let type = $("#type_all").val();
     let price = $("#price_weight").val();
@@ -136,6 +163,7 @@ class PriceChange {
       this.serverDataCover();
       this.fillVariableData();
       alert("添加成功");
+      $("#add_tr_table").html("");
     }
   }
 
