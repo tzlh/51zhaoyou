@@ -12,7 +12,6 @@ class MemberReCode {
 
   pswcheck() {
     let po1 = md5(document.getElementById("name1").value);
-    
     let url = PROJECT_PATH+"lego/lego_user?servletName=getUserSecurityByUser";
     let urlResult = ajax_assistant(url, "", false, true, false);
     let result = JSON.parse(urlResult.result);

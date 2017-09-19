@@ -18,7 +18,7 @@ class CommissionedProcurement {
    console.log(phoneNumber); 
     let commissionedHtml = 
       `<div class="textarea">
-            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content"></textarea>
+            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content" value = "${req}">${req}</textarea>
           </div>
           <div class="list">
             <div class="form">
@@ -144,6 +144,21 @@ class CommissionedProcurement {
       alert("请输入油品类型！");
       return;
     } 
+    function add0(m){return m<10?'0'+m:m }
+    function format(shijianchuo)
+    {
+      //shijianchuo是整数，否则要parseInt转换
+      var time = new Date(shijianchuo);
+      var y = time.getFullYear();
+      var m = time.getMonth()+1;
+      var d = time.getDate();
+      var h = time.getHours();
+      var mm = time.getMinutes();
+      var s = time.getSeconds();
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+    }
+    let stringTime = new Date();
+    let currentTiame = format(stringTime);
     let Url = PROJECT_PATH + "lego/lego_user?servletName=getUserSecurityByUser";
     let Get = ajax_assistant(Url, "", false, true, false);
     console.log(Get);
@@ -160,13 +175,13 @@ class CommissionedProcurement {
         "oil_type":typeFail,
         "company_name":CN,
         "content":txtTrustContent,
-        "record_datetime":"2017-04-05 00:00:00"
+        "record_datetime":currentTiame
       }
       let commissioneUrl = PROJECT_PATH + "lego/lego_51zy?servletName=addTradeDemand";
       let commissionGet = ajax_assistant(commissioneUrl, data, false, true, false);
-    console.log(commissionGet);
+      console.log(commissionGet);
       if("1" == commissionGet.status) {
-        window.location.href = "../help/help.html";
+        window.location.href = "../index/help.html";
         alert("您的需求已提交成功"); 
       } else {
         alert("添加失败");

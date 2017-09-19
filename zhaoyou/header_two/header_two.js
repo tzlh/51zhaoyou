@@ -28,7 +28,7 @@ class HeaderTwo {
                 let result = JSON.parse(urlResult.result);  
                 console.log(result);
                 // 已登录
-                content += `<span id="topbar_greet">Hi${result[0].name}! 欢迎来找油网</span><span id = "login_out">【退出】</span>`;
+                content += `<span id="topbar_greet">Hi${result[0].name}! 欢迎来找油网</span><a href = "../index/member_account.html">【会员中心】</a><span id = "login_out">【退出】</span>`;
               }
             } else {
               content += `Hi! 欢迎来找油网    
@@ -55,10 +55,8 @@ class HeaderTwo {
         <div class="logo_fr">
           <div id="search-2014">
             <div class="form">
-              <form action="http://www.51zhaoyou.com/51/Search/index.html" method="get" role="msearch1">
                 <input class="text" id="goobleSearch" name="goobleSearch" type="text" placeholder="请输入来源 种类 标号 级别  使用下划线区分">
-                <button class="button cw-icon"><i></i>搜索</button>
-              </form>
+                <a href = ""><button class="button cw-icon"><i></i>搜索</button></a>
             </div>
           </div>
           <div class="search_line">

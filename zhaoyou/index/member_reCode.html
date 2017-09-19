@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>找油网 专注石油撮合交易与服务!</title>
+    <link rel="shortcut icon" type="image/ico" href="../../img/favicon.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes,target-densitydpi=device-dpi">
+    <meta name="baidu-site-verification" content="NKckbIDgU4">
+    <meta name="description" content="找油网(51Zhaoyou.com),为油品供应商提供交易渠道及后续服务，为采购商找到便宜优质的油品货源，在这期间的一切交易服务行为都是免费的 。">
+    <meta name="keywords" content="找油网,找油商城,找油网,找油,zhaoyouwang,51zhaoyou,zhaoyou,无忧油品,无忧找油,滴滴找油,无忧油品网,wuyou油品网,资源单,东营油品,东营油品价格,东营油品网,柴油交易、煤油交易,汽油交易,找油网,油品交易,汽柴油,汽油,柴油,价格低廉,交易公司验三证,上海地区,提供售后服务,包括快递提单,催要发票。上海市黄浦区,找油网,上海找油科技,上海市柴油报价,上海市汽油报价,上海市汽柴油报价,燃料油报价,公司验三证,找油能源,zhaoyounengyuan,zhaoyoukeji,免费最便宜的油,最便宜的油,51zhaoyouwang,石洞口油库,中石油,中石化,中国石化,中化,中化工,中海油,中燃,海滨油库,东方储罐油库,金山油库,中国石化,中国石油,石油价格,石油报价,石油现货,化工原料">
+    <link href="../member_reCode/main.css" rel="stylesheet" type="text/css">
+    <link href="../member_reCode/new_style.css" rel="stylesheet" type="text/css">
+    <link href="../member_reCode/new_reset.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
+    <script src = "../../js/toolkit.js"></script>
+    <script src = "../../js/configure.js"></script>
+    <script type="text/javascript" src="../header_two/header_two.js"></script>
+    <script type="text/javascript" src="../footer_two/footer_two.js"></script>
+    <script type="text/javascript" src="../../js/md5.js"></script>
+    <script type="text/javascript" src="../member_reCode/member_reCode.js"></script>
+    <script>
+    let header = new HeaderTwo();
+    let footer = new FooterTwo();
+    let memberReCode = new MemberReCode();
+    $(document).ready(function() {
+      header.outPutHeaderContent("#header_content");
+      header.initEvent();
+      memberReCode.initEvent();   
+      footer.outPutFooterContent("#footer_content");
+    });
+    </script>
+  </head>
+  <body style="min-width: 1200px;">
+  <div id = "header_content"></div>
+<div class="content1">
+    <div class="wapper">
+        <div class="page_main">
+            <div class="page_bg">	
+                <div class="sell_l">
+                    <div class="menu_list">
+                        <p class="menu_head">我的订单</p>
+                        <div class="menu_body">
+                          <a href="member_buy.html">我是买家</a>
+                          <a href="member_sell.html">我是卖家</a>
+                        </div>
+                        <p class="menu_head">账户中心</p>
+                        <div class="menu_body">
+                            <a href="member_account.html">我的账户</a>
+                            <a href="member_reCode.html">修改密码</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sell_r">
+                    <div class="sell_r_con">
+                        <div class="sname">
+                            修改密码 
+                        </div>
+                        <div class="zc_con2">
+                            <!--登录 start-->
+                            <div id="login">
+                                <form id="loginform" action="http://www.51zhaoyou.com/51/Member/updatesCode.html" method="post" role="search" name="code">
+                                    <div class="control-groupc">
+                                        <em>密码：</em><span class="icon-userc"><img src="../../img/pwd.jpg"></span><input type="password" name="old" id="name1" placeholder="请输入密码"><div style="margin-left: 80px;" id="tishi"> </div>
+                                    </div>
+                                    <div class="control-groupc">
+                                        <em>新密码：</em><span class="icon-userc"><img src="../../img/pwd.jpg"></span><input type="password" name="new" id="name2" placeholder="请输入新密码"><div style="margin-left: 80px;" id="tishi1"> </div>
+                                    </div>
+                                    <div class="control-groupc">
+                                        <em>重复密码：</em><span class="icon-userc"><img src="../../img/pwd.jpg"></span><input type="password" name="new1" id="name3" placeholder="请输入重复密码"><div style="margin-left: 80px;" id="tishi2"> </div>
+                                    </div>
+                                    <div class="login-btn">
+                                        <input id="login-btn" value="提交" type="button">
+                                    </div>
+                                </form>
+                            </div>
+                            <!--登录 end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id = "footer_content"></div>
+</body>
+</html>

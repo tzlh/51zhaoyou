@@ -89,6 +89,56 @@ class HomePage {
       alert("油品数据获取失败");
     }
   }
+
+  //价格变动柱状图
+  heightChartServerData () {
+    //获取柴油
+    let data = {
+      "oil_type":"1"
+    };
+    let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
+    let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
+    let dataTimeServer = [];
+    let dataTime = [];
+    let dieselData = [];
+    console.log(dieselGet); 
+    if ("1" == dieselGet.status) {
+      if ("0" != dieselGet.count) {
+        let tmpArr = new Array();
+        let result = JSON.parse(dieselGet.result); 
+         result.sort(function(a, b) {
+           return new Date(a.record_datetime) - new Date(b.record_datetime);
+         });
+        console.log(result); 
+        for (let i = 0; i < result.length; i++) {
+          let currentTime = result[i].record_datetime;
+          currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
+          let nextTime = result[i+1].record_datetime;
+          nextTime = nextTime.substring(0, nextTime.indexOf(' ')).slice(5,nextTime.length);
+          if (currentTime != nextTime) {
+            dataTime.push(currentTime); 
+            dataTimeServer.push(result[i].record_datetime);
+            console.log(dataTime);
+            console.log(dataTimeServer);
+            console.log(dataTimeServer.length);
+          }
+        }
+        for (let i = 0; i < dataTimeServer.length; i++) {
+          let weightAll = "";
+          for (let j = 0; j < result.length; j++) {
+            if (dataTimeServer[i] == result[j].record_datetime) {
+              weightAll += Number(result[j].result[j].record_datetime);
+            }
+          }
+          dieselData.push(weightAll);
+        }
+            console.log(dieselData);
+      }
+    } else {
+      alert("数据获取失败");
+    } 
+  }
+
   //柴油服务器
   dieselServerData() {
     this.dieselOilData = {};
@@ -98,8 +148,7 @@ class HomePage {
     };
     let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
-        console.log(dieselGet); 
-    //
+    console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" == dieselGet.count) {
         this.dieselOilData = {};
@@ -267,6 +316,7 @@ class HomePage {
         loop:"cycle"
     });
     this.heightData();
+    this.heightChartServerData();
     //昨日成交量
     $("#oil").find(".bold").html(this.volumeYesterday);
     //用户交互需求提交
@@ -339,10 +389,10 @@ class HomePage {
              }
         },
         series: [{
-          name: '交易均价',
+          name: '汽油',
           data:this.priceFluctuationData2
         },{
-          name: '报价均价',
+          name: '柴油',
           data:this.priceFluctuationData1
         }
         ]
@@ -387,10 +437,10 @@ class HomePage {
         }
       },
       series: [{
-        name: '交易均价',
+        name: '汽油',
         data: this.gasolineFluctuationData2
       }, {
-        name: '报价均价',
+        name: '柴油',
         data: this.gasolineFluctuationData1
       }]
     });

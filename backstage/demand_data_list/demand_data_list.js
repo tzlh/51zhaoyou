@@ -1,7 +1,7 @@
 "use strict"; 
 class DemandDataList {
   constructor() {
-    this.type =["找油物流","自提"];
+    this.type =["找油物流","自提","其他"];
     //列表
     this.demandData = {
       "data":[

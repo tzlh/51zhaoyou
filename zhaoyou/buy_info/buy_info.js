@@ -46,7 +46,7 @@ class BuyInfo{
           if (null != result[i].remark){
             remark = result[i].remark;
           }
-          tmpArr[i] =  {"order_number":result[i].order_number, "data_time":result[i].record_datetime, "ascription":result[i].manufactor_name, "type":this.oilType[result[i].oil_type], "code":result[i].code, "quantity":result[i].quantity, "address":"油库不限", "price":result[i].price, "qiat":result[i].area, "remark":remark, "dealer":result[i].trader_name, "phnoe":result[i].trader_phonenumber,"level":this.levelType[result[i].level], "uuid":result[i].uuid};
+          tmpArr[i] =  {"order_number":result[i].order_number, "data_time":result[i].record_datetime, "ascription":result[i].manufactor_name, "type":this.oilType[result[i].oil_type], "code":result[i].code, "quantity":result[i].quantity, "address":result[i].warehouse, "price":result[i].price, "qiat":result[i].area, "remark":remark, "dealer":result[i].trader_name, "phnoe":result[i].trader_phonenumber,"level":this.levelType[result[i].level], "uuid":result[i].uuid};
         }
         this.buyInfoData["data"] = tmpArr;
       }
@@ -112,13 +112,19 @@ class BuyInfo{
     let orderNumber = $("#www").val();
     let buyType = $("#buy_type").val();
     let manufactor = $("#manufactor").val();
-    //let pot = $("#buy_pot").val();
+    let pot = $("#buy_pot").val();
     let data = {};
+    if("" != orderNumber) {
+      data["order_number"] = orderNumber;
+    }
     if("9" != buyType) {
       data["oil_type"] = buyType;
     }
     if("0" != manufactor) {
       data["manufactor_name"] = manufactor;
+    }
+    if("" != pot) {
+      data["warehouse"] = pot;
     }
     this.serverDataCover(data);
     this.buyInfoFillData();
