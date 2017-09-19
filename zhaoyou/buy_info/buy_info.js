@@ -6,18 +6,18 @@ class BuyInfo{
     //产品列表
     this.buyInfoData = {
       "data":[
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"200", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"100", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"300", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"400", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"500", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"600", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"700", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"800", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"900", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1000", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1100", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""},
-        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1200", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":""}]
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"200", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"100", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"300", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"400", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"500", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"600", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"700", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"800", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"900", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1000", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1100", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"},
+        {"order_number":"201702225115868", "data_time":"2017-05-06 00:00:00", "ascription":"中国石化", "type":"柴油", "code":"0#", "address":"油库不限", "price":"1200", "qiat":"常州地区", "dealer":"童经理", "phnoe":"15966666666","quantity":"100", "level":"0", "remark":"", "uuid":"001"}]
     };
   }
 
@@ -26,11 +26,11 @@ class BuyInfo{
     $("#buy_info_content").html("");
   }
   //数据库数据覆盖
-  serverDataCover() {
+  serverDataCover(data) {
     this.buyInfoData = {};
     //获取仓库
     let buyInfoUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
-    let buyInfoGet = ajax_assistant(buyInfoUrl, "", false, true, false);
+    let buyInfoGet = ajax_assistant(buyInfoUrl, data, false, true, false);
 
     //仓库
     if ("1" == buyInfoGet.status) {
@@ -42,10 +42,11 @@ class BuyInfo{
         console.log(result); 
         for (let i = 0; i < result.length; i++) {
           let remark = "";
+          let order_number = "";
           if (null != result[i].remark){
             remark = result[i].remark;
           }
-          tmpArr[i] =  {"order_number":"201702225115868", "data_time":result[i].record_datetime, "ascription":result[i].manufactor_name, "type":this.oilType[result[i].oil_type], "code":result[i].code, "quantity":result[i].quantity, "address":"油库不限", "price":result[i].price, "qiat":result[i].area, "remark":remark, "dealer":result[i].trader_name, "phnoe":result[i].trader_phonenumber,"level":this.levelType[result[i].level]};
+          tmpArr[i] =  {"order_number":result[i].order_number, "data_time":result[i].record_datetime, "ascription":result[i].manufactor_name, "type":this.oilType[result[i].oil_type], "code":result[i].code, "quantity":result[i].quantity, "address":"油库不限", "price":result[i].price, "qiat":result[i].area, "remark":remark, "dealer":result[i].trader_name, "phnoe":result[i].trader_phonenumber,"level":this.levelType[result[i].level], "uuid":result[i].uuid};
         }
         this.buyInfoData["data"] = tmpArr;
       }
@@ -70,7 +71,7 @@ class BuyInfo{
                </div>
                <div class="gh">
                  <div class="qiat"><font> ${this.buyInfoData.data[i].qiat}</font></div>                                             
-					 	    <div class="gonghuo" id="create-wicket"><a>供货</a></div> 
+					 	    <div class="gonghuo" id="create-wicket" uuid = "${this.buyInfoData.data[i].uuid}"><a>供货</a></div> 
                </div>
              </div>
              <div class="contacts">
@@ -94,16 +95,15 @@ class BuyInfo{
     });
     //点击供货
     $(document).on("click", "#create-wicket", function() {
-       currentObj.supplyCommodityFunc();
+       currentObj.supplyCommodityFunc($(this));
     });
     //关闭供货
     $(document).on("click", "#close_btn", function() {
-       currentObj.closeFunc();
+       currentObj.closeFunc($(this));
     });
     //提交供货
     $(document).on("click", "#mid_need", function() {
-       currentObj.submitFunc();
-    
+       currentObj.submitFunc($(this));
     });
 
   }
@@ -112,25 +112,33 @@ class BuyInfo{
     let orderNumber = $("#www").val();
     let buyType = $("#buy_type").val();
     let manufactor = $("#manufactor").val();
-    let pot = $("#buy_pot").val();
-    let data = {
-      "oil_type":buyType,
-      "manufactor_name":manufactor,
-      "warehouse":pot
+    //let pot = $("#buy_pot").val();
+    let data = {};
+    if("9" != buyType) {
+      data["oil_type"] = buyType;
     }
+    if("0" != manufactor) {
+      data["manufactor_name"] = manufactor;
+    }
+    this.serverDataCover(data);
+    this.buyInfoFillData();
   }
 
-  supplyCommodityFunc () {
+  supplyCommodityFunc (obj) {
+    let uuid = obj.attr("uuid");
     $("#graybg, #whitebg").css("display","block");
+    
     let offerVal = $("#skip_info_price").val("");
-    let tonnageVal = $("#skip_info_num").val("");   
+    let tonnageVal = $("#skip_info_num").val("");  
+    $("#mid_need").attr("uuid",uuid); 
   }
 
-  closeFunc () {
+  closeFunc (obj) {
     $("#graybg, #whitebg").css("display","none");  
   }
 
-  submitFunc() {
+  submitFunc(obj) {
+    let uuid = obj.attr("uuid");
     let offerVal = $("#skip_info_price").val();
     let tonnageVal = $("#skip_info_num").val();
     if(null == offerVal.match(/^[0-9]+\.{0,1}[0-9]{0,4}$/)){
@@ -140,10 +148,18 @@ class BuyInfo{
     if(null == tonnageVal.match(/^[0-9]+\.{0,1}[0-9]{0,4}$/)){
       alert("请输入正确的吨数");
       return;
+    };
+    let data = {
+      "uuid":uuid,
+      "price":offerVal,
+      "quantity":tonnageVal
     }; 
-    if ("123" == offerVal) {
-    $("#graybg, #whitebg").css("display","none");
-
+    let submitUrl = PROJECT_PATH+'lego/lego_51zy?servletName=modifyTradeOilData';
+    let submitResult = ajax_assistant(submitUrl, data, false, true, false);
+    console.log(submitResult);
+    if("1" == submitResult.status) {
+      alert("提交成功");
+      $("#graybg, #whitebg").css("display","none");
     }
   }
 }

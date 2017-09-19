@@ -12,7 +12,12 @@ class MemberReCode {
 
   pswcheck() {
     let po1 = md5(document.getElementById("name1").value);
-    let po2 = "e10adc3949ba59abbe56e057f20f883e";
+    
+    let url = PROJECT_PATH+"lego/lego_user?servletName=getUserSecurityByUser";
+    let urlResult = ajax_assistant(url, "", false, true, false);
+    let result = JSON.parse(urlResult.result);
+    let po2 = result[0].password;
+    console.log(result);
     if (po1 === po2) {
       document.getElementById("tishi").innerHTML = "<font color='green'>密码输入正确</font>";
     }
@@ -44,7 +49,18 @@ class MemberReCode {
     }
     else {
       document.getElementById("tishi2").innerHTML = "<font color='green'>密码格式输入正确</font>";
-      alert("提交服务器")      
+      let header_password_url = PROJECT_PATH+"lego/lego_user?servletName=modifyUserSecurityWithPasswordByUser";
+      let header_password_param = {
+        "password":name2
+      };
+      let header_edit_pass_result = ajax_assistant(header_password_url, header_password_param, false, true, false);
+      if ("1" == header_edit_pass_result.status) {
+        alert("修改密码成功");
+      } else {
+        alert("修改失败");
+        return;
+      }    
     }
+
   }
 };

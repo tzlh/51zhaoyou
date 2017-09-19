@@ -1,5 +1,8 @@
 "use strict";
 class Login {
+  constructor() {
+    this.login_redirect_url = null;
+  }
   isEmpty(str) {
       if (str != null && str.length > 0) {
           return true;
@@ -7,7 +10,7 @@ class Login {
       return false;
   }
   isPhone(str) {
-      if (/^1[3,5,8,7]\d{9}$/.test(str)) {
+      if (/^[0-9a-zA-Z_-]{4,16}$/.test(str)) {
           return true;
       }
       return false;
@@ -25,12 +28,12 @@ class Login {
       let sub = $("form[role=searchform]");
        //alert("");
       if (!this.isEmpty(mob) ) {
-          layer.tips('请输入手机号码！', '#mobile',{
+          layer.tips('请输入用户名！', '#mobile',{
               tips:2
           });
           return false;
       }else if (!this.isPhone(mob) ) {
-          layer.tips('请输入正确的手机号码！', '#mobile',{
+          layer.tips('请输入正确的用户名！', '#mobile',{
               tips:2
           });
           return false;
@@ -41,12 +44,26 @@ class Login {
           });
           return false;
       }
-      else if (pwd.length < 6 ) {
-          layer.tips('密码长度必须大于五位！', '#pwd',{
+      else if (pwd.length < 2 ) {
+          layer.tips('密码长度必须大于一位！', '#pwd',{
               tips:2
           });
           return false;
       } 
-       
+      let login_data = {
+        "name":mob,
+        "password":pwd
+      };
+      let login_url = PROJECT_PATH+'lego/lego_user?servletName=loginWithNamePassword';
+      let login_result = ajax_assistant(login_url, login_data, false, true, false);
+      if(1 == login_result.status) {
+        if (null == this.login_redirect_url) {
+          window.location.href = "index.html";
+        } else {
+          window.location.href = this.login_redirect_url;
+        }
+      } else {
+        alert('用户名或密码输入有误，请检查');
+      } 
   }; 
 };

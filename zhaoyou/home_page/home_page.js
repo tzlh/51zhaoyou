@@ -73,8 +73,6 @@ class HomePage {
     //获取
     let oilRecommendUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let oilRecommendGet = ajax_assistant(oilRecommendUrl, "", false, true, false);
-
-    //
     if ("1" == oilRecommendGet.status) {
       if ("0" == oilRecommendGet.count) {
         this.oilRecommendData = {};
@@ -169,6 +167,18 @@ class HomePage {
     let oilHtml = "";
     if(isJsonObjectHasData(this.dieselOilData)) {
       for (let i = 0; i < this.dieselOilData.data.length; i++) {
+        let ascription = "";
+        if ("中国石化" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zsh.jpg";
+        } else if ("中国石油" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zsy.jpg"; 
+        } else if ("中国海油" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zhy.jpg"; 
+        } else if ("中国化工" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zhg.jpg"; 
+        } else if ("中国中化" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zh.jpg"; 
+        }
         let dataTime = this.dieselOilData.data[i].data_time;
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
@@ -179,9 +189,8 @@ class HomePage {
                  <span class="fr">${dataTime}</span>
                </div>
                <div class="contact">
-                 <span class="fl">${this.dieselOilData.data[i].ascription}</span>
+                 <span class="fl"><img src="${ascription}" width="100px" height="40px"></span>
                  <span class="font24 fl marT10 orange">${this.dieselOilData.data[i].price}</span>
-                
                </div>
                <div class="contact">
                  <span class="fl brand">${this.dieselOilData.data[i].code}${this.levelType[this.dieselOilData.data[i].level]}&nbsp;${this.dieselOilData.data[i].oil_type}</span>
@@ -200,6 +209,18 @@ class HomePage {
     let oilHtml = "";
     if(isJsonObjectHasData(this.gasolineOilData)) {
       for (let i = 0; i < this.gasolineOilData.data.length; i++) {
+        let ascription = "";
+        if ("中国石化" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zsh.jpg";
+        } else if ("中国石油" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zsy.jpg"; 
+        } else if ("中国海油" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zhy.jpg"; 
+        } else if ("中国化工" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zhg.jpg"; 
+        } else if ("中国中化" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zh.jpg"; 
+        }
         let dataTime = this.gasolineOilData.data[i].data_time;
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
@@ -210,7 +231,7 @@ class HomePage {
                  <span class="fr">${dataTime}</span>
                </div>
                <div class="contact">
-                 <span class="fl">${this.gasolineOilData.data[i].ascription}</span>
+                 <span class="fl"><img src="${ascription}" width="100px" height="40px"></span>
                  <span class="font24 fl marT10 orange">${this.gasolineOilData.data[i].price}</span>
                 
                </div>
@@ -270,7 +291,7 @@ class HomePage {
     let typeSelect = $("#type_select").val();
     let req = $("#req").val();
     let phonoNumber = $("#phono_number").val();
-    window.location.href = "../commissioned_procurement_requirements/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
+    window.location.href = "../index/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
   }
 
   //height价格变动
