@@ -81,10 +81,9 @@ class MemberAccount {
        <div class="control-groupc">
          <em>地址：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="address2" value="${address}" readonly="readonly">
        </div>
-       <div class="login-btn">
-         <input id="login-btn" value="修改" type="button">
+       <div class="login-btn"><a href = "../index/member_submit.html">
+         <input id="login-btn" value="修改" type="button"></a>
        </div>`;
     $("#login2").html(accountHtml);
-  
   }
 };

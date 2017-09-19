@@ -1,5 +1,5 @@
 "use strict";
-class Footer() {
+class Footer {
   //输出文本
   outPutFooterContent (contentId) {
     let content = `
@@ -18,33 +18,33 @@ class Footer() {
               <li>
                 <dl>
                   <dt>我要买油</dt>
-                  <dd><a target="_blank" href="/51/Help/index.html">我是买家，如何找货</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">委托人工帮您找货</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">现货搜索</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">我是买家，如何找货</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">委托人工帮您找货</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">现货搜索</a></dd>
                 </dl>
               </li>
               <li>
                 <dl>
                   <dt>我要卖油</dt>
-                  <dd><a target="_blank" href="/51/Help/index.html">我是卖家，如何销售</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">如何吸引更多买家</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">我是卖家，如何销售</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">如何吸引更多买家</a></dd>
                 </dl>
               </li>
               <li>
                 <dl>
                   <dt>交易指南</dt>
-                  <dd><a target="_blank" href="/51/Help/index.html">怎样保证交易安全</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">友情提示</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">我们的报价来源</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">怎样保证交易安全</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">友情提示</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">我们的报价来源</a></dd>
                 </dl>
               </li>
               <li>
                 <dl>
                   <dt>常见问题</dt>
-                  <dd><a target="_blank" href="/51/Help/index.html">无法登陆</a>/<a target="_blank" href="/51/Help/index.html">忘记密码</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">会员中心</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">修改账号信息</a></dd>
-                  <dd><a target="_blank" href="/51/Help/index.html">加找油微信</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">无法登陆</a>/<a target="_blank" href="../index/help.html">忘记密码</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">会员中心</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">修改账号信息</a></dd>
+                  <dd><a target="_blank" href="../index/help.html">加找油微信</a></dd>
                 </dl>
               </li>
               <li style=" height:145px;">

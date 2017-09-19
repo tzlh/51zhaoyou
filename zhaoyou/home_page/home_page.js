@@ -73,8 +73,6 @@ class HomePage {
     //获取
     let oilRecommendUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let oilRecommendGet = ajax_assistant(oilRecommendUrl, "", false, true, false);
-
-    //
     if ("1" == oilRecommendGet.status) {
       if ("0" == oilRecommendGet.count) {
         this.oilRecommendData = {};
@@ -91,6 +89,56 @@ class HomePage {
       alert("油品数据获取失败");
     }
   }
+
+  //价格变动柱状图
+  heightChartServerData () {
+    //获取柴油
+    let data = {
+      "oil_type":"1"
+    };
+    let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
+    let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
+    let dataTimeServer = [];
+    let dataTime = [];
+    let dieselData = [];
+    console.log(dieselGet); 
+    if ("1" == dieselGet.status) {
+      if ("0" != dieselGet.count) {
+        let tmpArr = new Array();
+        let result = JSON.parse(dieselGet.result); 
+         result.sort(function(a, b) {
+           return new Date(a.record_datetime) - new Date(b.record_datetime);
+         });
+        console.log(result); 
+        for (let i = 0; i < result.length; i++) {
+          let currentTime = result[i].record_datetime;
+          currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
+          let nextTime = result[i+1].record_datetime;
+          nextTime = nextTime.substring(0, nextTime.indexOf(' ')).slice(5,nextTime.length);
+          if (currentTime != nextTime) {
+            dataTime.push(currentTime); 
+            dataTimeServer.push(result[i].record_datetime);
+            console.log(dataTime);
+            console.log(dataTimeServer);
+            console.log(dataTimeServer.length);
+          }
+        }
+        for (let i = 0; i < dataTimeServer.length; i++) {
+          let weightAll = "";
+          for (let j = 0; j < result.length; j++) {
+            if (dataTimeServer[i] == result[j].record_datetime) {
+              weightAll += Number(result[j].result[j].record_datetime);
+            }
+          }
+          dieselData.push(weightAll);
+        }
+            console.log(dieselData);
+      }
+    } else {
+      alert("数据获取失败");
+    } 
+  }
+
   //柴油服务器
   dieselServerData() {
     this.dieselOilData = {};
@@ -100,8 +148,7 @@ class HomePage {
     };
     let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
-        console.log(dieselGet); 
-    //
+    console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" == dieselGet.count) {
         this.dieselOilData = {};
@@ -169,6 +216,18 @@ class HomePage {
     let oilHtml = "";
     if(isJsonObjectHasData(this.dieselOilData)) {
       for (let i = 0; i < this.dieselOilData.data.length; i++) {
+        let ascription = "";
+        if ("中国石化" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zsh.jpg";
+        } else if ("中国石油" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zsy.jpg"; 
+        } else if ("中国海油" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zhy.jpg"; 
+        } else if ("中国化工" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zhg.jpg"; 
+        } else if ("中国中化" == this.dieselOilData.data[i].ascription) {
+          ascription = "../../img/zh.jpg"; 
+        }
         let dataTime = this.dieselOilData.data[i].data_time;
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
@@ -179,9 +238,8 @@ class HomePage {
                  <span class="fr">${dataTime}</span>
                </div>
                <div class="contact">
-                 <span class="fl">${this.dieselOilData.data[i].ascription}</span>
+                 <span class="fl"><img src="${ascription}" width="100px" height="40px"></span>
                  <span class="font24 fl marT10 orange">${this.dieselOilData.data[i].price}</span>
-                
                </div>
                <div class="contact">
                  <span class="fl brand">${this.dieselOilData.data[i].code}${this.levelType[this.dieselOilData.data[i].level]}&nbsp;${this.dieselOilData.data[i].oil_type}</span>
@@ -200,6 +258,18 @@ class HomePage {
     let oilHtml = "";
     if(isJsonObjectHasData(this.gasolineOilData)) {
       for (let i = 0; i < this.gasolineOilData.data.length; i++) {
+        let ascription = "";
+        if ("中国石化" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zsh.jpg";
+        } else if ("中国石油" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zsy.jpg"; 
+        } else if ("中国海油" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zhy.jpg"; 
+        } else if ("中国化工" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zhg.jpg"; 
+        } else if ("中国中化" == this.gasolineOilData.data[i].ascription) {
+          ascription = "../../img/zh.jpg"; 
+        }
         let dataTime = this.gasolineOilData.data[i].data_time;
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
@@ -210,7 +280,7 @@ class HomePage {
                  <span class="fr">${dataTime}</span>
                </div>
                <div class="contact">
-                 <span class="fl">${this.gasolineOilData.data[i].ascription}</span>
+                 <span class="fl"><img src="${ascription}" width="100px" height="40px"></span>
                  <span class="font24 fl marT10 orange">${this.gasolineOilData.data[i].price}</span>
                 
                </div>
@@ -246,6 +316,7 @@ class HomePage {
         loop:"cycle"
     });
     this.heightData();
+    this.heightChartServerData();
     //昨日成交量
     $("#oil").find(".bold").html(this.volumeYesterday);
     //用户交互需求提交
@@ -270,7 +341,7 @@ class HomePage {
     let typeSelect = $("#type_select").val();
     let req = $("#req").val();
     let phonoNumber = $("#phono_number").val();
-    window.location.href = "../commissioned_procurement_requirements/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
+    window.location.href = "../index/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
   }
 
   //height价格变动
@@ -318,10 +389,10 @@ class HomePage {
              }
         },
         series: [{
-          name: '交易均价',
+          name: '汽油',
           data:this.priceFluctuationData2
         },{
-          name: '报价均价',
+          name: '柴油',
           data:this.priceFluctuationData1
         }
         ]
@@ -366,10 +437,10 @@ class HomePage {
         }
       },
       series: [{
-        name: '交易均价',
+        name: '汽油',
         data: this.gasolineFluctuationData2
       }, {
-        name: '报价均价',
+        name: '柴油',
         data: this.gasolineFluctuationData1
       }]
     });

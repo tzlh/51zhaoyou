@@ -7,7 +7,7 @@ class Register {
       return false;
   }
   isPhone(str) {
-      if (/^1[3,5,8,7]\d{9}$/.test(str)) {
+      if (/^[0-9a-zA-Z_-]{4,16}$/.test(str)) {
           return true;
       }
       return false;
@@ -25,12 +25,12 @@ class Register {
     let pwd2 = $('#mima2').val();
      //alert("");
     if (!this.isEmpty(mob) ) {
-        layer.tips('请输入手机号码！', '#mobile',{
+        layer.tips('请输入用户名！', '#mobile',{
             tips:2
         });
         return false;
     }else if (!this.isPhone(mob) ) {
-        layer.tips('请输入正确的手机号码！', '#mobile',{
+        layer.tips('请输入正确的用户名！', '#mobile',{
             tips:2
         });
         return false;

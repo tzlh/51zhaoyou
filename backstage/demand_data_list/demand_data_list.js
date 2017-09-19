@@ -1,7 +1,7 @@
 "use strict"; 
 class DemandDataList {
   constructor() {
-    this.type =["找油物流","自提"];
+    this.type =["找油物流","自提","其他"];
     //列表
     this.demandData = {
       "data":[
@@ -99,6 +99,8 @@ class DemandDataList {
   }
   
   infoModal(obj) {
+    let uuid = obj.attr("uuid");
+    window.location.href = "../../zhaoyou/index/detail_info.html?uuid=${uuid}";
   }
   deleteModal(obj) {
     let uuid = obj.attr("uuid");

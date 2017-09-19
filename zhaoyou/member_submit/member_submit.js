@@ -12,43 +12,90 @@ class MemberSubmit {
     let accountUrl = PROJECT_PATH + "lego/lego_user?servletName=getUserSecurityByUser";
     let accountGet = ajax_assistant(accountUrl, "", false, true, false);
     let sexType = ["女","男"];
-    let Name = "";
+    let nickName = "";
+    let sex = "";
+    let phoneNumber = "";
+    let email = "";
+    let wechatAccount = "";
+    let qqAccount = "";
+    let address = "";
     if ("1" == accountGet.status) {
       let result = JSON.parse(accountGet.result);
-      Name = result[0].name;
+      console.log(result);
+      let data = {
+        "user_uuid":result[0].uuid
+      };
+      let userUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
+      let userGet = ajax_assistant(userUrl, data, false, true, false);
+      let userResult = JSON.parse(userGet.result);
+
+      console.log(userResult);
+      for (let i = 0; i < userResult.length; i++) {
+        if (userResult[i].user_uuid == result[0].uuid) {
+          if (null != userResult[i].nick_name) {
+            nickName = userResult[i].nick_name;
+          }
+          if (null != userResult[i].sex) {
+            sex = userResult[i].sex;
+          }
+          if (null != userResult[i].phone_number) {
+            phoneNumber = userResult[i].phone_number;
+          }
+          if (null != userResult[i].email) {
+            email = userResult[i].email;
+          }
+          if (null != userResult[i].wechat_account) {
+            wechatAccount = userResult[i].wechat_account;
+          }
+          if (null != userResult[i].qq_account) {
+            qqAccount = userResult[i].qq_account;
+          }
+          if (null != userResult[i].address) {
+            address = userResult[i].address;
+          }
+        }
+      }
+
+      console.log(JSON.parse(userGet.result));
     }
     let accountHtml = 
       `<div class="control-groupc">
-         <em>昵称：</em><span class="icon-userc"><img src="../../img/user.jpg"></span><input type="text" id="user_name" value="${Name}">
+         <em>昵称：</em><span class="icon-userc"><img src="../../img/user.jpg"></span><input type="text" id="user_name" value="${nickName}">
        </div>
        <div class="control-groupc">
          <em>性别：</em><span class="icon-userc"><img src="../../img/user.jpg"></span>
-         <select id="sex" value="" >
-           <option value ="0">女</option>
-           <option value ="1">男</option>
-         </select>
+         <select id="sex" value="${sex}" >`;
+           if ("0" == sex) {
+             accountHtml += `<option value ="0" selected = "selected">女</option>
+                             <option value ="1">男</option>`;
+           }
+           if ("1" == sex) {
+             accountHtml += `<option value ="0">女</option>
+                             <option value ="1" selected = "selected">男</option>`;
+           }
+          accountHtml +=
+         `</select>
        </div>
        <div class="control-groupc">
-         <em>手机号：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="user_phone" value="">
+         <em>手机号：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="user_phone" value="${phoneNumber}">
        </div>
        <div class="clear"></div>
        <div class="control-groupc">
-         <em>邮箱：</em><span class="icon-userc"><img src="../../img/email.jpg"></span><input type="text" id="email" value="">
+         <em>邮箱：</em><span class="icon-userc"><img src="../../img/email.jpg"></span><input type="text" id="email" value="${email}">
        </div>
        <div class="control-groupc">
-         <em>微信：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="weixin" value="">
+         <em>微信：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="weixin" value="${wechatAccount}">
        </div>                                                 
        <div class="control-groupc">
-         <em>QQ：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="qq" value="">
+         <em>QQ：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="qq" value="${qqAccount}">
        </div>
        <div class="control-groupc">
-         <em>地址：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="address2" value="">
+         <em>地址：</em><span class="icon-userc"><img src="../../img/oil.jpg"></span><input type="text" id="address2" value="${address}">
        </div>
        <div class="login-btn">
          <input id="login-btn" value="提交" type="button">
        </div>`;
     $("#login2").html(accountHtml);
-  
   }
 
   editAccount() {

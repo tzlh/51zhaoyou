@@ -29,8 +29,8 @@ class EntrustDataList {
     //获取用户
     let nameUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
     let nameGet = ajax_assistant(nameUrl, "", false, true, false);
-console.log(nameGet);
-console.log(Get);
+    console.log(nameGet);
+    console.log(Get);
     //仓库
     if ("1" == Get.status) {
       if ("0" == Get.count) {
@@ -38,7 +38,7 @@ console.log(Get);
       } else {
         let tmpArr = new Array();
         let result = JSON.parse(Get.result);    
-console.log(result);
+        console.log(result);
         for (let i = 0; i < result.length; i++) {
           tmpArr[i] = {"name":result[i].name, "sex":this.sexVal[result[i].sex], "adrress":result[i].area, "phone":result[i].phone_number, "uuid":result[i].uuid};
           if ("1" == nameGet.status) {
