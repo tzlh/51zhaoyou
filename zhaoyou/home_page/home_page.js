@@ -92,6 +92,7 @@ class HomePage {
 
   //价格变动柱状图
   heightChartServerData () {
+    let currentObj = this;
     //获取柴油
     let data = {
       "oil_type":"1"
@@ -99,7 +100,9 @@ class HomePage {
     let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
     let dataTimeServer = [];
+    let dataTimeServerC = [];
     let dataTime = [];
+    let dataTimeC = [];
     let dieselData = [];
     console.log(dieselGet); 
     if ("1" == dieselGet.status) {
@@ -108,31 +111,74 @@ class HomePage {
         let result = JSON.parse(dieselGet.result); 
          result.sort(function(a, b) {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
-         });
+         }).reverse();
         console.log(result); 
         for (let i = 0; i < result.length; i++) {
           let currentTime = result[i].record_datetime;
           currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
-          let nextTime = result[i+1].record_datetime;
-          nextTime = nextTime.substring(0, nextTime.indexOf(' ')).slice(5,nextTime.length);
-          if (currentTime != nextTime) {
-            dataTime.push(currentTime); 
-            dataTimeServer.push(result[i].record_datetime);
-            console.log(dataTime);
-            console.log(dataTimeServer);
-            console.log(dataTimeServer.length);
+          dataTime.push(currentTime); 
+        }
+        //去重
+        for(let i=0;i<dataTime.length;i++){
+          if(dataTimeC.indexOf(dataTime[i])<0){
+            dataTimeC.push(dataTime[i])
           }
         }
-        for (let i = 0; i < dataTimeServer.length; i++) {
-          let weightAll = "";
+        ;
+        this.priceFluctuationId = dataTimeC.reverse();
+        this.gasolineFluctuationId = dataTimeC.reverse();
+        for (let i = 0; i < dataTimeC.length; i++) {
+          let weightAll = 0;
+          let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
-            if (dataTimeServer[i] == result[j].record_datetime) {
-              weightAll += Number(result[j].result[j].record_datetime);
+            if (timeSplit == result[j].record_datetime) {
+              weightAll += Number(result[j].quantity);
             }
           }
           dieselData.push(weightAll);
         }
             console.log(dieselData);
+        this.priceFluctuationData1 = dieselData.reverse();
+        this.gasolineFluctuationData1 = dieselData.reverse();
+            console.log(this.priceFluctuationId);
+            console.log(this.priceFluctuationData1)
+      }
+    } else {
+      alert("数据获取失败");
+    } 
+    //获取汽油
+    let gasolineData = {
+      "oil_type":"0"
+    };
+    let gasolinelUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
+    let gasolineGet = ajax_assistant(gasolinelUrl, gasolineData, false, true, false);
+    let gDataTimeServer = [];
+    let gDataTimeServerC = [];
+    let gDataTime = [];
+    let gDataTimeC = [];
+    let gDieselData = [];
+    console.log(gasolineGet); 
+    if ("1" == gasolineGet.status) {
+      if ("0" != gasolineGet.count) {
+        let tmpArr = new Array();
+        let result = JSON.parse(gasolineGet.result); 
+         result.sort(function(a, b) {
+           return new Date(a.record_datetime) - new Date(b.record_datetime);
+         }).reverse();
+        console.log(result); 
+        for (let i = 0; i < dataTimeC.length; i++) {
+          let weightAll = 0;
+          let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
+          for (let j = 0; j < result.length; j++) {
+            if (timeSplit == result[j].record_datetime) {
+              weightAll += Number(result[j].quantity);
+            }
+          }
+          gDieselData.push(weightAll);
+        }
+            console.log(dieselData);
+        this.priceFluctuationData2 = gDieselData.reverse();
+        this.gasolineFluctuationData2 = gDieselData.reverse();
       }
     } else {
       alert("数据获取失败");
@@ -300,6 +346,8 @@ class HomePage {
     let currentObj = this;
     this.flicker();
     this.tabClick();
+    //柴油
+    this.heightChartServerData();
     $(".productshow .scrollcontainer li:eq(2)").css("border-right","0px");
     //四、循环切换;
     $(".productshow").Xslider({
@@ -316,13 +364,14 @@ class HomePage {
         loop:"cycle"
     });
     this.heightData();
-    this.heightChartServerData();
+
     //昨日成交量
     $("#oil").find(".bold").html(this.volumeYesterday);
     //用户交互需求提交
     $(document).on("click", "#submitBtn", function() {
       currentObj.submitBtnFunc();
     });
+
   }
 
   flicker () {
