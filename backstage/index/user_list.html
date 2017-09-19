@@ -6,7 +6,7 @@
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
     <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
     <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
-    <link rel="stylesheet" type="text/css" href="user_list.css"/>
+    <link rel="stylesheet" type="text/css" href="../user_list/user_list.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.js"></script>
@@ -14,11 +14,13 @@
     <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
-    <script src="user_list.js" type="text/javascript" charset="utf-8"></script>    
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src="../user_list/user_list.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
 			$(document).ready(function() {
-			  //日历插件
+	      check_login();
+			   //日历插件
         widget_datepicker_init();
         let userListArea = new UserList("#userListOutput");
         userListArea.output();

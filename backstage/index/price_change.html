@@ -14,11 +14,13 @@
     <script src = "../../plugin/jquery_timepicker_addon/1.6.3/init.js"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>  
     <script src="../price_change/price_change.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
       let priceChange = new PriceChange();
 			$(document).ready(function() {
+		    check_login();	  
 			  //日历插件
         widget_datepicker_init();
         priceChange.clearRawData();

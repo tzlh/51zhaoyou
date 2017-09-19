@@ -23,9 +23,23 @@
   <script src = "../header/header.js"></script>
   <script type = "text/javascript">
   $(document).ready(function() {
+    check_login();
     header_output("#header");
     nav_menu_output("#nav_menu");
- 
+    $(document).on("click", "#header_edit_password_prop", function() {
+      header_edit_password_func();
+    });
+    //保存密码
+    $(document).on("click", "#header_edit_password_btn", function() {
+      header_edit_password_save_func();
+    });
+    //退出
+    $(document).on("click", "#header_log_out_modle", function() {
+      header_edit_log_out_modle_func();
+    });
+    $(document).on("click", "#header_log_out_btn", function() {
+      header_log_out_data_func();
+    });
   }); 
   </script>
   <style type="text/css">

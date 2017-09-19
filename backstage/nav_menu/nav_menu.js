@@ -19,8 +19,8 @@ function nav_menu_output(output_id) {
     '        <a class = "list-group-item clearfix active">油品数据管理<span class = "glyphicon glyphicon-chevron-down pull-right"></span></a>'+
     '        <a class = "list-group-item clearfix nav_pl30 nav_bgddd">找油商城/现货搜索<span class = "glyphicon glyphicon-chevron-down pull-right nav_colorfff"></span></a>'+
 
-    '        <a href = "../index/data_list.html" class = "list-group-item clearfix nav_pl45">添加数据</a>'+
-    '        <a href = "../index/data_list.html" class = "list-group-item clearfix nav_pl45">数据列表</a>'+
+    '        <a href = "../index/data_list.html" target = "_blank" class = "list-group-item clearfix nav_pl45">添加数据</a>'+
+    '        <a href = "../index/data_list.html" target = "_blank" class = "list-group-item clearfix nav_pl45">数据列表</a>'+
     '        <a class = "list-group-item clearfix active">油品委托<span class = "glyphicon glyphicon-chevron-down pull-right"></span></a>'+
     '        <a href = "../index/entrust_data_list.html" target = "_blank" class = "list-group-item clearfix nav_pl30">委托需求</a>'+
     '        <a href = "../index/demand_data_list.html" target = "_blank" class = "list-group-item clearfix nav_pl30">委托信息</a>'+

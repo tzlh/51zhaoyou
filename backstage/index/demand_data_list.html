@@ -7,13 +7,16 @@
     <link rel="stylesheet" type="text/css" href="../demand_data_list/demand_data_list.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
+    
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <script src="../demand_data_list/demand_data_list.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
       let demandDataList = new DemandDataList();
 			$(document).ready(function() {
+			  check_login();
         demandDataList.clearRawData();
         demandDataList.serverDataCover();
         demandDataList.fillVariableData();
