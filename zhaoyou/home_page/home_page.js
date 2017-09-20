@@ -124,7 +124,6 @@ class HomePage {
             dataTimeC.push(dataTime[i])
           }
         }
-        ;
         this.priceFluctuationId = dataTimeC.reverse();
         this.gasolineFluctuationId = dataTimeC.reverse();
         for (let i = 0; i < dataTimeC.length; i++) {
@@ -132,7 +131,7 @@ class HomePage {
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
             if (timeSplit == result[j].record_datetime) {
-              weightAll += Number(result[j].quantity);
+              weightAll += Number(result[j].price);
             }
           }
           dieselData.push(weightAll);
@@ -171,7 +170,7 @@ class HomePage {
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
             if (timeSplit == result[j].record_datetime) {
-              weightAll += Number(result[j].quantity);
+              weightAll += Number(result[j].price);
             }
           }
           gDieselData.push(weightAll);

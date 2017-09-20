@@ -27,8 +27,14 @@ class MemberSubmit {
       };
       let userUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
       let userGet = ajax_assistant(userUrl, data, false, true, false);
+      if ("1" == userGet.status) {
+        if ("0" == userGet.count) {
+          //添加
+        } else {
+          //修改
+        }
+      }
       let userResult = JSON.parse(userGet.result);
-
       console.log(userResult);
       for (let i = 0; i < userResult.length; i++) {
         if (userResult[i].user_uuid == result[0].uuid) {
@@ -101,10 +107,12 @@ class MemberSubmit {
   editAccount() {
     let accountUrl = PROJECT_PATH + "lego/lego_user?servletName=getUserSecurityByUser";
     let accountGet = ajax_assistant(accountUrl, "", false, true, false);
-    let uuid = "";
+    let userChackUrl = "";
+    let userUuid = "";
     if ("1" == accountGet.status) {
       let result = JSON.parse(accountGet.result);
-      uuid = result[0].uuid;
+      userUuid = result[0].uuid;
+
     }
     let userName = document.getElementById("user_name").value;
     let sex = document.getElementById("sex").value;
@@ -146,7 +154,7 @@ class MemberSubmit {
       alert("修改成功");
     }
     let data = {
-      "user_uuid":uuid,
+      "user_uuid":userUuid,
       "nick_name":userName,
       "sex":sex,
       "phone_number":phoneNumber,
@@ -155,13 +163,30 @@ class MemberSubmit {
       "qq_account":qq,
       "address":address2
     };
-    let addUrl = PROJECT_PATH + "lego/lego_51zy?servletName=addUserInfo";
+    let dataChck = {
+      "user_uuid":userUuid
+    };
+    let userUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getUserInfo";
+    let userGet = ajax_assistant(userUrl, dataChck, false, true, false);
+    console.log(userGet);
+    if ("1" == userGet.status) {
+      if ("0" == userGet.count) {
+        //添加
+        userChackUrl = "lego/lego_51zy?servletName=addUserInfo";
+      } else {
+        //修改
+        let resultUser = JSON.parse(userGet.result);
+        data["uuid"] = resultUser[0].uuid;
+        userChackUrl = "lego/lego_51zy?servletName=modifyUserInfo";
+      }
+    }
+    let addUrl = PROJECT_PATH + userChackUrl;
     let addGet = ajax_assistant(addUrl, data, false, true, false);
     console.log(addGet);
     if ("1" == addGet.status) {
-      alert("添加成功");
+      alert("提交成功");
     } else {
-      alert("添加失败");
+      alert("提交失败");
     }
   }
   //文本输出
