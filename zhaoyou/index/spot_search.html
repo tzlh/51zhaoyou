@@ -4,14 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>找油网 专注石油撮合交易与服务!</title>
     <link rel="shortcut icon" type="image/ico" href="http://www.51zhaoyou.com/51/Resources/Home/img/favicon.png">
-    <link href="spot_search_css/main.css" rel="stylesheet" type="text/css">
+    <link href="../spot_search/spot_search_css/main.css" rel="stylesheet" type="text/css">
     <!--关于我们样式-->
-    <link href="spot_search_css/new_style.css" rel="stylesheet" type="text/css">
-    <link href="spot_search_css/new_reset.css" rel="stylesheet" type="text/css">
-    <link href="spot_search_css/about.css" rel="stylesheet" type="text/css">
-    <link href="spot_search_css/smain.css" rel="stylesheet" type="text/css">
-    <link href="spot_search_css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="spot_search_css/layer.css" id="layui_layer_skinlayercss">
+    <link href="../spot_search/spot_search_css/new_style.css" rel="stylesheet" type="text/css">
+    <link href="../spot_search/spot_search_css/new_reset.css" rel="stylesheet" type="text/css">
+    <link href="../spot_search/spot_search_css/about.css" rel="stylesheet" type="text/css">
+    <link href="../spot_search/spot_search_css/smain.css" rel="stylesheet" type="text/css">
+    <link href="../spot_search/spot_search_css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../spot_search/spot_search_css/layer.css" id="layui_layer_skinlayercss">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes,target-densitydpi=device-dpi">
     <meta name="baidu-site-verification" content="NKckbIDgU4">
     <meta name="description" content="找油网(51Zhaoyou.com),为油品供应商提供交易渠道及后续服务，为采购商找到便宜优质的油品货源，在这期间的一切交易服务行为都是免费的 。          ">
@@ -19,19 +19,28 @@
     <script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
-    <script type="text/javascript" src="spot_search.js"></script>
+    <script type="text/javascript" src="../header_two/header_two.js"></script>
+    <script type="text/javascript" src="../footer_two/footer_two.js"></script>
+    <script type="text/javascript" src="../spot_search/spot_search.js"></script>
     <script>
+      let header = new HeaderTwo();
+      let footer = new FooterTwo();
       $(document).ready(function() {
+        header.outPutHeaderContent("#header_content");
+        header.initEvent();
         let spotSearchArea = new SpotSearch("#sportSearchOutput");
         spotSearchArea.output();
         spotSearchArea.clearRawData();
         spotSearchArea.getTradeOilData();
         spotSearchArea.fillCoverData();
         spotSearchArea.initEvent();
+        footer.outPutFooterContent("#footer_content");
       });
     </script>
   </head>
   <body style="min-width: 1200px;">
+    <div id = "header_content"></div>
     <div class="content1" id = "sportSearchOutput"></div>
+    <div id = "footer_content"></div>
   </body>
 </html>

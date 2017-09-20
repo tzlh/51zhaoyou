@@ -69,7 +69,7 @@
 }
 #oil_header .nav li.on a{ color:#d8522e;}
 #oil_header .logo {
-    background: rgba(0, 0, 0, 0)  url(../../images/logo.png) no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0)  url(../../../img/logo.png) no-repeat scroll 0 0;
     float: left;
     height: 50px;
     width: 130px;
