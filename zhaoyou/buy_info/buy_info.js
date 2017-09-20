@@ -83,8 +83,11 @@ class BuyInfo{
              </div>
            </li>`;
       }
-    } 
-    $("#buy_info_content").html(infoHtml);
+      $("#buy_info_content").html(infoHtml);
+    } else {
+      $("#buy_info_content").html('<li><p style ="text-align:center;font-size:20px">没数据</p></li>');
+  } 
+
   }
 
   initEvent() {
