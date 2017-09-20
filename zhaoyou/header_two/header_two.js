@@ -73,9 +73,9 @@ class HeaderTwo {
             <ul>
               <li><a href="../index/index.html">首页</a></li>
               <li>
-                <a href="http://www.51zhaoyou.com/51/Mall/index.html"><i style="position:absolute;margin-left:70px;top:145px;"><img src="../../img/new.png"></i>找油商城</a>
+                <a href="../index/zhaoyou_mall.html"><i style="position:absolute;margin-left:70px;top:145px;"><img src="../../img/new.png"></i>找油商城</a>
               </li>
-              <li><a href="http://www.51zhaoyou.com/51/Search/index.html">现货搜索</a></li>
+              <li><a href="../index/spot_search.html">现货搜索</a></li>
               <li><a href="../index/buy_info.html">采购信息</a></li>
               <li><a target="_blank" href="../index/about_us.html">关于我们</a></li>
               <li><a target="_blank" href="../index/app_download.html">app下载</a></li>

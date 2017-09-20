@@ -95,16 +95,16 @@ class HomePage {
     let currentObj = this;
     //获取柴油
     let data = {
-      "oil_type":"1"
+      "type":"1"
     };
-    let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
+    let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getIndexDataChange";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
     let dataTimeServer = [];
     let dataTimeServerC = [];
     let dataTime = [];
     let dataTimeC = [];
     let dieselData = [];
-    //console.log(dieselGet); 
+    console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" != dieselGet.count) {
         let tmpArr = new Array();
@@ -126,17 +126,19 @@ class HomePage {
         }
         this.priceFluctuationId = dataTimeC.reverse();
         this.gasolineFluctuationId = dataTimeC.reverse();
-        for (let i = 0; i < dataTimeC.length; i++) {
+        for (let i = 0; i < 5; i++) {
           let weightAll = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
-            if (timeSplit == result[j].record_datetime) {
-              weightAll += Number(result[j].price);
+            if ("1" == result[j].type) {
+              if (timeSplit == result[j].record_datetime) {
+                weightAll += Number(result[j].price);
+              }
             }
           }
           dieselData.push(weightAll);
         }
-        //console.log(dieselData);
+        console.log(dieselData);
         this.priceFluctuationData1 = dieselData.reverse();
         this.gasolineFluctuationData1 = dieselData.reverse();
         //console.log(this.priceFluctuationId);
@@ -147,16 +149,16 @@ class HomePage {
     } 
     //获取汽油
     let gasolineData = {
-      "oil_type":"0"
+      "type":"0"
     };
-    let gasolinelUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
+    let gasolinelUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getIndexDataChange";
     let gasolineGet = ajax_assistant(gasolinelUrl, gasolineData, false, true, false);
     let gDataTimeServer = [];
     let gDataTimeServerC = [];
     let gDataTime = [];
     let gDataTimeC = [];
     let gDieselData = [];
-    //console.log(gasolineGet); 
+    console.log(gasolineGet); 
     if ("1" == gasolineGet.status) {
       if ("0" != gasolineGet.count) {
         let tmpArr = new Array();
@@ -165,17 +167,20 @@ class HomePage {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
          }).reverse();
         //console.log(result); 
-        for (let i = 0; i < dataTimeC.length; i++) {
-          let weightAll = 0;
+        for (let i = 0; i < 5; i++) {
+          let weightAllA = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
-            if (timeSplit == result[j].record_datetime) {
-              weightAll += Number(result[j].price);
+            if ("0" == result[j].type) {
+              if (timeSplit == result[j].record_datetime) {
+                weightAllA += Number(result[j].price);
+              }
+            } else {
+              console.log(1);
             }
           }
-          gDieselData.push(weightAll);
+          gDieselData.push(weightAllA);
         }
-        //console.log(dieselData);
         this.priceFluctuationData2 = gDieselData.reverse();
         this.gasolineFluctuationData2 = gDieselData.reverse();
       }

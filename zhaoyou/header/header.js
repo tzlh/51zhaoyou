@@ -33,8 +33,8 @@ class Header {
           <div class="w1180"> <a href="" class="logo"></a>
             <ul class="nav">
               <li class="on" id="head_home"><a href="../index/index.html">首页</a></li>
-              <li id="head_search"><a target="_blank" href="">找油商城</a></li>
-              <li id="head_search"><a target="_blank" href="">现货搜索</a></li>
+              <li id="head_search"><a target="_blank" href="../index/zhaoyou_mall.html">找油商城</a></li>
+              <li id="head_search"><a target="_blank" href="../index/spot_search.html">现货搜索</a></li>
               <li id="head_baojia"><a target="_blank" href="../index/buy_info.html">采购信息</a></li>
               <li id="head_huodong"><a target="_blank" href="../index/about_us.html">关于我们</a></li>
               <li id="head_app"><a target="_blank" href="../index/app_download.html">App下载</a></li>
