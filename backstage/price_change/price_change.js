@@ -50,7 +50,7 @@ class PriceChange {
             time = time.substring(0, time.indexOf(' '));
         Html +=
           `<tr>
-             <td>${i}</td>
+             <td>${i+1}</td>
              <td>
                <select class = "form-control cfName">`;
                   if("0" == this.priceData.data[i].type) {
