@@ -17,7 +17,7 @@ class CommissionedProcurement {
    console.log(phoneNumber); 
     let commissionedHtml = 
       `<div class="textarea">
-            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content" value = "${req}">${req}</textarea>
+            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content" value = "${req}">${decodeURI(req)}</textarea>
           </div>
           <div class="list">
             <div class="form">
@@ -63,7 +63,7 @@ class CommissionedProcurement {
                 <dt><span class="red">*</span> 油品类型：</dt>
                 <dd>
                   <select class="text" id = "type_fail" value="${type}" style = "width:262px;height:36px">`;
-                    if ("" == type) {
+                    if ("a" == type) {
                       commissionedHtml += `<option  value = "" selected = "selected">请选择油品</option>`;              
                     } else if ("0" == type) {
                       commissionedHtml += `<option  value = "0" selected = "selected">汽油</option>`;              

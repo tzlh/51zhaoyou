@@ -417,7 +417,7 @@ class DataList {
           <div class = "modal-content">
             <div class = "modal-header bg-primary">
               <button type = "button" class = "close" data-dismiss = "modal" aria-label="Close"><span aria-hidden = "true">&times;</span></button>
-              <h4 class = "modal-title" id="myModalLabel">添加油品数据</h4>
+              <h4 class = "modal-title" id="myModalLabel">油品数据详情</h4>
             </div>
             <div class = "modal-body text-center nopadding-bottom material_type_list_center">
               <div class = "row">
@@ -653,7 +653,7 @@ class DataList {
           <div class = "modal-content">
             <div class = "modal-header bg-primary">
               <button type = "button" class = "close" data-dismiss = "modal" aria-label="Close"><span aria-hidden = "true">&times;</span></button>
-              <h4 class = "modal-title" id="myModalLabel">添加油品数据</h4>
+              <h4 class = "modal-title" id="myModalLabel">修改油品数据</h4>
             </div>
             <div class = "modal-body text-center nopadding-bottom material_type_list_center">
               <div class = "row">
@@ -948,7 +948,7 @@ class DataList {
     if ("" != remark) {
       modifyTradeOilDataParam["remark"] = remark;
     } else {
-      modifyTradeOilDataParam["remark"] = set_null;
+      modifyTradeOilDataParam["remark"] = "set_null";
     }
     let modifyTradeOilDataData = ajax_assistant(modifyTradeOilDataUrl, modifyTradeOilDataParam, false, true, false);
     console.log(modifyTradeOilDataData);

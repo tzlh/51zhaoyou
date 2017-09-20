@@ -59,6 +59,10 @@ class BuyInfo{
     let infoHtml = "";
     if(isJsonObjectHasData(this.buyInfoData)) {
       for (let i = 0; i < this.buyInfoData.data.length; i++) {
+          let remark = "";
+          if (null != this.buyInfoData.data[i].remark){
+            remark = this.buyInfoData.data[i].remark;
+          }
         let dataTime = this.buyInfoData.data[i].data_time;
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         infoHtml +=
@@ -67,7 +71,7 @@ class BuyInfo{
                <div class="neir">
                  <span title="">采购订单号：<font color="#ef642b">${this.buyInfoData.data[i].order_number}</font>&nbsp;&nbsp;&nbsp;发布时间：${dataTime}</span>
                  <h1><font> ${this.buyInfoData.data[i].ascription}</font><font> ${this.buyInfoData.data[i].type}</font>${this.buyInfoData.data[i].quantity}&nbsp;&nbsp;${this.buyInfoData.data[i].code}&nbsp;&nbsp;${this.buyInfoData.data[i].level}<font>${this.buyInfoData.data[i].address}</font></h1>
-                 <div class="jg">价格：<span>${this.buyInfoData.data[i].price}元     </span>&nbsp;&nbsp;&nbsp;备注：${this.buyInfoData.data[i].price}</div>
+                 <div class="jg">价格：<span>${this.buyInfoData.data[i].price}元     </span>&nbsp;&nbsp;&nbsp;备注：${remark}</div>
                </div>
                <div class="gh">
                  <div class="qiat"><font> ${this.buyInfoData.data[i].qiat}</font></div>                                             

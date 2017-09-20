@@ -246,11 +246,13 @@ class HomePage {
     let oilHtml = "";
     if(isJsonObjectHasData(this.oilRecommendData)) {
       for (let i = 0; i < 8; i++) {
+        let typrOil = this.oilRecommendData.data[i].oil_type;
+        console.log(this.oilRecommendData);
         oilHtml += 
           `<li>
             <a href="">
               <div class="fl">
-                  <p>${this.oilType[this.oilRecommendData.data[i].oil_type]}&nbsp;&nbsp;${this.oilRecommendData.data[i].weight}&nbsp;&nbsp;${this.oilRecommendData.data[i].code}${this.levelType[this.oilRecommendData.data[i].level]}<span class="gray1">${this.oilRecommendData.data[i].ascription}</span></p>
+                  <p>${this.oilType[typrOil]}&nbsp;&nbsp;${this.oilRecommendData.data[i].weight}&nbsp;&nbsp;${this.oilRecommendData.data[i].code}${this.levelType[this.oilRecommendData.data[i].level]}<span class="gray1">${this.oilRecommendData.data[i].ascription}</span></p>
                   <p class="gray1"><strong>${this.oilRecommendData.data[i].address}</strong></p>
               </div>
               <div class="fr rightPrice">${this.oilRecommendData.data[i].price}</div>
@@ -392,7 +394,7 @@ class HomePage {
     let typeSelect = $("#type_select").val();
     let req = $("#req").val();
     let phonoNumber = $("#phono_number").val();
-    window.location.href = "../index/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber;
+    window.location.href =encodeURI("../index/commissioned_procurement_requirements.html?city=" + citySelect + "&type=" + typeSelect + "&req=" + req + "&phonoNumber=" + phonoNumber);
   }
 
   //height价格变动
@@ -904,7 +906,7 @@ class HomePage {
                                <div class="fl">
                                    <select name="type" id = "type_select" value = "0">
        
-                                       <option value="">选择油品</option>
+                                       <option value="a">选择油品</option>
                                        <option  value = "0">汽油</option>
                                        <option value="1">柴油</option>
                                        <option value="2">煤油</option>

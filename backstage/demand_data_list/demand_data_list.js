@@ -100,7 +100,7 @@ class DemandDataList {
   
   infoModal(obj) {
     let uuid = obj.attr("uuid");
-    window.location.href = "../../zhaoyou/index/detail_info.html?uuid=${uuid}";
+    window.location.href = `../../zhaoyou/index/detail_info.html?uuid=${uuid}`;
   }
   deleteModal(obj) {
     let uuid = obj.attr("uuid");

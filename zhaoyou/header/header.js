@@ -30,7 +30,7 @@ class Header {
           </div>
         </div>
         <div class="header_box">
-          <div class="w1180"> <a href="" class="logo"></a>
+          <div class="w1180"> <a href="../index/index.html" class="logo"></a>
             <ul class="nav">
               <li class="on" id="head_home"><a href="../index/index.html">首页</a></li>
               <li id="head_search"><a target="_blank" href="../index/zhaoyou_mall.html">找油商城</a></li>

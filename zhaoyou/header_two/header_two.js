@@ -50,7 +50,7 @@ class HeaderTwo {
       <!--header_top end-->
       <!--logo start-->
       <div class="wapper">
-        <div class="logo_fl"><a target="_blank" href=""><img src="../../img/logo.jpg"></a></div>
+        <div class="logo_fl"><a target="_blank" href="../index/index.html"><img src="../../img/logo.jpg"></a></div>
         <!--搜索 start-->
         <div class="logo_fr">
           <div id="search-2014">

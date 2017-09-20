@@ -56,7 +56,7 @@ class ZhaoyouMall {
              <td>${this.mallData[i].count}</td>
              <td>${this.mallData[i].price}</td>
              <td>${this.mallData[i].time}</td>
-             <td class="weit"><a href="../detail_info/detail_info.html?uuid=${this.mallData[i].uuid}" class="btn-entrust">详情</a></td>
+             <td class="weit"><a href="../index/detail_info.html?uuid=${this.mallData[i].uuid}" class="btn-entrust">详情</a></td>
            </tr>`;
       }
       $("#zhaoyouMallList").html(content);
