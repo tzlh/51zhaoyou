@@ -47,6 +47,7 @@
       $(document).ready(function() {
         header.outPutHeaderContent("#header_content");
         header.initEvent();
+        memberSubmit.memberSubmitOutPut("#body_content");
         memberSubmit.fillData();
         memberSubmit.initEvent();
         footer.outPutFooterContent("#footer_content");
@@ -55,67 +56,7 @@
   </head>
   <body style="min-width: 1200px;">
     <div id = "header_content"></div>
-    <div class="content1">
-      <div class="wapper">
-        <div class="page_main">
-          <div class="page_bg">	
-            <div class="sell_l">
-              <div class="menu_list">
-                <p class="menu_head">我的订单</p>
-                <div class="menu_body">
-                  <a href="member_buy.html">我是买家</a>
-                  <a href="member_sell.html">我是卖家</a>
-                </div>
-                <p class="menu_head">账户中心</p>
-                <div class="menu_body">
-                  <a href="member_account.html">我的账户</a>
-                  <a href="member_reCode.html">修改密码</a>
-                </div>
-              </div>
-            </div>
-            <div class="sell_r">
-              <div class="sell_r_con">
-                  <div class="sname">
-                      我的账户
-                  </div>
-                  <div class="acc_con">
-                    <div class="acc_con_l">
-                      <!--登录 start-->
-                      <div id="login2">
-                            
-                        <div class="control-group">
-                          <em>昵称：</em><span class="icon-user"><img src="../../img/user.jpg"></span><input type="text" name="user_name" id="user" value="">
-                        </div>
-                        <div class="radio_con">
-                          <em>性别：</em><input type="radio" name="sex" value="男">男<input type="radio" name="sex" value="女">女
-                        </div>
-                        <div class="control-group">
-                          <em>手机号：</em><span class="tel_he">13678827520</span>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="control-group">
-                          <em>邮箱：</em><span class="icon-user"><img src="../../img/email.jpg"></span><input type="text" name="email" value="">
-                        </div>
-                        <div class="control-group">
-                          <em>微信：</em><span class="tel_he"></span>
-                        </div>                                                 
-                        <div class="control-group">
-                          <em>地址：</em><span class="icon-user"><img src="../../img/oil.jpg"></span><input type="text" name="address2" id="add" value="">
-                        </div>
-                        <div class="login-btn">
-                          <input id="login-btn" value="提交" type="submit" name="submit">
-                        </div>
-                      </div>	
-                      <!--登录 end-->
-                  </div>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id = "body_content"></div>
     <div id = "footer_content"></div>
   </body>
 </html>

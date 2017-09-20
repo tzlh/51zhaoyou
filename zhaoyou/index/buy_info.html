@@ -32,6 +32,7 @@
       $(document).ready(function() {
         header.outPutHeaderContent("#header_content");
         header.initEvent();
+        buyInfo.buyInfoOutPutContent("#body_content");
         buyInfo.clearRawData();
         buyInfo.serverDataCover("");
         buyInfo.buyInfoFillData();
@@ -41,138 +42,8 @@
     </script>
   </head>
   <body style="min-width: 1200px;">
-  <div id = "header_content"></div>
-<!--content start-->
-  <div class="content1">
-    <div class="wapper">
-        <div class="top_b">
-            <!---buyleft start-->
-            <div class="buy_left">
-                <div class="seachList">
-                  <ul>
-                    <li><i>采购单号：</i>
-                      <input type="text" class="kuang" id="www" name="no" value="">
-                    </li>
-                    <li><i>类型:</i>
-                      <select class="xl" name="type" id = "buy_type">
-                        <option selected="selected" value="9">请选择</option>
-                        <option value="1">柴油</option>
-                        <option value="0">汽油</option>
-                        <option value="2">煤油</option>
-                        <option value="3">燃料油</option>
-                      </select>
-                    </li>
-                    <li><i>厂家：</i>
-                      <select class="xl" name="sou" id = "manufactor">
-                        <option selected="selected" value="0">请选择</option>
-                        <option value="中国石化">中国石化</option>
-                        <option value="中国石油">中国石油</option>
-                        <option value="中国海油">中国海油</option>
-                        <option value="中国化工">中国化工</option>
-                        <option value="中国中化">中国中化</option>
-                        <option value="其他">其他</option> 
-                      </select>
-                    </li>
-                    <li><i>库位：</i>
-                      <input type="text" class="kuang" id="buy_pot" value="">
-                    </li>
-                    <li>
-                      <input type="button" id = "search_btn" class = "sousuo" value="搜索">
-                    </li>
-                  </ul>
-                </div>
-                <div class="bList">
-                  <!--list start-->
-                  <div class="list">
-                    <ul id = "buy_info_content" style = "margin-bottom:20px">
-                      <li>
-                        <div class="gongh">
-                          <div class="neir">
-                            <span title="">采购订单号：<font color="#ef642b">201702225115868 </font>&nbsp;&nbsp;&nbsp;发布时间：2017年02月22日 13:42</span>
-                            <h1><font> 中国石化</font><font> 柴油</font>10吨 0#国四 <font>油库不限</font></h1>
-                            <div class="jg">价格：<span>5800.00元     </span>&nbsp;&nbsp;&nbsp;备注：</div>
-                          </div>
-                          <div class="gh">
-                            <div class="qiat"><font> 常州地区</font></div>                                             
-												    <div class="gonghuo"><a id="create-wicket" onclick="toLogin()">供货</a></div> 
-												
-                          </div>
-                        </div>
-                        <div class="contacts">
-                          <dl>
-                            <dd><img src="../../img/jyy.jpg">交易员：童经理</dd>
-                            <dd><img src="../../img/tel.jpg">电话：15360043536</dd>
-                            <dd><img style="CURSOR: pointer" onclick="javascript:window.open(&#39;  http://wpa.qq.com/msgrd?v=3&amp;uin=1219222433&amp;site=qq&amp;menu=yes&#39;, &#39;_blank&#39;, &#39;height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);" border="0" src="http://wpa.qq.com/pa?p=1:1219222433:10" alt="Hi，这里是找油网"></dd>
-                          </dl>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>      
-                </div>
-              </div>
-              <!---buyleft end-->
-              <!---buyright start-->
-              <div class="buy_right">
-                <div class="title">
-                  <div class="text">委托我们采购 - <font class="qg_title">您免费的采购助手</font></div>
-                </div>
-                <!---采购 start-->
-                <div class="step">
-                  <ul>
-                    <li>
-                      <div class="numl"><img src="../../img/1.jpg"></div>
-                      <div class="des">
-                        <dl>
-                          <dt>查看货品</dt>
-                          <dd>在首页和现货搜索获得最新产品咨询，并通过系统,或电话、QQ委托给我们</dd>
-                        </dl>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="numl"><img src="../../img/2.jpg"></div>
-                      <div class="des">
-                        <dl>
-                        <dt>选择报价</dt>
-                        <dd>我们询价后,您来选择最合适的报价客户</dd>
-                      </dl>
-                    </div>
-                  </li>
-                  <li>
-                   	<div class="numl"><img src="../../img/3.jpg"></div>
-                    <div class="des">
-                      <dl>
-                        <dt>发布采购</dt>
-                        <dd>一键发布,或电话、QQ委托给我们</dd>
-                      </dl>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <!---采购 start-->
-              <div>
-               	<img src="../../img/ry.jpg">
-              </div>
-            </div>
-            <!---buyright end-->
-          </div>
-        </div>
-
-      <div class="graybg" id="graybg">
-        
-        <div class="midbox" id="whitebg">
-          <span id = "close_btn" style="font-size:24px;position:absolute;cursor: pointer;right:-10px;top:0;width:40px;height:40px;z-index:11">X</span>     
-             <div class="topsec"> 
-              <input type="text" name="oil_price" id="skip_info_price" value="" placeholder="请输入报价" style="width:200px;height:30px;margin:20px auto;display:block;padding:5px">
-              <input type="text" name="oil_num" id="skip_info_num" value="" placeholder="请输入吨数" style="width:200px;height:30px;margin-top:10px;padding:5px">
-              <input type="hidden" name="id" id="id" value="15856">
-            </div>
-            <div class="closebtn" id="closebtn">
-              <input type="button" value="提交" id = "mid_need" style="border:0;background:none;width:100%;line-height:30px;">
-            </div>
-          </div>
- 
-        </div>
-      </div>
+    <div id = "header_content"></div>
+    <div id = "body_content"></div>
     <div id = "footer_content"></div>
-</body>
+  </body>
 </html>

@@ -24,14 +24,10 @@
     <script type="text/javascript" src="../register/register.js"></script>
     <script type="text/javascript" src="../header_two/header_two.js"></script>
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
-   
     <link rel="stylesheet" href="../register/layer.css" id="layui_layer_skinlayercss">
     <link rel="stylesheet" type="text/css" href="../header_two/main.css">
     <link rel="stylesheet" type="text/css" href="../header_two/new_reset.css">
     <link rel="stylesheet" type="text/css" href="../header_two/new_style.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/main.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/new_reset.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/new_style.css">
     <script>
       let header = new HeaderTwo();
       let footer = new FooterTwo();
@@ -39,57 +35,29 @@
       $(document).ready(function() {
         header.outPutHeaderContent("#header_content");
         //header.headerFillData();
+        register.registerOutPut("#body_content");
         register.initEvent();
         footer.outPutFooterContent("#footer_content");
       });
     </script>
-</head>
-<body style="min-width: 1200px;">
-<style>
-    #mbtn {
-      font-family: 微软雅黑;
-      font-weight: bold;
-      border: 0;
-      letter-spacing: 1px;
-      color: black;
-      width: 150px;
-      height: 55px;
-      font-size: 16px;
-      border-radius: 8px;
-      box-shadow: 5px 5px 3px #bebdbd;
-    }
-</style>
-  <div id = "header_content"></div>
-    <div class="content1">
-      <div class="wapper">
-        <div class="page_main">
-          <div class="page_bg">
-           <!--  <div class="zcimg"><img src="/51/Resources/Home//images/zc1.jpg"/></div> -->
-            <div class="zc_con">
-              <!--登录 start-->
-              <div id="login1">
-                <div class="control-groupc">
-                  <em>用户：</em><span class="icon-userc"><img src="../../img/sj.jpg"></span><input id="mobile"  type="text" placeholder="用户名">
-                  <div id="mess1" style="color: red;margin-left: 80px;"></div>
-                </div>
-                <div class="control-groupc">
-                  <em>密码：</em><span class="icon-userc"><img src="../../img/pwd.jpg"></span><input type="password" id="mima1" placeholder="请输入密码">
-                  <div id="tishi1" style="margin-left: 80px;"></div>
-                </div>
-                <div class="control-groupc">
-                  <em>确认密码：</em><span class="icon-userc"><img src="../../img/pwd.jpg"></span><input type="password" id="mima2"  placeholder="请确认密码">
-                  <div id="tishi2"></div>
-                  <div id="tishi" style="margin-left: 80px;"></div>
-                </div>
-                <div class="login-btn">
-                  <input id="register" value="注册" type="button">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </head>
+  <body style="min-width: 1200px;">
+    <style>
+      #mbtn {
+        font-family: 微软雅黑;
+        font-weight: bold;
+        border: 0;
+        letter-spacing: 1px;
+        color: black;
+        width: 150px;
+        height: 55px;
+        font-size: 16px;
+        border-radius: 8px;
+        box-shadow: 5px 5px 3px #bebdbd;
+      }
+    </style>
+    <div id = "header_content"></div>
+    <div id = "body_content"></div>    
     <div id = "footer_content"></div>
   </body>
 </html>

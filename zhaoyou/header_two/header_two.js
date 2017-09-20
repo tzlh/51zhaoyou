@@ -60,7 +60,7 @@ class HeaderTwo {
             </div>
           </div>
           <div class="search_line">
-            品类：<a href="http://www.51zhaoyou.com/51/Search/index.html"><span style="color:#7d7d7d">中国化工</span></a>  <a href="http://www.51zhaoyou.com/51/Search/index.html"><span style="color:#7d7d7d">中国石化</span></a>  <a href="http://www.51zhaoyou.com/51/Search/index.html"><span style="color:#7d7d7d">中国石油</span></a>  <a href="http://www.51zhaoyou.com/51/Search/index.html"><span style="color:#7d7d7d">中国海油</span></a>  <a href="http://www.51zhaoyou.com/51/Search/index.html"><span style="color:#7d7d7d">中国中化</span></a>
+            品类：<a href="../index/zhaoyou_mall.html"><span style="color:#7d7d7d">中国化工</span></a>  <a href="../index/zhaoyou_mall.html"><span style="color:#7d7d7d">中国石化</span></a>  <a href="../index/zhaoyou_mall.html"><span style="color:#7d7d7d">中国石油</span></a>  <a href="../index/zhaoyou_mall.html"><span style="color:#7d7d7d">中国海油</span></a>  <a href="../index/zhaoyou_mall.html"><span style="color:#7d7d7d">中国中化</span></a>
           </div>
         </div>
         <!--搜索 end-->

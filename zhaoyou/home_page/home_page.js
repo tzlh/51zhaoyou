@@ -79,7 +79,7 @@ class HomePage {
       } else {
         let tmpArr = new Array();
         let result = JSON.parse(oilRecommendGet.result);   
-        console.log(result); 
+        //console.log(result); 
         for (let i = 0; i < result.length; i++) {
           tmpArr[i] =  {"code":result[i].code,"level":result[i].level, "oil_type":result[i].oil_type,"ascription":result[i].manufactor_name,"address":result[i].area, "price":result[i].price, "weight":result[i].quantity};
         }
@@ -104,7 +104,7 @@ class HomePage {
     let dataTime = [];
     let dataTimeC = [];
     let dieselData = [];
-    console.log(dieselGet); 
+    //console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" != dieselGet.count) {
         let tmpArr = new Array();
@@ -112,7 +112,7 @@ class HomePage {
          result.sort(function(a, b) {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
          }).reverse();
-        console.log(result); 
+        //console.log(result); 
         for (let i = 0; i < result.length; i++) {
           let currentTime = result[i].record_datetime;
           currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
@@ -137,11 +137,11 @@ class HomePage {
           }
           dieselData.push(weightAll);
         }
-            console.log(dieselData);
+        //console.log(dieselData);
         this.priceFluctuationData1 = dieselData.reverse();
         this.gasolineFluctuationData1 = dieselData.reverse();
-            console.log(this.priceFluctuationId);
-            console.log(this.priceFluctuationData1)
+        //console.log(this.priceFluctuationId);
+        //console.log(this.priceFluctuationData1)
       }
     } else {
       alert("数据获取失败");
@@ -157,7 +157,7 @@ class HomePage {
     let gDataTime = [];
     let gDataTimeC = [];
     let gDieselData = [];
-    console.log(gasolineGet); 
+    //console.log(gasolineGet); 
     if ("1" == gasolineGet.status) {
       if ("0" != gasolineGet.count) {
         let tmpArr = new Array();
@@ -165,7 +165,7 @@ class HomePage {
          result.sort(function(a, b) {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
          }).reverse();
-        console.log(result); 
+        //console.log(result); 
         for (let i = 0; i < dataTimeC.length; i++) {
           let weightAll = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
@@ -176,7 +176,7 @@ class HomePage {
           }
           gDieselData.push(weightAll);
         }
-            console.log(dieselData);
+        //console.log(dieselData);
         this.priceFluctuationData2 = gDieselData.reverse();
         this.gasolineFluctuationData2 = gDieselData.reverse();
       }
@@ -194,14 +194,14 @@ class HomePage {
     };
     let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
-    console.log(dieselGet); 
+    //console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" == dieselGet.count) {
         this.dieselOilData = {};
       } else {
         let tmpArr = new Array();
         let result = JSON.parse(dieselGet.result);   
-        console.log(result); 
+        //console.log(result); 
         for (let i = 0; i < result.length; i++) {
           tmpArr[i] =  {"data_time":result[i].record_datetime, "code":result[i].code,"level":result[i].level, "oil_type":result[i].oil_type,"ascription":result[i].manufactor_name,"address":result[i].area, "price":result[i].price, "weight":result[i].quantity};
         }
@@ -220,14 +220,14 @@ class HomePage {
     };
     let dieselUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getTradeOilData";
     let dieselGet = ajax_assistant(dieselUrl, data, false, true, false);
-        console.log(dieselGet); 
+        //console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" == dieselGet.count) {
         this.gasolineOilData = {};
       } else {
         let tmpArr = new Array();
         let result = JSON.parse(dieselGet.result);   
-        console.log(result); 
+        //console.log(result); 
         for (let i = 0; i < result.length; i++) {
           tmpArr[i] =  {"data_time":result[i].record_datetime, "code":result[i].code,"level":result[i].level, "oil_type":result[i].oil_type,"ascription":result[i].manufactor_name,"address":result[i].area, "price":result[i].price, "weight":result[i].quantity};
         }
@@ -364,14 +364,12 @@ class HomePage {
         loop:"cycle"
     });
     this.heightData();
-
     //昨日成交量
     $("#oil").find(".bold").html(this.volumeYesterday);
     //用户交互需求提交
     $(document).on("click", "#submitBtn", function() {
       currentObj.submitBtnFunc();
     });
-
   }
 
   flicker () {
@@ -494,5 +492,519 @@ class HomePage {
       }]
     });
   }
-
+  //输出文本
+  indexOutPutCotent(contentId) {
+    let content = 
+      `<div class="flicker-example" data-block-text="false">
+         <ul>
+           <li id="img2"> <img src="../../img/banner_2n.png"> </li>
+           <li id="img1"> <img src="../../img/banner_5n.png"> </li>
+           <li id="img3"> <img src="../../img/banner_3n.jpg"> </li>
+         </ul>
+       </div>
+       <!--tab页签-->
+       <div class="w1180">
+         <div class="marG postR panel tabS">
+           <div class="wid100 postA"><img src="../../img/icons.png"></div>
+           <ul class="tab_menu">
+             <li class="current">柴油</li>
+             <li>汽油</li>
+           </ul>
+           <div class="tab_box">
+           <!--tab1-->
+             <div class="overflow">
+               <div class="oilTab bodR">
+                 <div class="productshow">
+                   <div class="scrollcontainer">
+                     <ul style="left: 0px;" id = "diesel_oil_content">
+                       <li>
+                         <a href="/51/Search/index.html">
+                           <div class="title">
+                             <span>上海</span>
+                             <span class="fr">09-15 </span>
+                           </div>
+                           <div class="contact">
+                             <span class="fl"><img src="../../img/zhy.jpg" width="100px" height="40px"></span>
+                             <span class="font24 fl marT10 orange">5430</span>
+                             <span class="fl marT10"><img src="../../img/top.png"></span>
+                           </div>
+                           <div class="contact">
+                             <span class="fl brand">普通柴油&nbsp;0#&nbsp;柴油</span>
+                             <span class="price fl orange weight ">50</span>
+                             <span class="fl orange weight dec">0.93%</span>
+                           </div>
+                         </a>
+                       </li>
+                       <li>
+                         <a href="/51/Search/index.html">
+                           <div class="title">
+                             <span>上海</span>
+                             <span class="fr">09-15 </span>
+                           </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zhg.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5540</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">30</span>
+                           <span class="fl orange weight dec">0.54%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                   </ul>
+                 </div>
+                 <a class="abtn aleft" href="#left">左移</a>
+                 <a class="abtn aright" href="#right">右移</a>
+               </div>
+               <div class="international">
+                 <ul>
+                   <li>
+                     <span >09-15</span>
+                     <span class="weight">黄金期货</span>
+                     <span>1255.4</span>
+                     <span class="orange" style="color:green">-</span>
+                   </li>
+                   <li>
+                     <span >09-15</span>
+                     <span class="weight">美元汇率</span>
+                     <span>687.82</span>
+                     <span class="orange" style="color:red">↑0.81</span>
+                   </li>
+                   <li>
+                     <span >09-15</span>
+                     <span class="weight">Brent</span>
+                     <span>51.33</span>
+                     <span class="orange" style="color:red">↑0.58</span>
+                   </li>
+                   <li>
+                     <span >09-15</span>
+                     <span class="weight">WTI</span>
+                     <span>48.37</span>
+                     <span class="orange" style="color:red">↑0.64</span>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+             <div class="oilPrice">
+               <div id="container1" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+             </div>
+           </div>
+           <!--tab2-->
+           <div class="overflow hide">
+             <div class="oilTab bodR">
+                <div class="productshow">
+                   <div class="scrollcontainer">
+                      <ul style="left: 0px;" id = "gasoline_fluctuation_content">
+                       <li>
+                         <a href="/51/Search/index.html">
+                           <div class="title">
+                             <span>上海</span>
+                             <span class="fr">09-15 </span>
+                           </div>
+                           <div class="contact">
+                             <span class="fl"><img src="../../img/zhy.jpg" width="100px" height="40px"></span>
+                             <span class="font24 fl marT10 orange">5430</span>
+                             <span class="fl marT10"><img src="../../img/top.png"></span>
+                           </div>
+                           <div class="contact">
+                             <span class="fl brand">普通柴油&nbsp;0#&nbsp;柴油</span>
+                             <span class="price fl orange weight ">50</span>
+                             <span class="fl orange weight dec">0.93%</span>
+                           </div>
+                         </a>
+                       </li>
+                       <li>
+                         <a href="/51/Search/index.html">
+                           <div class="title">
+                             <span>上海</span>
+                             <span class="fr">09-15 </span>
+                           </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zhg.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5540</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">30</span>
+                           <span class="fl orange weight dec">0.54%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="/51/Search/index.html">
+                         <div class="title">
+                           <span>上海</span>
+                           <span class="fr">09-15 </span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl"><img src="../../img/zh.jpg" width="100px" height="40px"></span>
+       
+                           <span class="font24 fl marT10 orange">5530</span>
+                           <span class="fl marT10"><img src="../../img/top.png"></span>
+                         </div>
+                         <div class="contact">
+                           <span class="fl brand">国Ⅴ&nbsp;0#&nbsp;柴油</span>
+                           <span class="price fl orange weight ">80</span>
+                           <span class="fl orange weight dec">1.47%</span>
+                         </div>
+                       </a>
+                     </li>
+                      </ul>
+                    </div>
+                    <a class="abtn aleft" href="#left">左移</a>
+                    <a class="abtn aright" href="#right">右移</a>
+                  </div>
+                  <div class="international">
+                    <ul>
+                      <li>
+                        <span >09-15</span>
+                        <span class="weight">黄金期货</span>
+                        <span>1255.4</span>
+                        <span class="orange" style="color:green">-</span>
+                      </li>
+                      <li>
+                        <span >09-15</span>
+                        <span class="weight">美元汇率</span>
+                        <span>687.82</span>
+                        <span class="orange" style="color:red">↑0.81</span>
+                      </li>
+                      <li>
+                        <span >09-15</span>
+                        <span class="weight">Brent</span>
+                        <span>51.33</span>
+                        <span class="orange" style="color:red">↑0.58</span>
+                      </li>
+                      <li>
+                        <span >09-15</span>
+                        <span class="weight">WTI</span>
+                        <span>48.37</span>
+                        <span class="orange" style="color:red">↑0.64</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="oilPrice">
+                  <div id="container2" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>
+       <!--商品-->
+       <div class="w1180 postR" id="oil">
+           <div class="marG panel contact orangeBorder ">
+               <div class="fl wid240 "><img src="../../img/oilShopping.jpg"></div>
+               <div class="fl wid900">
+                   <div class="shopping">
+                       <div class="fl oilBrand">
+                           <div class="title "><span class="fl pad20"><strong>油品推荐</strong></span><span class="fr orange "><a href="zhaoyou_mall.html">去商城查看<span style="margin-left:5px;"><img src="../../img/arrow.png"></span></a></span></div>
+                           <div class="shangpin">
+                             <ul id = "products_recommend">
+                                <li>
+                                  <a href="/51/Search/index.html">
+                                    <div class="fl">
+                                        <p>柴油&nbsp;&nbsp;国v<span class="gray1">中国石化</span></p>
+                                        <p class="gray1"><strong>上海</strong></p>
+                                    </div>
+                                    <div class="fr rightPrice">50000</div>
+                                  </a>
+                                </li>
+                             </ul>
+                           </div>
+                       </div>
+                       <div class="fr cell">
+                           <div class="deal postR">
+                               <img src="../../img/right_money.png">
+                               <div class="price postA0">
+                                   <p class="day">昨日成交量</p>
+                                   <p><span class="bold">10181.02</span>吨</p>
+                               </div>
+                           </div>
+                           <div class="select">
+                               <div class="fl">
+                                   <select name="region" id = "city_select" value = "0">
+                                       <option value = "0">选择地区</option>
+                                       <option value="上海">上海</option>
+                                       <option value="广东">广东</option>
+                                       <option value="江苏">江苏</option>
+                                       <option value="山东">山东</option>
+                                       <option value="浙江">浙江</option>
+                                       <option value="湖北">湖北</option>
+                                   </select>
+                               </div>
+                               <div class="fl">
+                                   <select name="type" id = "type_select" value = "0">
+       
+                                       <option value="">选择油品</option>
+                                       <option  value = "0">汽油</option>
+                                       <option value="1">柴油</option>
+                                       <option value="2">煤油</option>
+                                       <option value="3">燃料油</option>
+                                   </select>
+                               </div>
+                           </div>
+                           <div class="textarea"><textarea id ="req" placeholder="请详细填写您的需求，剩下的交给我们吧！"></textarea></div>
+                           <div class="tel"><input type="text" id = "phono_number" value="" placeholder="请输入您的联系方式"></div>
+                           <div class="btn" id = "submitBtn"><input type="submit"  class="button"></div>
+                      </div>
+                   </div>
+                   <div class="brand">
+                       <div class="productBrand">
+                           <div class="scrollcontainer">
+                               <ul style="left: 0px;" >
+                                   <li>
+                                       <img src="../../img/zsh.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zsy.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zhg.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zhy.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zr.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zh.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/haofu.png"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zsh.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zsy.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zhg.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zhy.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zr.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/zh.jpg"  height="50px">
+                                   </li>
+                                   <li>
+                                       <img src="../../img/haofu.png"  height="50px">
+                                   </li>
+                               </ul>
+                           </div>
+                           <a class="abtn aleft" href="#left">左移</a>
+                           <a class="abtn aright" href="#right">右移</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="floor"><img src="../../img/firstFloor.png"></div>
+       </div>
+       <!--下单流程-->
+       <div class="w1180 postR" id="logistics">
+           <div class="marG panel contact greenBorder ">
+               <div class="fl wid240 "><img src="../../img/oilLogistics.jpg"></div>
+               <div class="fl wid900">
+                   <div class="shopping">
+                       <div class="fl oilBrand">
+                           <div class="title "><span class="fl pad20"><strong>下单流程</strong></span><span class="fr orange "></span></div>
+                           <div class="logisticsContent"><img src="../../img/logistics.jpg" alt="下单流程"></div>
+                       </div>
+                       <div class="fr cell"><img src="../../img/telephone.jpg" alt="找车热线"></div>
+                   </div>
+               </div>
+               <div class="floor"><img src="../../img/secondFloor.png"></div>
+           </div>
+       </div>
+       <!--找油金融-->
+       <div class="w1180 postR" id="inancial">
+           <div class="marG panel contact yellowBorder">
+               <div class="fl wid240 "><img src="../../img/inancial.jpg"></div>
+               <div class="fl wid900">
+                   <div class="shopping">
+                       <div class="title">
+                           <span class="fl pad20"><strong>申请流程</strong></span>
+                           <span class="fr orange "></span>
+                       </div>
+                       <div class="inancial ">
+                           <span class="fl inancialL"><img src="../../img/inancialR.jpg"></span>
+                           <span class="fl inancialR"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=915445821&site=qq&menu=yes"><img src="../../img/apply.jpg"></a></span>
+                           <span></span>
+                       </div>
+                   </div>
+               </div>
+               <div class="floor"><img src="../../img/thirdFloor.png"></div>
+           </div>
+       </div>`;
+    $(contentId).html(content);
+  }
 }

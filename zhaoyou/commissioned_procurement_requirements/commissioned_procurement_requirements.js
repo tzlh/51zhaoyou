@@ -14,7 +14,6 @@ class CommissionedProcurement {
     if ("0" == this.urlLocation[0].split("=")[1]) {
       city = "";
     } 
-
    console.log(phoneNumber); 
     let commissionedHtml = 
       `<div class="textarea">
@@ -189,6 +188,55 @@ class CommissionedProcurement {
     } else {
       alert("请先登录");
     }
+  }
 
+  //文本输出
+  commissionedOutPutContent(contentId) {
+    let content =
+      `<div class="w1000">
+         <div class="trust_box clearfix">
+           <div class="trust_left">
+             <h2>您的委托采购需求</h2>
+             <div id = "commissioned_content"></div>
+           </div>
+           <div class="trust_right">
+             <div class="top">
+               <h2><i class="icon_line"></i>委托我们采购<span> - 您免费的采购助手</span></h2>
+               <ul class="step">
+                 <li>
+                   <h3>① 查看货品</h3>
+                   <p>
+                       在首页和现货搜索获得最新产品咨询，并通过系统,或电话、QQ委托给我们
+                   </p>
+                 </li>
+                 <li>
+                   <h3>②选择报价</h3>
+                   <p>
+                       我们询价后,您来选择最合适的报价客户
+                   </p>
+                 </li>
+                 <li>
+                   <h3>③发布采购</h3>
+                   <p>
+                       一键发布,或电话、QQ委托给我们
+                   </p>
+                 </li>
+               </ul>
+             </div>
+             <div class="bottom">
+               <p>
+                 <span class="orange">百余</span>名专业采购精英每天从上海<span class="orange">300</span>余家油品代理中精选最优惠的现货资源供您选择
+               </p>
+               <img src="../../img/host.jpg" width="235" height="137">
+               <a href="tencent://message/?uin=915445821&Site=&menu=yes" title="通过QQ联系油宝宝" class="qq"><img src="../../img/qq.png"></a>
+               <div class="call">
+                 <i class="icon_call"></i>
+                    021-51130088
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>`;
+    $(contentId).html(content);
   }
 }
