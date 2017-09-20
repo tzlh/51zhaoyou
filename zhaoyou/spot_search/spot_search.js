@@ -312,7 +312,7 @@ class SpotSearch {
                   </li>
                 </ul>
               </div>
-            <div class="bList">
+            <div class="bList" style = "margin-bottom: 20px;">
               <div class="xhsscon">
                 <table class="xhss_hovertable" id="oldtable">
                   <thead>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes,target-densitydpi=device-dpi">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="shortcut icon" type="image/ico" href="http://www.51zhaoyou.com/51/Resources/Home/img/favicon.png">
+<link rel="stylesheet" type="text/css" href="../recruit/recruit_css/reset.css">
+<link rel="stylesheet" type="text/css" href="../recruit/recruit_css/main.css">
+    <script src="../../js/jquery.min.2.1.4.js"></script>
+    <script src = "../../js/toolkit.js"></script>
+    <script src = "../../js/configure.js"></script>
+    <script type="text/javascript" src="../header/header.js"></script>
+    <script type="text/javascript" src="../footer/footer.js"></script>
+    <script type="text/javascript" src="../recruit/recruit.js"></script>
+<title>关于我们</title>
+<style>
+  #lia{height:20px;float:left;width:400px;text-align: center;}
+  #ula{list-style:none;margin:0;padding:0;height:25px;}
+</style>
+    <script>
+      let header = new Header();
+      let footer = new Footer();
+      $(document).ready(function() {
+        header.outPutHeaderContent("#header_content");
+        header.headerFillData();
+        header.initEvent();
+        let aboutUsArea = new Recruit("#job");
+        aboutUsArea.output();
+        footer.outPutFooterContent("#footer_content");
+      });
+    </script>
+</head>
+<body style="min-width: 1200px;">
+    <div id = "header_content"></div>
+    <!--oil banner-->
+    <!--招聘-->
+    <div id="job"></div>
+    <div id = "footer_content"></div>
+</body>
+</html>
