@@ -100,7 +100,7 @@ class DemandDataList {
   
   infoModal(obj) {
     let uuid = obj.attr("uuid");
-    window.location.href = `../../zhaoyou/index/detail_info.html?uuid=${uuid}`;
+    window.open(`../../zhaoyou/index/detail_info.html?uuid=${uuid}`);
   }
   deleteModal(obj) {
     let uuid = obj.attr("uuid");
@@ -146,5 +146,53 @@ class DemandDataList {
     $("#demand_delete_modle").on("hidden.bs.modal", function (e) {
       $(this).remove();
     });
+  }
+  demandOutPut(outputId) {
+    let content = 
+       `<div class = "panel panel-default panel-primary" id = "indexData">
+         <div class = "panel-heading text-left" id = "indexTitle">数据列表</div>
+         <div class = "panel-body table-responsive">
+           <table  class = "table table-bordered" id = "">
+             <thead>
+               <tr>
+                 <th>用户</th>
+                 <th>委托产品</th>
+                 <th>物流方式</th>
+                 <th>数量</th>
+                 <th>委托时间</th>
+                 <th>操作</th>
+               </tr>
+             </thead>
+             <tbody id = "demand_content">
+               <tr>
+                 <td>zhangsan</td>
+                 <td>[查看性情]</td>
+                 <td>找油物流</td>
+                 <td>3000</td> 
+                 <td>2017-05-06</td>
+                 <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
+               </tr>
+               <tr>
+                 <td>zhangsan</td>
+                 <td>[查看性情]</td>
+                 <td>找油物流</td>
+                 <td>3000</td> 
+                 <td>2017-05-06</td>
+                 <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
+               </tr>
+               <tr>
+                 <td>zhangsan</td>
+                 <td>[查看性情]</td>
+                 <td>找油物流</td>
+                 <td>3000</td> 
+                 <td>2017-05-06</td>
+                 <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+         <div class="panel-footer bg-primary entrust_bg">&nbsp;</div>
+       </div>`;
+      $(outputId).html(content);
   }
 }

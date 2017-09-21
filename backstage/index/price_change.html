@@ -6,6 +6,8 @@
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
     <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
     <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
+    <link rel = "stylesheet" href = "../nav_menu/nav_menu.css">
+    <link rel = "stylesheet" href = "../header/header.css">
     <link rel="stylesheet" type="text/css" href="../price_change/price_change.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
@@ -15,128 +17,57 @@
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>  
-    <script src="../price_change/price_change.js" type="text/javascript" charset="utf-8"></script>    
+    <script src="../price_change/price_change.js" type="text/javascript" charset="utf-8"></script>  
+    <script src = "../nav_menu/nav_menu.js"></script>
+    <script src = "../header/header.js"></script>
 		<title></title>
     <script type="text/javascript">
       let priceChange = new PriceChange();
 			$(document).ready(function() {
-		    check_login();	  
+		    check_login();
+        header_output("#header");
+        nav_menu_output("#nav_menu");
+        priceChange.priceOutPut("#body_content");
 			  //日历插件
         widget_datepicker_init();
         priceChange.clearRawData();
         priceChange.serverDataCover();
         priceChange.fillVariableData();
         priceChange.initEvent();
+        $(document).on("click", "#header_edit_password_prop", function() {
+          header_edit_password_func();
+        });
+        //保存密码
+        $(document).on("click", "#header_edit_password_btn", function() {
+          header_edit_password_save_func();
+        });
+        //退出
+        $(document).on("click", "#header_log_out_modle", function() {
+          header_edit_log_out_modle_func();
+        });
+        $(document).on("click", "#header_log_out_btn", function() {
+          header_log_out_data_func();
+        });
 			});
 		</script>
+    <style type="text/css">
+      .warehouse_payment_detail_mt0{
+        margin-top: 0!important;
+        margin-right: 0;
+      }
+      .warehouse_payment_detail_mt20{
+        margin-top: 10px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
 	</head>
 	<body>
-    <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left clearfix" id = "indexTitle">价格变动<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
-      <div class = "panel-body table-responsive material_entry_pd0">
-        <table  class = "table contact_management_mt20" id = "">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>类型</th>
-              <th>价格</th>
-              <th>记录时间</th>
-              <th>操作</th>
-            </tr>
-            <tr id = "add_tr_table">
-
-            </tr>
-          </thead>
-          <tbody id = "price_content">
-            <tr>
-              <td>1</td>
-              <td>
-                <select class = "form-control cfName">
-                  <option value = "0">汽油</option>
-                  <option value = "1">柴油</option>
-                </select>
-              </td>
-              <td> 
-                <div class="form-group">
-                  <input type="text" class="form-control price_type" value = "">
-                </div>
-              </td>
-              <td>
-                <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime tima_val">
-                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
-                </div>
-              </td>
-             <td>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-remove"></span>
-               </button>
-              </td> 
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>
-                <select class = "form-control cfName" id = "">
-                  <option value = "0">汽油</option>
-                  <option value = "1">柴油</option>
-                </select>
-              </td>
-              <td> 
-                <div class="form-group">
-                  <input type="text" class="form-control">
-                </div>
-              </td>
-              <td>
-                <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
-                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
-                </div>
-              </td>
-             <td>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-remove"></span>
-               </button>
-              </td> 
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>
-                <select class = "form-control cfName" id = "">
-                  <option value = "1">汽油</option>
-                  <option value = "2">柴油</option>
-                  <option value = "3">石油</option>
-                </select>
-              </td>
-              <td> 
-                <div class="form-group">
-                  <input type="text" class="form-control">
-                </div>
-              </td>
-              <td>
-                <div class="form-group has-feedback">
-                  <input type="text" class="form-control widget_datepicker establish_datetime">
-                  <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
-                </div>
-              </td>
-             <td>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-floppy-disk"></span>
-               </button>
-                <button class = "btn">
-                 <span class = "glyphicon glyphicon-remove"></span>
-               </button>
-              </td> 
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="panel-footer bg-primary">&nbsp;</div>
+  <div id = "header"></div>
+  <div class = "row warehouse_payment_detail_mt0">
+    <div id = "nav_menu" class = "col-lg-2"></div>
+    <div class = "col-lg-10 warehouse_payment_detail_mt20" id = "body_content">
     </div>
+  </div>
 	</body>
 </html>

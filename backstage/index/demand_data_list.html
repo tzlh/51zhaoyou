@@ -4,70 +4,63 @@
 		<meta charset="UTF-8">
     <link rel = "stylesheet" href = "../../plugin/bootstrap/3.3.7/css/bootstrap.css"/>
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
+    <link rel = "stylesheet" href = "../nav_menu/nav_menu.css">
+    <link rel = "stylesheet" href = "../header/header.css">
     <link rel="stylesheet" type="text/css" href="../demand_data_list/demand_data_list.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
-    
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
-    <script src="../demand_data_list/demand_data_list.js" type="text/javascript" charset="utf-8"></script>    
+    <script src="../demand_data_list/demand_data_list.js" type="text/javascript" charset="utf-8"></script>  
+    <script src = "../nav_menu/nav_menu.js"></script>
+    <script src = "../header/header.js"></script>
 		<title></title>
     <script type="text/javascript">
       let demandDataList = new DemandDataList();
 			$(document).ready(function() {
 			  check_login();
+        header_output("#header");
+        nav_menu_output("#nav_menu");
+        demandDataList.demandOutPut("#body_content");
         demandDataList.clearRawData();
         demandDataList.serverDataCover();
         demandDataList.fillVariableData();
 	      demandDataList.initEvent();	
+        $(document).on("click", "#header_edit_password_prop", function() {
+          header_edit_password_func();
+        });
+        //保存密码
+        $(document).on("click", "#header_edit_password_btn", function() {
+          header_edit_password_save_func();
+        });
+        //退出
+        $(document).on("click", "#header_log_out_modle", function() {
+          header_edit_log_out_modle_func();
+        });
+        $(document).on("click", "#header_log_out_btn", function() {
+          header_log_out_data_func();
+        });
 			});
 		</script>
+    <style type="text/css">
+      .warehouse_payment_detail_mt0{
+        margin-top: 0!important;
+        margin-right: 0;
+      }
+      .warehouse_payment_detail_mt20{
+        margin-top: 10px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
 	</head>
 	<body>
-    <div class = "panel panel-default panel-primary" id = "indexData">
-      <div class = "panel-heading text-left" id = "indexTitle">数据列表</div>
-      <div class = "panel-body table-responsive">
-        <table  class = "table table-bordered" id = "">
-          <thead>
-            <tr>
-              <th>用户</th>
-              <th>委托产品</th>
-              <th>物流方式</th>
-              <th>数量</th>
-              <th>委托时间</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody id = "demand_content">
-            <tr>
-              <td>zhangsan</td>
-              <td>[查看性情]</td>
-              <td>找油物流</td>
-              <td>3000</td> 
-              <td>2017-05-06</td>
-              <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
-            </tr>
-            <tr>
-              <td>zhangsan</td>
-              <td>[查看性情]</td>
-              <td>找油物流</td>
-              <td>3000</td> 
-              <td>2017-05-06</td>
-              <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
-            </tr>
-            <tr>
-              <td>zhangsan</td>
-              <td>[查看性情]</td>
-              <td>找油物流</td>
-              <td>3000</td> 
-              <td>2017-05-06</td>
-              <td><span class = "glyphicon glyphicon-remove-sign"></span></td>
-            </tr>
-          </tbody>
-        </table>
+    <div id = "header"></div>
+    <div class = "row warehouse_payment_detail_mt0">
+      <div id = "nav_menu" class = "col-lg-2"></div>
+      <div class = "col-lg-10 warehouse_payment_detail_mt20" id = "body_content">
       </div>
-      <div class="panel-footer bg-primary entrust_bg">&nbsp;</div>
     </div>
-	</body>
+ 	</body>
 </html>

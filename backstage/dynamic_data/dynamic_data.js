@@ -247,4 +247,114 @@ class PriceChange {
       $(this).remove();
     });  
   }
+  dynamicOutPut(outputId) {
+    let content = 
+      `<div class = "panel panel-default panel-primary" id = "indexData">
+        <div class = "panel-heading text-left clearfix" id = "indexTitle">动态数据<span class = "glyphicon glyphicon-plus pull-right" id = "add_plus"></span></div>
+        <div class = "panel-body table-responsive material_entry_pd0">
+          <table  class = "table contact_management_mt20" id = "">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>类型</th>
+                <th>价格</th>
+                <th>记录时间</th>
+                <th>操作</th>
+              </tr>
+              <tr id = "add_tr_table">
+  
+              </tr>
+            </thead>
+            <tbody id = "price_content">
+              <tr>
+                <td>1</td>
+                <td>
+                  <select class = "form-control cfName">
+                    <option value = "0">黄金期货</option>
+                    <option value = "1">美元汇率</option> 
+                  </select>
+                </td>
+                <td> 
+                  <div class="form-group">
+                    <input type="text" class="form-control price_type" value = "">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group has-feedback">
+                    <input type="text" class="form-control widget_datepicker establish_datetime tima_val">
+                    <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                  </div>
+                </td>
+               <td>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-floppy-disk"></span>
+                 </button>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-remove"></span>
+                 </button>
+                </td> 
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  <select class = "form-control cfName" id = "">
+                    <option value = "0">黄金期货</option>
+                    <option value = "1">美元汇率</option> 
+                  </select>
+                </td>
+                <td> 
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group has-feedback">
+                    <input type="text" class="form-control widget_datepicker establish_datetime">
+                    <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                  </div>
+                </td>
+               <td>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-floppy-disk"></span>
+                 </button>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-remove"></span>
+                 </button>
+                </td> 
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>
+                  <select class = "form-control cfName" id = "">
+                    <option value = "0">黄金期货</option>
+                    <option value = "1">美元汇率</option> 
+                  </select>
+                </td>
+                <td> 
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group has-feedback">
+                    <input type="text" class="form-control widget_datepicker establish_datetime">
+                    <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                  </div>
+                </td>
+               <td>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-floppy-disk"></span>
+                 </button>
+                  <button class = "btn">
+                   <span class = "glyphicon glyphicon-remove"></span>
+                 </button>
+                </td> 
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer bg-primary">&nbsp;</div>
+      </div>`;
+      $(outputId).html(content);
+  }
 }

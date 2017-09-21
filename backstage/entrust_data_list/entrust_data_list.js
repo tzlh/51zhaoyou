@@ -254,4 +254,53 @@ class EntrustDataList {
       $(this).remove();
     });
   }
+  //输出文本
+  entrustOutPut(contentId) {
+    let content = 
+      `<div class = "panel panel-default panel-primary" id = "indexData">
+         <div class = "panel-heading text-left" id = "indexTitle">数据列表</div>
+         <div class = "panel-body table-responsive">
+           <table  class = "table" id = "">
+             <thead>
+               <tr>
+                 <th>用户</th>
+                 <th>姓名</th>
+                 <th>sex</th>
+                 <th>地区</th>
+                 <th>手机号</th>
+                 <th>操作</th>
+               </tr>
+             </thead>
+             <tbody id = "entrust_content">
+               <tr>
+                 <td>zhangsan</td>
+                 <td>张三</td>
+                 <td>男</td>
+                 <td>东湾</td> 
+                 <td>15911111111</td>
+                 <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+               </tr>
+               <tr>
+                 <td>zhangsan</td>
+                 <td>张三</td>
+                 <td>男</td>
+                 <td>东湾</td> 
+                 <td>15911111111</td>
+                 <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+               </tr> 
+               <tr>
+                 <td>zhangsan</td>
+                 <td>张三</td>
+                 <td>男</td>
+                 <td>东湾</td> 
+                 <td>15911111111</td>
+                 <td><span class = "glyphicon glyphicon-info-sign"></span><span class = "glyphicon glyphicon-remove-sign entrust_ml15"></span></td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+         <div class="panel-footer bg-primary entrust_bg">&nbsp;</div>
+       </div>`;
+    $(contentId).html(content);
+  }
 }
