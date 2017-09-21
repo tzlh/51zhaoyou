@@ -17,7 +17,7 @@ class CommissionedProcurement {
    console.log(phoneNumber); 
     let commissionedHtml = 
       `<div class="textarea">
-            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content" value = "${req}">${decodeURI(req)}</textarea>
+            <textarea placeholder="写下您的真实需求，收到后我们会立即给您回电确认，剩下的就交给我们吧。" name="con" id="txt_trust_content" value = "${decodeURI(req)}">${decodeURI(req)}</textarea>
           </div>
           <div class="list">
             <div class="form">
@@ -44,7 +44,7 @@ class CommissionedProcurement {
               <dl class="clearfix">
                 <dt><span class="red">*</span> 手机或电话：</dt>
                 <dd>
-                  <input type="text" class="text" id = "phone_number" value="${phoneNumber}" maxlength="15">
+                  <input type="text" class="text" id = "phone_number" value="${decodeURI(phoneNumber)}" maxlength="15">
                   <div class="fail" style="display: none" id="contact_mobile_fail">
                     <i class="icon_tip"></i>手机或电话不能为空
                   </div>
@@ -53,7 +53,7 @@ class CommissionedProcurement {
 	            <dl class="clearfix">
                 <dt><span class="red">*</span> 地区：</dt>
                 <dd>
-                  <input type="text" class="text" id = "region" value="${city}" maxlength="15">
+                  <input type="text" class="text" id = "region" value="${decodeURI(city)}" maxlength="15">
                   <div class="fail" style="display: none" id="contact_mobile_fail">
                     <i class="icon_tip"></i>地区不能为空
                   </div>

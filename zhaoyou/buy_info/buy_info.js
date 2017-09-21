@@ -112,7 +112,6 @@ class BuyInfo{
     $(document).on("click", "#mid_need", function() {
        currentObj.submitFunc($(this));
     });
-
   }
 
   searchFunc () {
@@ -140,8 +139,6 @@ class BuyInfo{
   supplyCommodityFunc (obj) {
     let uuid = obj.attr("uuid");
     $("#graybg, #whitebg").css("display","block");
-    
-    let offerVal = $("#skip_info_price").val("");
     let tonnageVal = $("#skip_info_num").val("");  
     $("#mid_need").attr("uuid",uuid); 
   }
@@ -149,25 +146,52 @@ class BuyInfo{
   closeFunc (obj) {
     $("#graybg, #whitebg").css("display","none");  
   }
-
+  /*
+   * 获取用户user_uuid
+   */
+  getUserSecurityByUser() {
+    let getUserSecurityByUserUrl = PROJECT_PATH + "lego/lego_user?servletName=getUserSecurityByUser";
+    let getUserSecurityByUserParam = {};
+    let getUserSecurityByUserData = ajax_assistant(getUserSecurityByUserUrl, getUserSecurityByUserParam, false, true, false);
+    console.log(getUserSecurityByUserData);
+    if (1 == getUserSecurityByUserData.status) {
+        let result = JSON.parse(getUserSecurityByUserData.result);
+        console.log(result);
+        let uuid = result[0].uuid;
+        return uuid;
+    }
+  }
   submitFunc(obj) {
+    let user_uuid = this.getUserSecurityByUser();
     let uuid = obj.attr("uuid");
-    let offerVal = $("#skip_info_price").val();
     let tonnageVal = $("#skip_info_num").val();
-    if(null == offerVal.match(/^[0-9]+\.{0,1}[0-9]{0,4}$/)){
-      alert("请输入正确的报价");
-      return;
-    }; 
+    function add0(m){return m<10?'0'+m:m }
+    function format(shijianchuo)
+    {
+      //shijianchuo是整数，否则要parseInt转换
+      var time = new Date(shijianchuo);
+      var y = time.getFullYear();
+      var m = time.getMonth()+1;
+      var d = time.getDate();
+      var h = time.getHours();
+      var mm = time.getMinutes();
+      var s = time.getSeconds();
+      return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+    }
+    let stringTime = new Date();
+    let currentTiame = format(stringTime);
     if(null == tonnageVal.match(/^[0-9]+\.{0,1}[0-9]{0,4}$/)){
       alert("请输入正确的吨数");
       return;
     };
     let data = {
-      "uuid":uuid,
-      "price":offerVal,
+      "user_uuid": user_uuid,
+      "data_uuid": uuid,
+      "logistics_type": 2,
+      "record_datetime": currentTiame,
       "quantity":tonnageVal
     }; 
-    let submitUrl = PROJECT_PATH+'lego/lego_51zy?servletName=modifyTradeOilData';
+    let submitUrl = PROJECT_PATH+'lego/lego_51zy?servletName=addTradeEntrust';
     let submitResult = ajax_assistant(submitUrl, data, false, true, false);
     console.log(submitResult);
     if("1" == submitResult.status) {
@@ -294,7 +318,6 @@ class BuyInfo{
              <div class="midbox" id="whitebg">
                <span id = "close_btn" style="font-size:24px;position:absolute;cursor: pointer;right:-10px;top:0;width:40px;height:40px;z-index:11">X</span>     
                   <div class="topsec"> 
-                   <input type="text" name="oil_price" id="skip_info_price" value="" placeholder="请输入报价" style="width:200px;height:30px;margin:20px auto;display:block;padding:5px">
                    <input type="text" name="oil_num" id="skip_info_num" value="" placeholder="请输入吨数" style="width:200px;height:30px;margin-top:10px;padding:5px">
                    <input type="hidden" name="id" id="id" value="15856">
                  </div>

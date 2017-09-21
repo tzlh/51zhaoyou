@@ -198,7 +198,6 @@ class SpotSearch {
    * 添加委托
    */
   addTradeEntrust(obj) {
-    debugger;
     let user_uuid = this.getUserSecurityByUser();
     let data_uuid = obj.attr("uuid");
     let quantity = $("#skip_info_num").val();

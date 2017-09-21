@@ -53,9 +53,9 @@ class PriceChange {
              <td>
                <select class = "form-control cfName">`;
                 if("0" == this.priceData.data[i].type) {
-                   Html += `<option value = "0" selected = "selected">汽油</option>`;
+                   Html += `<option value = "0" selected = "selected">黄金期货</option>`;
                  } else if("1" == this.priceData.data[i].type) {
-                   Html += `<option value = "1" selected = "selected">柴油</option>`;
+                   Html += `<option value = "1" selected = "selected">美元汇率</option>`;
                  } 
                Html +=
                 `<option value = "0">汽油</option>
@@ -112,8 +112,8 @@ class PriceChange {
     $("#add_tr_table").html(`<td></td>
               <td>
                 <select class = "form-control cfName" id = "type_all">
-                  <option value = "0">汽油</option>
-                  <option value = "1">柴油</option> 
+                  <option value = "0">黄金期货</option>
+                  <option value = "1">美元汇率</option> 
                 </select>
               </td>
               <td> 

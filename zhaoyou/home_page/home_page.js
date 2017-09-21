@@ -3,6 +3,7 @@ class HomePage {
   constructor() {
     this.levelType = ["普柴","轻燃","国Ⅲ ","国Ⅳ ","国Ⅴ"];
     this.oilType = ["汽油","柴油","煤油","燃料油"];
+    this.dynamicType = ["黄金期货","美元汇率"];
     //柴油价格变动
     this.priceFluctuationId = ["09-11","09-12","09-13","09-14","09-15"];
     this.priceFluctuationData1 = [5468,5364,5458,5552,5557];
@@ -22,6 +23,13 @@ class HomePage {
         {"code":"0#","level":"0", "oil_type":"柴油","ascription":"中国石化","address":"常州-油库不限", "price":"5500", "weight":"50"},
         {"code":"0#","level":"0", "oil_type":"煤油","ascription":"中国石化","address":"常州-油库不限", "price":"5500", "weight":"50"},
         {"code":"0#","level":"0", "oil_type":"燃料油","ascription":"中国石化","address":"常州-油库不限", "price":"5500", "weight":"50"}]
+    };
+    //动态数据
+    this.dynamicData = {
+      "data":[
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"},
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"},
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"}]
     };
     //昨日成交量
     this.volumeYesterday = 9452.25;
@@ -89,7 +97,29 @@ class HomePage {
       alert("油品数据获取失败");
     }
   }
-
+  //动态数据 
+  dynamicServerData() {
+    this.dynamicData = {};
+    //获取
+    let dynamicUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getIndexDataDynamicData";
+    let dynamicGet = ajax_assistant(dynamicUrl, "", false, true, false);
+    console.log(dynamicGet);
+    if ("1" == dynamicGet.status) {
+      if ("0" == dynamicGet.count) {
+        this.dynamicData = {};
+      } else {
+        let tmpArr = new Array();
+        let result = JSON.parse(dynamicGet.result);   
+        //console.log(result); 
+        for (let i = 0; i < result.length; i++) {
+          tmpArr[i] =  {"type":result[i].type,"price":result[i].price, "data_time":result[i].record_datetime,};
+        }
+        this.dynamicData["data"] = tmpArr;
+      }
+    } else {
+      alert("数据获取失败");
+    }
+  }
   //价格变动柱状图
   heightChartServerData () {
     let currentObj = this;
@@ -126,7 +156,7 @@ class HomePage {
         }
         this.priceFluctuationId = dataTimeC.reverse();
         this.gasolineFluctuationId = dataTimeC.reverse();
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i <  dataTimeC.length; i++) {
           let weightAll = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
@@ -137,6 +167,9 @@ class HomePage {
             }
           }
           dieselData.push(weightAll);
+          if(i > 3) {
+            break;
+          }
         }
         console.log(dieselData);
         this.priceFluctuationData1 = dieselData.reverse();
@@ -167,7 +200,7 @@ class HomePage {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
          }).reverse();
         //console.log(result); 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < dataTimeC.length; i++) {
           let weightAllA = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
           for (let j = 0; j < result.length; j++) {
@@ -180,6 +213,9 @@ class HomePage {
             }
           }
           gDieselData.push(weightAllA);
+          if(i > 3) {
+            break;
+          }
         }
         this.priceFluctuationData2 = gDieselData.reverse();
         this.gasolineFluctuationData2 = gDieselData.reverse();
@@ -241,16 +277,38 @@ class HomePage {
       alert("数据获取失败");
     }
   }
+  //动态数据
+  dynamicFillVariableData () {
+    let oilHtml = "";
+    if(isJsonObjectHasData(this.dynamicData)) {
+      for (let i = 0; i < this.dynamicData.data.length; i++) {
+        let timeData = this.dynamicData.data[i].data_time;
+        timeData = timeData.substring(0, timeData.indexOf(' ')).slice(5,timeData.length);
+        console.log(this.dynamicData);
+        oilHtml += 
+          `<li>
+             <span >${timeData}</span>
+             <span class="weight">${this.dynamicType[this.dynamicData.data[i].type]}</span>
+             <span>${this.dynamicData.data[i].price}</span>
+             <span class="orange" style="color:red">↑0.81</span>
+           </li>`; 
+        if(i > 3) {
+          break;
+        }
+      }
+    }
+    $(".dynamic_data_content").html(oilHtml);
+  }
   //油品推荐覆盖
   oilFillVariableData () {
     let oilHtml = "";
     if(isJsonObjectHasData(this.oilRecommendData)) {
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < this.oilRecommendData.data.length; i++) {
         let typrOil = this.oilRecommendData.data[i].oil_type;
         console.log(this.oilRecommendData);
         oilHtml += 
           `<li>
-            <a href="">
+            <a href="../index/zhaoyou_mall.html">
               <div class="fl">
                   <p>${this.oilType[typrOil]}&nbsp;&nbsp;${this.oilRecommendData.data[i].weight}&nbsp;&nbsp;${this.oilRecommendData.data[i].code}${this.levelType[this.oilRecommendData.data[i].level]}<span class="gray1">${this.oilRecommendData.data[i].ascription}</span></p>
                   <p class="gray1"><strong>${this.oilRecommendData.data[i].address}</strong></p>
@@ -258,6 +316,9 @@ class HomePage {
               <div class="fr rightPrice">${this.oilRecommendData.data[i].price}</div>
             </a>
           </li>`; 
+        if(i > 8) {
+          break;
+        }
       }
     }
     $("#products_recommend").html(oilHtml);
@@ -284,7 +345,7 @@ class HomePage {
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
           `<li>
-             <a href="">
+             <a href="../index/zhaoyou_mall.html">
                <div class="title">
                  <span>${this.dieselOilData.data[i].address}</span>
                  <span class="fr">${dataTime}</span>
@@ -326,7 +387,7 @@ class HomePage {
         dataTime = dataTime.substring(0, dataTime.indexOf(' '));
         oilHtml += 
           `<li>
-             <a href="">
+             <a href="../index/zhaoyou_mall.html">
                <div class="title">
                  <span>${this.gasolineOilData.data[i].address}</span>
                  <span class="fr">${dataTime}</span>
@@ -524,7 +585,7 @@ class HomePage {
                    <div class="scrollcontainer">
                      <ul style="left: 0px;" id = "diesel_oil_content">
                        <li>
-                         <a href="/51/Search/index.html">
+                         <a href="zhaoyou_mall.html">
                            <div class="title">
                              <span>上海</span>
                              <span class="fr">09-15 </span>
@@ -542,7 +603,7 @@ class HomePage {
                          </a>
                        </li>
                        <li>
-                         <a href="/51/Search/index.html">
+                         <a href="zhaoyou_mall.html">
                            <div class="title">
                              <span>上海</span>
                              <span class="fr">09-15 </span>
@@ -560,7 +621,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -578,7 +639,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -596,7 +657,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -614,7 +675,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -632,7 +693,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -650,7 +711,7 @@ class HomePage {
                        </a>
                      </li>
                      <li>
-                       <a href="/51/Search/index.html">
+                       <a href="zhaoyou_mall.html">
                          <div class="title">
                            <span>上海</span>
                            <span class="fr">09-15 </span>
@@ -673,7 +734,7 @@ class HomePage {
                  <a class="abtn aright" href="#right">右移</a>
                </div>
                <div class="international">
-                 <ul>
+                 <ul class = "dynamic_data_content">
                    <li>
                      <span >09-15</span>
                      <span class="weight">黄金期货</span>
@@ -826,7 +887,7 @@ class HomePage {
                     <a class="abtn aright" href="#right">右移</a>
                   </div>
                   <div class="international">
-                    <ul>
+                    <ul class = "dynamic_data_content">
                       <li>
                         <span >09-15</span>
                         <span class="weight">黄金期货</span>
