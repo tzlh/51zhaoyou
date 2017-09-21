@@ -17,12 +17,14 @@
     <script src = "../../js/configure.js"></script>
     <script type="text/javascript" src="../header_two/header_two.js"></script>
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <script type="text/javascript" src="../member_account/member_account.js"></script>
     <script>
       let header = new HeaderTwo();
       let footer = new FooterTwo();
       let memberAccount = new MemberAccount();
       $(document).ready(function() {
+        check_login();
         header.outPutHeaderContent("#header_content");
         header.initEvent();
         memberAccount.memberAccountOutPut("#body_content");

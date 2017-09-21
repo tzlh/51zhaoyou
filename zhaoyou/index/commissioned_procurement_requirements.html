@@ -16,18 +16,18 @@
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../header_two/main.css">
     <link rel="stylesheet" type="text/css" href="../header_two/new_reset.css">
     <link rel="stylesheet" type="text/css" href="../header_two/new_style.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/main.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/new_reset.css">
-    <link rel="stylesheet" type="text/css" href="../footer_two/new_style.css">
     <script>
       let header = new HeaderTwo();
       let footer = new FooterTwo();
       let commissioned = new CommissionedProcurement();
       $(document).ready(function() {
+         check_login();
          header.outPutHeaderContent("#header_content");
+         header.initEvent();
          commissioned.commissionedOutPutContent("#body_content");
          commissioned.commissionedFillData();
          commissioned.initEvent();

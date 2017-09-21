@@ -24,12 +24,14 @@
     <script src = "../../js/configure.js"></script>
     <script type="text/javascript" src="../header_two/header_two.js"></script>
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../buy_info/buy_info.js"></script>
     <script>
       let header = new HeaderTwo();
       let footer = new FooterTwo();
       let buyInfo = new BuyInfo();
       $(document).ready(function() {
+        check_login();
         header.outPutHeaderContent("#header_content");
         header.initEvent();
         buyInfo.buyInfoOutPutContent("#body_content");

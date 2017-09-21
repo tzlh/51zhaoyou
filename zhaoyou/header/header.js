@@ -52,7 +52,7 @@ class Header {
                   }
                 } else {
                   html += `<a target="_blank" href="../index/register.html"><div class="register">注册</div></a>
-                           <a ><div class="login" href="../index/login.html">登录</div></a>`;
+                           <a  href="../index/login.html"><div class="login">登录</div></a>`;
                 }
              html +=
             `</div>

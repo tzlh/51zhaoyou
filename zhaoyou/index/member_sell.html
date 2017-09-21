@@ -16,11 +16,13 @@
     <script type="text/javascript" src="../header_two/header_two.js"></script>
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
     <script type="text/javascript" src="../member_sell/member_sell.js"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <script>
       let header = new HeaderTwo();
       let footer = new FooterTwo();
       let memberSell = new MemberSell();
       $(document).ready(function() {
+        check_login();
         header.outPutHeaderContent("#header_content");
         header.initEvent();
         memberSell.outPutMemberSell("#body_content");

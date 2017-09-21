@@ -20,6 +20,7 @@
     <script type="text/javascript" src="../header_two/header_two.js"></script>
     <script type="text/javascript" src="../footer_two/footer_two.js"></script>
     <script src = "../member_submit/member_submit.js"></script>
+    <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
     <style>
       .control-groupc select {
          BORDER: #cccccc 1px solid;
@@ -45,6 +46,7 @@
       let footer = new FooterTwo();
       let memberSubmit = new MemberSubmit();
       $(document).ready(function() {
+        check_login();
         header.outPutHeaderContent("#header_content");
         header.initEvent();
         memberSubmit.memberSubmitOutPut("#body_content");
