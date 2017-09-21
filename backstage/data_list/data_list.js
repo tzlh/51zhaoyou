@@ -242,13 +242,13 @@ class DataList {
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">联系人</span>
-                    <input type="text" class="form-control trader_name" value = "张三">
+                    <input type="text" class="form-control trader_name" value = "">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="input-group">
                     <span class="input-group-addon">联系方式</span>
-                    <input type="text" class="form-control trader_phonenumber" value = "12345678987">
+                    <input type="text" class="form-control trader_phonenumber" value = "">
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -948,7 +948,7 @@ class DataList {
     if ("" != remark) {
       modifyTradeOilDataParam["remark"] = remark;
     } else {
-      modifyTradeOilDataParam["remark"] = "set_null";
+      modifyTradeOilDataParam["sn_remark"] = "set_null";
     }
     let modifyTradeOilDataData = ajax_assistant(modifyTradeOilDataUrl, modifyTradeOilDataParam, false, true, false);
     console.log(modifyTradeOilDataData);
