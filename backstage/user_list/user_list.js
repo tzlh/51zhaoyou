@@ -415,7 +415,8 @@ class UserList {
    */
   output() {
     let content = 
-      `<div class = "panel-heading text-left">用户列表</div>
+    `<div class = "panel panel-default panel-primary" id = "userListOutput">
+      <div class = "panel-heading text-left">用户列表</div>
         <div class = "panel-body table-responsive material_entry_pd0">
           <table  class = "table contact_management_mt20" id = "">
             <tbody>
@@ -542,7 +543,8 @@ class UserList {
             </tbody>
           </table>
         </div>
-        <div class="panel-footer bg-primary">&nbsp;</div>`;
+        <div class="panel-footer bg-primary">&nbsp;</div>
+      </div>`;
     $(this.outputId).html(content);
   }
 }

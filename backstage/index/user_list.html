@@ -6,6 +6,8 @@
     <link rel = "stylesheet" href = "../../css/custom_modal.css"/>
     <link rel = "stylesheet" href = "../../plugin/jquery_ui/1.12.1/jquery-ui.min.css">
     <link rel = "stylesheet" href = "../../plugin/jquery_timepicker_addon/1.6.3/jquery-ui-timepicker-addon.css" />
+    <link rel = "stylesheet" href = "../nav_menu/nav_menu.css">
+    <link rel = "stylesheet" href = "../header/header.css">
     <link rel="stylesheet" type="text/css" href="../user_list/user_list.css"/>
     <script src = "../../plugin/jquery/1.12.4/jquery.min.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../plugin/bootstrap/3.3.7/js/bootstrap.js" type = "text/javascript" charset = "utf-8"></script>
@@ -15,11 +17,15 @@
     <script src = "../../js/configure.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../../js/toolkit.js" type = "text/javascript" charset = "utf-8"></script>
     <script src = "../check_login/check_login.js" type = "text/javascript" charset = "utf-8"></script>
+    <script src = "../nav_menu/nav_menu.js"></script>
+    <script src = "../header/header.js"></script>
     <script src="../user_list/user_list.js" type="text/javascript" charset="utf-8"></script>    
 		<title></title>
     <script type="text/javascript">
 			$(document).ready(function() {
 	      check_login();
+        header_output("#header");
+        nav_menu_output("#nav_menu");
 			   //日历插件
         widget_datepicker_init();
         let userListArea = new UserList("#userListOutput");
@@ -28,10 +34,39 @@
         userListArea.getUserSecurityByUser();
         userListArea.fillVariableData();
         userListArea.initEvent();
+        $(document).on("click", "#header_edit_password_prop", function() {
+          header_edit_password_func();
+        });
+        //保存密码
+        $(document).on("click", "#header_edit_password_btn", function() {
+          header_edit_password_save_func();
+        });
+        //退出
+        $(document).on("click", "#header_log_out_modle", function() {
+          header_edit_log_out_modle_func();
+        });
+        $(document).on("click", "#header_log_out_btn", function() {
+          header_log_out_data_func();
+        });
 			});
 		</script>
+    <style type="text/css">
+      .warehouse_payment_detail_mt0{
+        margin-top: 0!important;
+        margin-right: 0;
+      }
+      .warehouse_payment_detail_mt20{
+        margin-top: 10px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
 	</head>
 	<body>
-    <div class = "panel panel-default panel-primary" id = "userListOutput"></div>
+    <div id = "header"></div>
+    <div class = "row warehouse_payment_detail_mt0">
+      <div id = "nav_menu" class = "col-lg-2"></div>
+      <div class = "col-lg-10 warehouse_payment_detail_mt20" id = "userListOutput"></div>
+    </div>
 	</body>
 </html>
