@@ -11,7 +11,7 @@ class  DetailInfo{
     this.oil_type = ["柴油","汽油","煤油","燃料油"];
     this.level = ["普柴","轻燃","国III","国Iv","国V"];
     this.detailData = {"imgUrl": "../../img/577a3f9ebb778.png","source": "中国海油","variety": "柴油","code": "0#","level": "普柴","vendibility": "100","price": "100","trader": "某经理","tel": "15825252525","uuid": "111"};     
-    this.goodDetailData = {"source": "中国海油","storage_location": "库位不限","repertory": "111","data": "2017-02-05","variety": "柴油","grade": "0#","region": "东莞","else": "100"};     
+    this.goodDetailData = {"source": "中国海油","storage_location": "库位不限","repertory": "111","data": "2017-02-05","variety": "柴油","grade": "0#","region": "东莞"};     
   }
 
   initEvent() {
@@ -63,7 +63,7 @@ class  DetailInfo{
          <li>种类：${this.oil_type[this.goodDetailData.variety]}</li>
          <li>标号：${this.goodDetailData.grade}</li>
          <li>地区：${this.goodDetailData.region}</li>
-         <li>其他：${this.goodDetailData.else}</li>`;
+         <li>其他：无</li>`;
       $("#des").html(content);
     }
   }
@@ -82,14 +82,8 @@ class  DetailInfo{
       let result = JSON.parse(getTradeOilDataData.result); 
       console.log(result);
       let record_datetime = result[0].record_datetime.substring(0,result[0].record_datetime.indexOf(" "));
-      let remark = result[0].remark;
-      if (null == remark) {
-        remark = "";
-      } else {
-        remark = result[0].remark;
-      }
       this.detailData = {"imgUrl": "../../img/577a3f9ebb778.png","source": result[0].manufactor_name,"variety": result[0].oil_type,"code": result[0].code,"level": result[0].level,"vendibility": result[0].quantity,"price": result[0].price,"trader": result[0].trader_name,"tel": result[0].trader_phonenumber};
-      this.goodDetailData = {"source": result[0].manufactor_name,"storage_location": result[0].warehouse,"repertory": result[0].quantity,"data": record_datetime,"variety": result[0].oil_type,"grade": result[0].code,"region": result[0].area,"else": result[0].remark};     
+      this.goodDetailData = {"source": result[0].manufactor_name,"storage_location": result[0].warehouse,"repertory": result[0].quantity,"data": record_datetime,"variety": result[0].oil_type,"grade": result[0].code,"region": result[0].area};     
     } else {
       alert("获取油品数据失败");
       return;
@@ -116,7 +110,6 @@ class  DetailInfo{
    * 添加委托
    */
   addTradeEntrust() {
-    debugger;
     let user_uuid = this.getUserSecurityByUser();
     let data_uuid = window.location.search.split("=")[1];
     let logistics_type = $('#sendway input:radio[name="sendway"]:checked').val();
