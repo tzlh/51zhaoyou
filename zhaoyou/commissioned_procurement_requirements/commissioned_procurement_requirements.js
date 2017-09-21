@@ -88,7 +88,7 @@ class CommissionedProcurement {
                 </dd>
               </dl>
               <dl class="clearfix">
-                <dt><span class="red"></span>公司名称：</dt>
+                <dt><span class="red">*</span>公司名称：</dt>
                 <dd>
                   <input type="text" class="text" id = "cn" placeholder="非必填项">
                   <div class="fail" style="display: none" id="customer_name_fail">
@@ -141,6 +141,10 @@ class CommissionedProcurement {
     } 
     if (null == typeFail.match(/^[\u4e00-\u9fffa0-9a-zA-Z]{1,32}$/)) {
       alert("请输入油品类型！");
+      return;
+    } 
+    if (null == CN.match(/^[\u4e00-\u9fffa0-9a-zA-Z]{1,32}$/)) {
+      alert("请输入公司名称！");
       return;
     } 
     function add0(m){return m<10?'0'+m:m }

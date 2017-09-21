@@ -58,8 +58,8 @@ class PriceChange {
                    Html += `<option value = "1" selected = "selected">美元汇率</option>`;
                  } 
                Html +=
-                `<option value = "0">汽油</option>
-                 <option value = "1">柴油</option> 
+                `<option value = "0">黄金期货</option>
+                 <option value = "1">美元汇率</option> 
                </select>
              </td>
              <td> 

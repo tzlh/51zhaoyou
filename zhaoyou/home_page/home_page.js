@@ -27,9 +27,9 @@ class HomePage {
     //动态数据
     this.dynamicData = {
       "data":[
-        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"},
-        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"},
-        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00"}]
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00", "difference":"-0.2"},
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00", "difference":"-0.2"},
+        {"type":"0","price":"5500", "data_time":"2017-05-02 00:00:00", "difference":"0.2"}]
     };
     //昨日成交量
     this.volumeYesterday = 9452.25;
@@ -87,7 +87,6 @@ class HomePage {
       } else {
         let tmpArr = new Array();
         let result = JSON.parse(oilRecommendGet.result);   
-        //console.log(result); 
         for (let i = 0; i < result.length; i++) {
           tmpArr[i] =  {"code":result[i].code,"level":result[i].level, "oil_type":result[i].oil_type,"ascription":result[i].manufactor_name,"address":result[i].area, "price":result[i].price, "weight":result[i].quantity};
         }
@@ -100,19 +99,100 @@ class HomePage {
   //动态数据 
   dynamicServerData() {
     this.dynamicData = {};
-    //获取
+    //获取黄金期货
     let dynamicUrl = PROJECT_PATH + "lego/lego_51zy?servletName=getIndexDataDynamicData";
     let dynamicGet = ajax_assistant(dynamicUrl, "", false, true, false);
-    console.log(dynamicGet);
+    let dataTime = [];
+    let dataTimeM = [];
+    let dataTimeC = [];
+    let dataTimeCM = [];
+    let priceData = [];
     if ("1" == dynamicGet.status) {
       if ("0" == dynamicGet.count) {
         this.dynamicData = {};
       } else {
         let tmpArr = new Array();
-        let result = JSON.parse(dynamicGet.result);   
-        //console.log(result); 
+        let result = JSON.parse(dynamicGet.result); 
+        let difference = 0;
+        let differenceM = 0;
+        let priceDataM = [];
+        result.sort(function(a, b) {
+          return new Date(a.record_datetime) - new Date(b.record_datetime);
+        }).reverse();       
         for (let i = 0; i < result.length; i++) {
-          tmpArr[i] =  {"type":result[i].type,"price":result[i].price, "data_time":result[i].record_datetime,};
+          if("0" == result[i].type) {
+            let currentTime = result[i].record_datetime;
+            currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
+            dataTime.push(currentTime); 
+          }
+        }
+        //去重
+        for(let i=0;i<dataTime.length;i++){
+          if(dataTimeC.indexOf(dataTime[i])<0){
+            dataTimeC.push(dataTime[i])
+          }
+        }
+        for (let j = 0; j < 2; j++) {
+          for (let i = 0; i < result.length; i++) {
+            //黄金期货
+            if ("0" == result[i].type) {
+              let dataD = "2017-"+ dataTimeC[j]+ " 00:00:00.0";
+              if (dataD == result[i].record_datetime) {
+                priceData.push(Number(result[i].price));
+              }
+            }
+          }
+        }
+        if(0 == (Number(priceData[0]) - Number(priceData[1]))) {
+          difference = 0;
+        }else {
+          difference = (Number(priceData[0]) - Number(priceData[1]))/Number(priceData[1]);
+        }
+        for (let i = 0; i < result.length; i++) {
+          if("0" == result[i].type) {
+
+            let dataD = "2017-"+ dataTimeC[0]+ " 00:00:00.0";
+            if (dataD == result[i].record_datetime) {
+              tmpArr[0] =  {"type":result[i].type,"price":result[i].price, "data_time":result[i].record_datetime,"difference":difference.toFixed(2)};
+            }
+          }
+        }
+        for (let i = 0; i < result.length; i++) {
+          if("1" == result[i].type) {
+            let currentTime = result[i].record_datetime;
+            currentTime = currentTime.substring(0, currentTime.indexOf(' ')).slice(5,currentTime.length);
+            dataTimeM.push(currentTime); 
+          }
+        }
+        //去重
+        for(let i=0;i<dataTimeM.length;i++){
+          if(dataTimeCM.indexOf(dataTimeM[i])<0){
+            dataTimeCM.push(dataTimeM[i])
+          }
+        }
+        for (let j = 0; j < 2; j++) {
+          for (let i = 0; i < result.length; i++) {
+            //黄金期货
+            if ("1" == result[i].type) {
+              let dataD = "2017-"+ dataTimeC[j]+ " 00:00:00.0";
+              if (dataD == result[i].record_datetime) {
+                priceDataM.push(Number(result[i].price));
+              }
+            }
+          }
+        }
+        if(0 == (Number(priceDataM[0]) - Number(priceDataM[1]))) {
+          differenceM = 0;
+        }else {
+          differenceM = (Number(priceDataM[0]) - Number(priceDataM[1]))/Number(priceDataM[1]);
+        }
+        for (let i = 0; i < result.length; i++) {
+          if ("1" == result[i].type) {
+            let dataD = "2017-"+ dataTimeCM[0]+ " 00:00:00.0";
+            if (dataD == result[i].record_datetime) {
+              tmpArr[1] =  {"type":result[i].type,"price":result[i].price, "data_time":result[i].record_datetime,"difference":differenceM.toFixed(2)};
+            }
+          }
         }
         this.dynamicData["data"] = tmpArr;
       }
@@ -134,7 +214,8 @@ class HomePage {
     let dataTime = [];
     let dataTimeC = [];
     let dieselData = [];
-    console.log(dieselGet); 
+    let dataShow = [];
+    //console.log(dieselGet); 
     if ("1" == dieselGet.status) {
       if ("0" != dieselGet.count) {
         let tmpArr = new Array();
@@ -154,8 +235,6 @@ class HomePage {
             dataTimeC.push(dataTime[i])
           }
         }
-        this.priceFluctuationId = dataTimeC.reverse();
-        this.gasolineFluctuationId = dataTimeC.reverse();
         for (let i = 0; i <  dataTimeC.length; i++) {
           let weightAll = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
@@ -167,15 +246,17 @@ class HomePage {
             }
           }
           dieselData.push(weightAll);
+          dataShow.push(dataTimeC[i]);
           if(i > 3) {
             break;
           }
         }
+        console.log(dataShow.reverse());
         console.log(dieselData);
-        this.priceFluctuationData1 = dieselData.reverse();
-        this.gasolineFluctuationData1 = dieselData.reverse();
-        //console.log(this.priceFluctuationId);
-        //console.log(this.priceFluctuationData1)
+        this.priceFluctuationId = dataShow.reverse();
+        this.gasolineFluctuationId = dataShow.reverse();
+        this.priceFluctuationData1 = dieselData;
+        this.gasolineFluctuationData1 = dieselData;
       }
     } else {
       alert("数据获取失败");
@@ -191,7 +272,7 @@ class HomePage {
     let gDataTime = [];
     let gDataTimeC = [];
     let gDieselData = [];
-    console.log(gasolineGet); 
+    //console.log(gasolineGet); 
     if ("1" == gasolineGet.status) {
       if ("0" != gasolineGet.count) {
         let tmpArr = new Array();
@@ -199,7 +280,6 @@ class HomePage {
          result.sort(function(a, b) {
            return new Date(a.record_datetime) - new Date(b.record_datetime);
          }).reverse();
-        //console.log(result); 
         for (let i = 0; i < dataTimeC.length; i++) {
           let weightAllA = 0;
           let timeSplit = "2017-" + dataTimeC[i] + " 00:00:00.0";
@@ -208,15 +288,14 @@ class HomePage {
               if (timeSplit == result[j].record_datetime) {
                 weightAllA += Number(result[j].price);
               }
-            } else {
-              console.log(1);
-            }
+            } 
           }
           gDieselData.push(weightAllA);
           if(i > 3) {
             break;
           }
         }
+        console.log(gDieselData.reverse());
         this.priceFluctuationData2 = gDieselData.reverse();
         this.gasolineFluctuationData2 = gDieselData.reverse();
       }
@@ -284,14 +363,21 @@ class HomePage {
       for (let i = 0; i < this.dynamicData.data.length; i++) {
         let timeData = this.dynamicData.data[i].data_time;
         timeData = timeData.substring(0, timeData.indexOf(' ')).slice(5,timeData.length);
-        console.log(this.dynamicData);
         oilHtml += 
           `<li>
              <span >${timeData}</span>
              <span class="weight">${this.dynamicType[this.dynamicData.data[i].type]}</span>
-             <span>${this.dynamicData.data[i].price}</span>
-             <span class="orange" style="color:red">↑0.81</span>
-           </li>`; 
+             <span>${this.dynamicData.data[i].price}</span>`;
+             if (0 < Number(this.dynamicData.data[i].difference)) {
+               oilHtml += `<span class="orange" style="color:red">↑${this.dynamicData.data[i].difference}</span>`;
+             } else if(0 > Number(this.dynamicData.data[i].difference)) {
+               let valDyData = this.dynamicData.data[i].difference.substr(1);
+               oilHtml += `<span class="orange" style="color:green">↓${valDyData}</span>`;            
+             } else {
+                oilHtml += `<span class="orange" style="color:green">-</span>`;              
+             }
+             oilHtml +=
+           `</li>`; 
         if(i > 3) {
           break;
         }
@@ -305,7 +391,7 @@ class HomePage {
     if(isJsonObjectHasData(this.oilRecommendData)) {
       for (let i = 0; i < this.oilRecommendData.data.length; i++) {
         let typrOil = this.oilRecommendData.data[i].oil_type;
-        console.log(this.oilRecommendData);
+        //console.log(this.oilRecommendData);
         oilHtml += 
           `<li>
             <a href="../index/zhaoyou_mall.html">
